@@ -1,3 +1,4 @@
+<img width="1024" height="1024" alt="banner" src="https://github.com/user-attachments/assets/fe8efa46-45b7-4128-8b06-993e74399fb0" />
 # Banana Split Stories 🍌
 A web-based, D&D-style generative adventure game. "Banana Split Stories" allows a user to co-create a unique, cinematic story by making choices that dynamically generate the visual and auditory world around them.
 
