@@ -1,0 +1,95 @@
+{
+   "prologue":"A distress signal, faint but desperate, has been traced to the derelict starship 'Odyssey,' lost years ago in the treacherous Nebula X-7. Your mission: board the station, locate the survivor, and bring them back alive. But rumors swirl of the 'Odyssey' being haunted, a tomb for its entire crew.",
+   "story_tree":[
+      {
+         "id":"start",
+         "scene_description":"The airlock hisses open, revealing a dimly lit, dust-covered corridor of an abandoned space station. Emergency lights flicker erratically, casting long, dancing shadows. The silence is oppressive, broken only by the distant hum of failing machinery.",
+         "narration":"You cautiously step onto the Odyssey, the heavy airlock door sealing behind you with a clang. The silence is unnerving. A faint, rhythmic tapping echoes from deeper within the ship. Your objective is clear: find any survivors.",
+         "choices":[
+            {
+               "text":"Investigate the tapping sound.",
+               "next_id":"corridor_approach"
+            },
+            {
+               "text":"Head towards the bridge for station logs.",
+               "next_id":"bridge_approach"
+            }
+         ],
+         "is_ending":false
+      },
+      {
+         "id":"corridor_approach",
+         "scene_description":"The corridor ahead is choked with debris. A spectral, translucent figure drifts slowly between floating crates, its form indistinct. The tapping sound intensifies, seeming to come from a sealed compartment further down the hall.",
+         "narration":"The tapping grows louder, a frantic, desperate rhythm. As you advance, a chilling presence washes over you, the air growing cold. The spectral figure seems to coalesce into a wailing apparition.",
+         "choices":[
+            {
+               "text":"Attempt to open the sealed compartment.",
+               "next_id":"compartment_open"
+            },
+            {
+               "text":"Retreat and try the bridge.",
+               "next_id":"bridge_approach"
+            }
+         ],
+         "is_ending":false
+      },
+      {
+         "id":"bridge_approach",
+         "scene_description":"You reach the entrance to the bridge. The main viewscreen is shattered, revealing the swirling nebulae outside. Control consoles spark sporadically. A lone, hunched figure is visible slumped over a console.",
+         "narration":"The bridge is a mess of shattered glass and sparking wires. The only sign of life, or perhaps undeath, is a figure silhouetted against the dying console lights. It doesn't move.",
+         "choices":[
+            {
+               "text":"Approach the slumped figure.",
+               "next_id":"bridge_figure"
+            },
+            {
+               "text":"Search the auxiliary data terminal.",
+               "next_id":"data_terminal"
+            }
+         ],
+         "is_ending":false
+      },
+      {
+         "id":"compartment_open",
+         "scene_description":"With a surge of adrenaline, you force the compartment door open. Inside, a terrified technician, barely alive, is trapped amidst fallen machinery. As you pull them free, a ghostly hand reaches from the shadows towards you.",
+         "narration":"You managed to free the survivor just as a spectral entity emerged from the darkness. With the survivor secured, you must now escape the haunted vessel as quickly as possible.",
+         "choices":[
+            {
+               "text":"Race back to the airlock with the survivor.",
+               "next_id":"escape_success"
+            }
+         ],
+         "is_ending":false
+      },
+      {
+         "id":"bridge_figure",
+         "scene_description":"As you approach, the slumped figure slowly raises its head. Its eyes are empty, hollow sockets, and its skin is desiccated. It lets out a bone-chilling shriek, its skeletal hands reaching for you, draining your life force.",
+         "narration":"The figure is a desiccated husk, animated by a malevolent spirit. Its touch drains the very life from you. You have become another victim of the Odyssey.",
+         "choices":[
+            
+         ],
+         "is_ending":true,
+         "outcome":"failure"
+      },
+      {
+         "id":"data_terminal",
+         "scene_description":"The auxiliary data terminal flickers to life, displaying a corrupted log entry. It speaks of a 'containment breach' and 'unavoidable sacrifice.' Suddenly, the console explodes in a shower of sparks, throwing you across the room.",
+         "narration":"The information was too dangerous to access. The station's failing systems lash out, and you are overwhelmed by the surge of energy. Your mission ends here, in darkness.",
+         "choices":[
+            
+         ],
+         "is_ending":true,
+         "outcome":"failure"
+      },
+      {
+         "id":"escape_success",
+         "scene_description":"You burst through the airlock, dragging the survivor with you, and slam the outer door shut. Your ship's engines roar to life, pulling you away from the spectral grasp of the Odyssey as it recedes into the nebula.",
+         "narration":"Against all odds, you've succeeded. The survivor is safe, and you've escaped the haunted depths of the Odyssey. The faint tapping has finally ceased.",
+         "choices":[
+            
+         ],
+         "is_ending":true,
+         "outcome":"success"
+      }
+   ]
+}
