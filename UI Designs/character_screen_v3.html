@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Split Stories | Forge Your Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?display=swap&family=Newsreader:wght@400;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #f2a20d;
+        }
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+        .font-newsreader {
+            font-family: 'Newsreader', serif;
+        }
+        .glow-on-hover:hover {
+            box-shadow: 0 0 20px 5px rgba(242, 162, 13, 0.4);
+        }
+        .file-input-label:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(242, 162, 13, 0.1);
+        }
+        /* Styles for active/selected buttons */
+        .btn-active {
+            background-color: var(--primary-color) !important;
+            color: #1a1611 !important;
+            border-color: var(--primary-color) !important;
+        }
+    </style>
+</head>
+<body class="bg-[#1a1611] text-white selection:bg-[var(--primary-color)] selection:text-[#1a1611]">
+
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-stone-wall.png')] opacity-5"></div>
+
+    <div class="relative min-h-screen flex items-center justify-center p-4 py-10">
+        
+        <div class="w-full max-w-3xl bg-stone-900/40 backdrop-blur-sm border border-stone-800/50 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden text-center">
+            
+            <div class="p-8">
+                <h1 class="font-newsreader text-4xl md:text-5xl font-bold text-[var(--primary-color)] mb-4">Forge Your Hero</h1>
+                <p class="text-stone-400 mb-8">Your journey begins now. Choose your path to create a hero worthy of legend.</p>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="grid grid-cols-2 border-t border-b border-stone-800/50">
+                <button id="tab-selfie" class="tab-btn p-4 font-bold text-lg border-r border-stone-800/50 btn-active">Become the Hero</button>
+                <button id="tab-fictional" class="tab-btn p-4 font-bold text-lg">Create a Character</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="p-8">
+                <!-- Selfie Flow -->
+                <div id="selfie-flow">
+                    <div class="mb-8">
+                        <h2 class="font-newsreader text-xl text-stone-300 mb-4">Choose Your Form</h2>
+                        <div class="grid grid-cols-2 gap-4 max-w-sm mx-auto">
+                            <button class="selfie-gender-btn glow-on-hover w-full bg-stone-900/40 text-[var(--primary-color)] font-bold py-3 px-4 rounded-lg border border-stone-800/50 transition-colors" data-gender="male">Male</button>
+                            <button class="selfie-gender-btn glow-on-hover w-full bg-stone-900/40 text-[var(--primary-color)] font-bold py-3 px-4 rounded-lg border border-stone-800/50 transition-colors" data-gender="female">Female</button>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <h2 class="font-newsreader text-xl text-stone-300 mb-4">Imprint Your Visage</h2>
+                        <label for="selfie-upload" class="file-input-label cursor-pointer w-full h-48 border-2 border-dashed border-stone-700 rounded-lg flex flex-col items-center justify-center transition-colors">
+                             <svg class="w-12 h-12 text-stone-500 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" /></svg>
+                            <span id="upload-text" class="text-stone-400">Upload Your Selfie to Become the Hero</span>
+                            <span class="text-xs text-stone-500 mt-1">Your likeness will be preserved, your destiny transformed.</span>
+                        </label>
+                        <input type="file" id="selfie-upload" class="hidden" accept="image/png, image/jpeg">
+                    </div>
+                </div>
+
+                <!-- Fictional Character Flow -->
+                <div id="fictional-flow" class="hidden">
+                     <div class="mb-8">
+                        <h2 class="font-newsreader text-xl text-stone-300 mb-4">Choose Your Spirit Animal</h2>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="animal" data-value="Wolf">Wolf</button>
+                            <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="animal" data-value="Raven">Raven</button>
+                            <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="animal" data-value="Bear">Bear</button>
+                            <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="animal" data-value="Fox">Fox</button>
+                            <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="animal" data-value="Dragon">Dragon</button>
+                        </div>
+                    </div>
+                     <div class="mb-8">
+                        <h2 class="font-newsreader text-xl text-stone-300 mb-4">Select Personality (Choose 2)</h2>
+                        <div class="flex flex-wrap justify-center gap-3">
+                           <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="personality" data-value="Brave">Brave</button>
+                           <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="personality" data-value="Cunning">Cunning</button>
+                           <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="personality" data-value="Wise">Wise</button>
+                           <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="personality" data-value="Mysterious">Mysterious</button>
+                           <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="personality" data-value="Jovial">Jovial</button>
+                        </div>
+                    </div>
+                     <div class="mb-8">
+                        <h2 class="font-newsreader text-xl text-stone-300 mb-4">Select Accessories (Choose 2)</h2>
+                        <div class="flex flex-wrap justify-center gap-3">
+                           <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="accessory" data-value="Glowing Amulet">Glowing Amulet</button>
+                           <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="accessory" data-value="Worn Leather Pouch">Worn Leather Pouch</button>
+                           <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="accessory" data-value="Ornate Dagger">Ornate Dagger</button>
+                           <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="accessory" data-value="Ancient Tome">Ancient Tome</button>
+                           <button class="fictional-choice-btn glow-on-hover bg-stone-900/40 text-[var(--primary-color)] font-bold py-2 px-5 rounded-lg border border-stone-800/50 transition-colors" data-type="accessory" data-value="Shoulder Pauldron">Shoulder Pauldron</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <button id="start-adventure-btn" class="w-full max-w-sm mx-auto bg-[var(--primary-color)] text-[#1a1611] text-lg font-bold tracking-wide h-12 px-5 rounded-md hover:bg-amber-400 transition-colors disabled:bg-stone-700 disabled:text-stone-500 disabled:cursor-not-allowed" disabled>
+                    Begin My Adventure
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const tabSelfie = document.getElementById('tab-selfie');
+        const tabFictional = document.getElementById('tab-fictional');
+        const selfieFlow = document.getElementById('selfie-flow');
+        const fictionalFlow = document.getElementById('fictional-flow');
+        const startBtn = document.getElementById('start-adventure-btn');
+        const selfieGenderBtns = document.querySelectorAll('.selfie-gender-btn');
+        const selfieInput = document.getElementById('selfie-upload');
+        const uploadText = document.getElementById('upload-text');
+        const fictionalChoiceBtns = document.querySelectorAll('.fictional-choice-btn');
+
+        // State Management
+        let activeTab = 'selfie';
+        const selfieState = { gender: null, file: null };
+        const fictionalState = { animal: null, personalities: new Set(), accessories: new Set() };
+
+        function checkCompletion() {
+            let isComplete = false;
+            if (activeTab === 'selfie') {
+                isComplete = selfieState.gender && selfieState.file;
+            } else {
+                isComplete = fictionalState.animal && fictionalState.personalities.size === 2 && fictionalState.accessories.size === 2;
+            }
+            startBtn.disabled = !isComplete;
+        }
+
+        // Tab Switching Logic
+        function switchTab(tab) {
+            activeTab = tab;
+            if (tab === 'selfie') {
+                tabSelfie.classList.add('btn-active');
+                tabFictional.classList.remove('btn-active');
+                selfieFlow.classList.remove('hidden');
+                fictionalFlow.classList.add('hidden');
+            } else {
+                tabFictional.classList.add('btn-active');
+                tabSelfie.classList.remove('btn-active');
+                fictionalFlow.classList.remove('hidden');
+                selfieFlow.classList.add('hidden');
+            }
+            checkCompletion();
+        }
+
+        tabSelfie.addEventListener('click', () => switchTab('selfie'));
+        tabFictional.addEventListener('click', () => switchTab('fictional'));
+
+        // Selfie Flow Logic
+        selfieGenderBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                selfieGenderBtns.forEach(b => b.classList.remove('btn-active'));
+                btn.classList.add('btn-active');
+                selfieState.gender = btn.dataset.gender;
+                checkCompletion();
+            });
+        });
+
+        selfieInput.addEventListener('change', (event) => {
+            if (event.target.files && event.target.files[0]) {
+                selfieState.file = event.target.files[0];
+                uploadText.textContent = `File: ${selfieState.file.name}`;
+                uploadText.classList.add('text-[var(--primary-color)]');
+            } else {
+                selfieState.file = null;
+                uploadText.textContent = 'Upload Your Selfie to Become the Hero';
+                 uploadText.classList.remove('text-[var(--primary-color)]');
+            }
+            checkCompletion();
+        });
+
+        // Fictional Flow Logic
+        fictionalChoiceBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const { type, value } = btn.dataset;
+                if (type === 'animal') {
+                    // Deselect previous animal if any
+                    document.querySelectorAll(`[data-type="animal"].btn-active`).forEach(b => b.classList.remove('btn-active'));
+                    btn.classList.add('btn-active');
+                    fictionalState.animal = value;
+                } else if (type === 'personality') {
+                    if (fictionalState.personalities.has(value)) {
+                        fictionalState.personalities.delete(value);
+                        btn.classList.remove('btn-active');
+                    } else if (fictionalState.personalities.size < 2) {
+                        fictionalState.personalities.add(value);
+                        btn.classList.add('btn-active');
+                    }
+                } else if (type === 'accessory') {
+                     if (fictionalState.accessories.has(value)) {
+                        fictionalState.accessories.delete(value);
+                        btn.classList.remove('btn-active');
+                    } else if (fictionalState.accessories.size < 2) {
+                        fictionalState.accessories.add(value);
+                        btn.classList.add('btn-active');
+                    }
+                }
+                checkCompletion();
+            });
+        });
+        
+        // Final CTA
+        startBtn.addEventListener('click', () => {
+            if (startBtn.disabled) return;
+            
+            const theme = new URLSearchParams(window.location.search).get('theme');
+            let payload;
+
+            if (activeTab === 'selfie') {
+                payload = {
+                    mode: 'selfie',
+                    theme: theme,
+                    gender: selfieState.gender,
+                    fileName: selfieState.file.name,
+                };
+            } else {
+                 payload = {
+                    mode: 'fictional',
+                    theme: theme,
+                    animal: fictionalState.animal,
+                    personalities: Array.from(fictionalState.personalities),
+                    accessories: Array.from(fictionalState.accessories),
+                };
+            }
+            
+            alert('Starting adventure with payload:\n' + JSON.stringify(payload, null, 2));
+            // In a real app, you would now construct your FormData and call the API.
+        });
+
+    </script>
+</body>
+</html>
+

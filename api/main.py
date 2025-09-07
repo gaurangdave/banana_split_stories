@@ -73,7 +73,7 @@ async def start_game(
 
     # create game_id folder to store details
     # TODO: check if folder exists to avoid overwriting games
-    current_game_path = f"{GAME_DATA_DIR}/{game_id}"
+    current_game_path = os.path.join(GAME_DATA_DIR, game_id)
     os.makedirs(current_game_path, exist_ok=True)
 
     print(f"Starting new game with ID: {game_id}")
@@ -124,7 +124,7 @@ async def next_step(
     current_step_id: str = Form(...),
     step_id: str = Form(...),
 ):
-    current_game_path = f"{GAME_DATA_DIR}/{game_id}"
+    current_game_path = os.path.join(GAME_DATA_DIR, game_id)
     ## step 1 - read story data from current game
     with open(f"{current_game_path}/story.json", "r") as f:
         story_data = json.load(f)
@@ -146,15 +146,15 @@ async def next_step(
     next_scene.save(next_scene_image_path)
     
     ## step 6 - extract scene details from story data based on step_id
-    for step in story_data["story_tree"]:
-        if step["id"] == step_id:
-            next_scene = step
-            break
-    
-    return_data = next_scene
-    return_data["scene_image"] = next_scene_image_path
-    return_data["character_sheet"] = character_asset_path
-    return return_data
+    next_step_data = next((step for step in story_data["story_tree"] if step["id"] == step_id), None)
+
+    if not next_step_data:
+    # Handle the case where an invalid step_id is provided
+        return {"error": "Invalid step_id"}, 404
+        
+    next_step_data["scene_image"] = next_scene_image_path
+    next_step_data["character_sheet"] = character_asset_path
+    return next_step_data
 
 
 @app.get("/ping")

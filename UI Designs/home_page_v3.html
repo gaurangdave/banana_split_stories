@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Split Stories | Your AI Adventure Awaits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?display=swap&family=Newsreader:wght@400;700;800&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #f2a20d;
+        }
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+        .font-newsreader {
+            font-family: 'Newsreader', serif;
+        }
+        .glow-on-hover {
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .glow-on-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px 5px rgba(242, 162, 13, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-[#1a1611] text-white selection:bg-[var(--primary-color)] selection:text-[#1a1611]">
+
+    <!-- Background with stone texture -->
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-stone-wall.png')] opacity-5"></div>
+    
+    <div class="relative">
+        <!-- Header -->
+        <header class="absolute top-0 left-0 right-0 z-10 p-6 flex justify-between items-center">
+            <h1 class="font-newsreader text-2xl font-bold tracking-tight">Banana Split Stories</h1>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-stone-300">
+                <a class="hover:text-white transition-colors" href="#">About</a>
+                <a class="hover:text-white transition-colors" href="#themes">Themes</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <main>
+            <section class="relative flex min-h-[70vh] items-center justify-center bg-cover bg-center bg-no-repeat text-center p-4" style="background-image: linear-gradient(to top, rgba(26, 22, 17, 1) 0%, rgba(26, 22, 17, 0.3) 50%, rgba(26, 22, 17, 1) 100%), url('https://placehold.co/1920x1080/1a1611/493b22?text=Epic+Adventure');">
+                <div>
+                    <h1 class="font-newsreader text-5xl md:text-7xl font-extrabold tracking-tighter" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">
+                        Your Adventure, Forged by AI
+                    </h1>
+                    <p class="mt-4 text-lg md:text-xl text-stone-300 max-w-2xl mx-auto">
+                        Craft a unique story where your choices shape the world. Become the hero and watch your saga unfold with generative art and sound.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Theme Selection Section -->
+            <section id="themes" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center">
+                        <h2 class="font-newsreader text-4xl sm:text-5xl font-bold tracking-tight">Choose Your Destiny</h2>
+                        <p class="mt-4 text-stone-400 max-w-xl mx-auto">Select a world below to begin your journey. Each theme offers a unique narrative and a distinct visual style.</p>
+                    </div>
+                    <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        
+                        <!-- Theme Tile 1 -->
+                        <a href="character_creation.html?theme=Haunted Space Station" class="theme-tile group flex flex-col rounded-lg overflow-hidden border border-stone-800/50 glow-on-hover bg-stone-900/40">
+                            <div class="relative w-full aspect-square overflow-hidden">
+                                <img alt="Haunted Space Station" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="https://placehold.co/600x600/1a1611/f2a20d?text=Sci-Fi+Horror">
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col">
+                                <h3 class="font-newsreader text-xl font-bold">Haunted Space Station</h3>
+                                <p class="text-stone-400 text-sm mt-2 flex-grow">A lone scavenger explores a derelict station haunted by a mysterious, spectral entity.</p>
+                            </div>
+                        </a>
+                        
+                        <!-- Theme Tile 2 -->
+                        <a href="character_creation.html?theme=Lost Temple of the Jungle" class="theme-tile group flex flex-col rounded-lg overflow-hidden border border-stone-800/50 glow-on-hover bg-stone-900/40">
+                            <div class="relative w-full aspect-square overflow-hidden">
+                                <img alt="Lost Temple of the Jungle" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="https://placehold.co/600x600/1a1611/f2a20d?text=Jungle+Adventure">
+                            </div>
+                             <div class="p-5 flex-1 flex flex-col">
+                                <h3 class="font-newsreader text-xl font-bold">Lost Temple of the Jungle</h3>
+                                <p class="text-stone-400 text-sm mt-2 flex-grow">An intrepid explorer seeks a legendary artifact within a vine-choked, ancient temple.</p>
+                            </div>
+                        </a>
+
+                        <!-- Theme Tile 3 -->
+                        <a href="character_creation.html?theme=Cyberpunk Underworld" class="theme-tile group flex flex-col rounded-lg overflow-hidden border border-stone-800/50 glow-on-hover bg-stone-900/40">
+                            <div class="relative w-full aspect-square overflow-hidden">
+                                <img alt="Cyberpunk Underworld" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="https://placehold.co/600x600/1a1611/f2a20d?text=Cyberpunk+Noir">
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col">
+                                <h3 class="font-newsreader text-xl font-bold">Cyberpunk Underworld</h3>
+                                <p class="text-stone-400 text-sm mt-2 flex-grow">A street-smart netrunner navigates the neon-drenched, dangerous alleys of a futuristic metropolis.</p>
+                            </div>
+                        </a>
+
+                        <!-- Theme Tile 4 -->
+                        <a href="character_creation.html?theme=Curse of the Banana King" class="theme-tile group flex flex-col rounded-lg overflow-hidden border border-stone-800/50 glow-on-hover bg-stone-900/40">
+                            <div class="relative w-full aspect-square overflow-hidden">
+                                <img alt="Curse of the Banana King" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="https://placehold.co/600x600/1a1611/f2a20d?text=Fantasy+Comedy">
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col">
+                                <h3 class="font-newsreader text-xl font-bold">Curse of the Banana King</h3>
+                                <p class="text-stone-400 text-sm mt-2 flex-grow">A brave knight embarks on a quest to lift a bizarre, potassium-rich curse from a grumpy monarch.</p>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-[#14110d] border-t border-solid border-[#493b22]">
+            <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-sm text-stone-500">
+                    © 2025 Banana Split Stories. A Hackathon Project.
+                </p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Simple script to demonstrate capturing theme selection
+        document.querySelectorAll('.theme-tile').forEach(tile => {
+            tile.addEventListener('click', (event) => {
+                const urlParams = new URLSearchParams(tile.search);
+                const theme = urlParams.get('theme');
+                console.log(`Theme selected: ${theme}`);
+            });
+        });
+    </script>
+</body>
+</html>
+

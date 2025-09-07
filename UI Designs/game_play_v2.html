@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Split Stories | The Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?display=swap&family=Newsreader:wght@400;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #f2a20d;
+        }
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+        .font-newsreader {
+            font-family: 'Newsreader', serif;
+        }
+        .glow-on-hover {
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .glow-on-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px 5px rgba(242, 162, 13, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-[#1a1611] text-white selection:bg-[var(--primary-color)] selection:text-[#1a1611]">
+
+    <!-- Background with stone texture -->
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-stone-wall.png')] opacity-5"></div>
+
+    <div class="relative min-h-screen flex items-center justify-center p-4">
+        
+        <!-- Main Game Container -->
+        <div id="game-container" class="w-full max-w-6xl bg-stone-900/40 backdrop-blur-sm border border-stone-800/50 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden">
+            <div class="md:flex">
+                
+                <!-- Left Column (The Narrative) -->
+                <div class="w-full md:w-2/5 p-6 md:p-8 flex flex-col justify-between">
+                    <div>
+                        <h2 id="narration-title" class="font-newsreader text-2xl md:text-3xl font-bold text-[var(--primary-color)] mb-4 border-b-2 border-[#493b22] pb-2">The Story So Far</h2>
+                        <p id="narration-text" class="text-stone-300 text-base md:text-lg leading-relaxed">
+                            The air inside Elysium Station is stale and cold, carrying a faint metallic tang. Your scanner picks up no life signs, only residual energy signatures. A low hum emanates from deeper within the station, a siren's call in the oppressive silence.
+                        </p>
+                    </div>
+
+                    <div id="choices-container" class="mt-8">
+                        <h3 class="font-newsreader text-xl text-[var(--primary-color)] mb-4">Your Choice...</h3>
+                        <div id="choices-buttons" class="space-y-4">
+                            <!-- Choice buttons will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column (The Scene) -->
+                <div class="w-full md:w-3/5 p-4 bg-black/30">
+                    <div class="aspect-[9/16] w-full max-w-md mx-auto h-full rounded-lg overflow-hidden shadow-lg shadow-black/50 border-2 border-stone-800/50">
+                         <img id="scene-image" src="https://placehold.co/720x1280/1a1611/f2a20d?text=Your+Scene" alt="The current scene in the story" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // --- MOCK DATA ---
+        // In your real app, this data will come from your API calls.
+        const currentStep = {
+            narration: "The air inside Elysium Station is stale and cold, carrying a faint metallic tang. Your scanner picks up no life signs, only residual energy signatures. A low hum emanates from deeper within the station, a siren's call in the oppressive silence.",
+            scene_image_url: "https://placehold.co/720x1280/1a1611/f2a20d?text=The+Docking+Bay",
+            choices: [
+                { text: "Investigate the humming sound." },
+                { text: "Search the immediate docking bay for supplies." }
+            ]
+        };
+
+        // --- DOM ELEMENTS ---
+        const narrationTextEl = document.getElementById('narration-text');
+        const sceneImageEl = document.getElementById('scene-image');
+        const choicesButtonsEl = document.getElementById('choices-buttons');
+
+        // --- RENDER FUNCTION ---
+        function renderStep(step) {
+            // Update narration
+            narrationTextEl.textContent = step.narration;
+
+            // Update scene image
+            sceneImageEl.src = step.scene_image_url;
+            sceneImageEl.alt = "Scene of the story"; // You can make this more descriptive
+
+            // Clear old choices and render new ones
+            choicesButtonsEl.innerHTML = '';
+            step.choices.forEach((choice, index) => {
+                const button = document.createElement('button');
+                button.className = "glow-on-hover w-full bg-stone-900/40 hover:bg-[var(--primary-color)] text-[var(--primary-color)] hover:text-[#1a1611] font-bold py-3 px-4 rounded-lg border border-stone-800/50";
+                button.textContent = choice.text;
+                
+                // When a choice is clicked, we'll log its index.
+                // This is where you'll call your /next_step API.
+                button.onclick = () => handleChoice(index);
+                
+                choicesButtonsEl.appendChild(button);
+            });
+        }
+
+        // --- EVENT HANDLER ---
+        function handleChoice(choiceIndex) {
+            console.log(`Player selected choice with index: ${choiceIndex}`);
+            // In your React app, this function would trigger the API call to /next_step
+            // It would send the game_id, current_step_id, and the choiceIndex.
+            
+            // For this demo, let's just show an alert.
+            // In the real app, you would get new data and call renderStep() again.
+            alert(`You chose option ${choiceIndex + 1}! The story would continue now.`);
+        }
+
+        // --- INITIAL RENDER ---
+        // Render the initial step when the page loads.
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStep(currentStep);
+        });
+    </script>
+</body>
+</html>
+

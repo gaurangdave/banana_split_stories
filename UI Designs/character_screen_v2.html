@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Split Stories | Forge Your Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?display=swap&family=Newsreader:wght@400;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #f2a20d;
+        }
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+        .font-newsreader {
+            font-family: 'Newsreader', serif;
+        }
+        .glow-on-hover {
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .glow-on-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px 5px rgba(242, 162, 13, 0.4);
+        }
+        /* Style for the file input */
+        .file-input-label:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(242, 162, 13, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-[#1a1611] text-white selection:bg-[var(--primary-color)] selection:text-[#1a1611]">
+
+    <!-- Background with stone texture -->
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-stone-wall.png')] opacity-5"></div>
+
+    <div class="relative min-h-screen flex items-center justify-center p-4">
+        
+        <!-- Main Character Creation Container -->
+        <div id="creation-container" class="w-full max-w-2xl bg-stone-900/40 backdrop-blur-sm border border-stone-800/50 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden p-8 text-center">
+            
+            <h1 class="font-newsreader text-4xl md:text-5xl font-bold text-[var(--primary-color)] mb-4">Forge Your Hero</h1>
+            <p class="text-stone-400 mb-8">Your journey begins now. Define your hero to step into the story.</p>
+
+            <!-- Gender Selection -->
+            <div class="mb-8">
+                <h2 class="font-newsreader text-xl text-stone-300 mb-4">Choose Your Form</h2>
+                <div class="grid grid-cols-2 gap-4 max-w-sm mx-auto">
+                    <button id="gender-male" class="gender-btn glow-on-hover w-full bg-stone-900/40 text-[var(--primary-color)] font-bold py-3 px-4 rounded-lg border border-stone-800/50">Male</button>
+                    <button id="gender-female" class="gender-btn glow-on-hover w-full bg-stone-900/40 text-[var(--primary-color)] font-bold py-3 px-4 rounded-lg border border-stone-800/50">Female</button>
+                </div>
+            </div>
+
+            <!-- Selfie Upload -->
+            <div class="mb-8">
+                <h2 class="font-newsreader text-xl text-stone-300 mb-4">Imprint Your Visage</h2>
+                <label for="selfie-upload" class="file-input-label cursor-pointer w-full h-48 border-2 border-dashed border-stone-700 rounded-lg flex flex-col items-center justify-center transition-colors">
+                    <svg class="w-12 h-12 text-stone-500 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                    </svg>
+                    <span id="upload-text" class="text-stone-400">Upload Your Selfie to Become the Hero</span>
+                    <span class="text-xs text-stone-500 mt-1">Your likeness will be preserved, your destiny transformed.</span>
+                </label>
+                <input type="file" id="selfie-upload" class="hidden" accept="image/png, image/jpeg">
+            </div>
+
+            <!-- CTA Button -->
+            <button id="start-adventure-btn" class="w-full max-w-sm mx-auto bg-[var(--primary-color)] text-[#1a1611] text-lg font-bold tracking-wide h-12 px-5 rounded-md hover:bg-amber-400 transition-colors disabled:bg-stone-700 disabled:text-stone-500 disabled:cursor-not-allowed" disabled>
+                Begin My Adventure
+            </button>
+
+        </div>
+    </div>
+
+    <script>
+        const genderMaleBtn = document.getElementById('gender-male');
+        const genderFemaleBtn = document.getElementById('gender-female');
+        const selfieInput = document.getElementById('selfie-upload');
+        const startBtn = document.getElementById('start-adventure-btn');
+        const uploadText = document.getElementById('upload-text');
+
+        let selectedGender = null;
+        let selfieUploaded = false;
+
+        function updateButtonState() {
+            if (selectedGender && selfieUploaded) {
+                startBtn.disabled = false;
+            } else {
+                startBtn.disabled = true;
+            }
+        }
+
+        genderMaleBtn.addEventListener('click', () => {
+            selectedGender = 'male';
+            genderMaleBtn.classList.add('bg-[var(--primary-color)]', 'text-[#1a1611]');
+            genderFemaleBtn.classList.remove('bg-[var(--primary-color)]', 'text-[#1a1611]');
+            console.log('Gender selected:', selectedGender);
+            updateButtonState();
+        });
+
+        genderFemaleBtn.addEventListener('click', () => {
+            selectedGender = 'female';
+            genderFemaleBtn.classList.add('bg-[var(--primary-color)]', 'text-[#1a1611]');
+            genderMaleBtn.classList.remove('bg-[var(--primary-color)]', 'text-[#1a1611]');
+            console.log('Gender selected:', selectedGender);
+            updateButtonState();
+        });
+
+        selfieInput.addEventListener('change', (event) => {
+            if (event.target.files && event.target.files[0]) {
+                selfieUploaded = true;
+                uploadText.textContent = `File selected: ${event.target.files[0].name}`;
+                uploadText.classList.add('text-[var(--primary-color)]');
+                console.log('Selfie uploaded:', event.target.files[0].name);
+            } else {
+                selfieUploaded = false;
+                uploadText.textContent = 'Upload Your Selfie to Become the Hero';
+                uploadText.classList.remove('text-[var(--primary-color)]');
+            }
+            updateButtonState();
+        });
+        
+        startBtn.addEventListener('click', () => {
+            if (!startBtn.disabled) {
+                // In your React app, this is where you would get the file from the input,
+                // the selected gender, and the theme, and then call your /start_game API.
+                alert(`Starting adventure!\nTheme: [Your Theme]\nGender: ${selectedGender}\nSelfie: ${selfieInput.files[0].name}`);
+            }
+        });
+
+    </script>
+</body>
+</html>
