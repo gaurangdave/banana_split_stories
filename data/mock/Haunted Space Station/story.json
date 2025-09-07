@@ -1,0 +1,84 @@
+{
+    "prologue": "The ancient starship, the 'Odyssey', has gone silent. It was on a deep space exploration mission, charting unknown nebulae. Suddenly, all communication ceased, and the ship vanished from our sensors. Years later, a faint distress signal flickers to life, originating from the derelict vessel. You are a brave explorer, tasked with a perilous rescue mission. Your mission: board the Odyssey, find any surviving crew, and uncover the mystery behind its disappearance. The station is rumored to be adrift in a region of space known for strange energy fluctuations and peculiar cosmic dust. Whatever happened to the Odyssey, it's clear something unusual is at play. Time is of the essence, and the fate of the lost crew rests on your shoulders.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "The interior of the Odyssey is dimly lit, with emergency lights casting long, eerie shadows. Strange, bioluminescent fungi glow faintly on the metallic walls, and a low, resonant hum fills the air.  Floating dust motes shimmer with an otherworldly light.",
+            "character_pose_description": "You stand at the airlock, helmet light on, cautiously stepping onto the main corridor, your scanner device held at the ready.",
+            "narration": "You've successfully boarded the derelict 'Odyssey'. The air is cold and still, carrying an unfamiliar, earthy scent. The emergency lights flicker, painting bizarre patterns on the strange, glowing growths adorning the walls. It seems life, in some form, has made itself at home here.",
+            "choices": [
+                {
+                    "text": "Investigate the strange fungi.",
+                    "next_id": "fungi_path"
+                },
+                {
+                    "text": "Head towards the bridge.",
+                    "next_id": "bridge_path"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "fungi_path",
+            "scene_description": "As you approach the fungi, they pulse with a soft, rhythmic light.  Touching one causes it to release a cloud of harmless, sparkling spores that gently drift around you. The hum of the ship seems to synchronize with the pulsing light.",
+            "character_pose_description": "You reach out a gloved hand towards a large, pulsating mushroom-like growth, a look of wonder on your face.",
+            "narration": "The glowing fungi are unlike anything cataloged. They seem to react to your presence, their light intensifying.  As you get closer, a cloud of shimmering, harmless spores erupts, filling the corridor with a dazzling, gentle light show. It's beautiful, but offers no clues.",
+            "choices": [
+                {
+                    "text": "Try to collect a spore sample.",
+                    "next_id": "spore_failure"
+                },
+                {
+                    "text": "Return to the main corridor.",
+                    "next_id": "start"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "spore_failure",
+            "scene_description": "You try to carefully scoop up some spores into a sample container. However, the spores are too ephemeral, and as soon as they enter the container, they vanish, leaving only a faint, sweet aroma.  Your scanner buzzes with an error.",
+            "character_pose_description": "You look frustrated, holding an empty sample container, as the spores dissipate before your eyes.",
+            "narration": "The alien spores are too delicate to capture! They dissolve into the air the moment you try to collect them, leaving you with nothing but a faint, sweet smell. Your scanner can't analyze them, and the opportunity is lost.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "bridge_path",
+            "scene_description": "The bridge is eerily quiet, consoles dark save for a few blinking lights. The main viewscreen shows a swirling, colorful nebula. In the center of the room, a single, intact stasis pod glows softly.",
+            "character_pose_description": "You cautiously enter the bridge, your eyes scanning the consoles and then widening as you spot the stasis pod.",
+            "narration": "The bridge is surprisingly intact, a silent testament to the crew's final moments. The viewscreen offers a breathtaking, yet unsettling, vista of the cosmic anomaly. Your gaze is drawn to a solitary stasis pod, emitting a gentle, hopeful light.",
+            "choices": [
+                {
+                    "text": "Attempt to open the stasis pod.",
+                    "next_id": "stasis_success"
+                },
+                {
+                    "text": "Examine the main viewscreen.",
+                    "next_id": "viewscreen_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "stasis_success",
+            "scene_description": "With a soft hiss, the stasis pod opens, revealing a surprised but unharmed crew member. They blink in the light, then offer a weak smile. Behind them, the ship's systems flicker to life, and a rescue beacon activates.",
+            "character_pose_description": "You stand back as the stasis pod hisses open, a revived crew member stepping out, blinking and looking relieved. A faint smile spreads across your face.",
+            "narration": "Success! The stasis pod whirrs to life, and a grateful crew member emerges, safe and sound. With their revival, the ship's auxiliary power surges, and a rescue beacon is activated. Your mission is a triumph!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "viewscreen_failure",
+            "scene_description": "As you approach the viewscreen, a sudden surge of energy emanates from the nebula. The screen flares blindingly white, and your helmet comms fill with static. You feel an overwhelming urge to sleep, and your knees buckle.",
+            "character_pose_description": "You shield your eyes from the blinding light of the viewscreen, looking dazed and sleepy as you begin to stumble backwards.",
+            "narration": "The nebula's energy is more potent than anticipated! The viewscreen erupts in a blinding flash, and your senses are overwhelmed. A strange drowsiness washes over you, making it impossible to stay awake. You drift off, missing the chance to save anyone.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Haunted Space Station"
+}

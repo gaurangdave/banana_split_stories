@@ -1,0 +1,84 @@
+{
+    "prologue": "Long ago, in the Whispering Jungle, stood the fabled Temple of the Golden Banana. It was guarded by the ancient Banana King, who cursed the temple with watchful trees and tricky paths. Legends say the Golden Banana grants the finder ultimate happiness and a lifetime supply of delicious smoothies. You, a brave adventurer with a love for fruity treasures, have heard these tales. Armed with your trusty, slightly-too-small backpack and an insatiable craving for adventure (and bananas), you've finally found the hidden entrance. The air is thick with the sweet scent of ripe fruit and ancient magic. Are you ready to embark on this epic quest and claim the legendary prize?",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "A grand, moss-covered stone entrance to an ancient temple. Sunlight dapples through the canopy, illuminating vines that twist like sleeping serpents. Giant, peculiar banana trees with leaves like watchful eyes surround the entrance, their textures surprisingly soft and velvety.",
+            "character_pose_description": "Standing at the temple entrance, looking a mix of excited and a little nervous, with a hand shielding their eyes as they peer into the dim opening.",
+            "narration": "You stand before the legendary Temple of the Golden Banana. The air hums with ancient energy, and the giant banana trees seem to lean in, their leaves rustling like whispers. A faint, sweet aroma wafts from within, beckoning you forward. This is it, the start of your great quest!",
+            "choices": [
+                {
+                    "text": "Enter the temple bravely.",
+                    "next_id": "hallway"
+                },
+                {
+                    "text": "Inspect the watchful banana trees.",
+                    "next_id": "tree_check"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "hallway",
+            "scene_description": "A long, dimly lit hallway inside the temple. The walls are adorned with carvings of monkeys and banana motifs. Two paths diverge: one leads left, towards a soft, golden glow, and the other leads right, towards a tinkling sound.",
+            "character_pose_description": "Hesitating in the middle of the hallway, looking from the left path to the right path with a thoughtful expression.",
+            "narration": "The hallway stretches before you, filled with the echoes of your footsteps. A gentle light beckons from the left, while a musical tinkling comes from the right. Which path will lead you closer to the Golden Banana?",
+            "choices": [
+                {
+                    "text": "Follow the golden glow.",
+                    "next_id": "golden_room"
+                },
+                {
+                    "text": "Investigate the tinkling sound.",
+                    "next_id": "tinkling_trap"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "tree_check",
+            "scene_description": "You approach one of the giant banana trees. Its bark is smooth and patterned like a smiling face. You notice a small, loose stone at its base.",
+            "character_pose_description": "Kneeling down to examine the base of a large banana tree, gently poking at a loose stone with a finger.",
+            "narration": "The banana trees are surprisingly friendly-looking up close. As you inspect one, you discover a loose stone. Perhaps there's a secret hidden here, or perhaps it's just a distraction. What will you do?",
+            "choices": [
+                {
+                    "text": "Try to move the stone.",
+                    "next_id": "stone_trap"
+                },
+                {
+                    "text": "Ignore the stone and enter the temple.",
+                    "next_id": "hallway"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "golden_room",
+            "scene_description": "You enter a magnificent chamber. In the center, bathed in a warm, golden light, sits a pedestal. Upon it rests the legendary Golden Banana, shimmering with an inner light!",
+            "character_pose_description": "Standing with wide eyes and a huge smile, reaching out with both hands towards the Golden Banana on the pedestal.",
+            "narration": "You've found it! The magnificent Golden Banana, radiating a warm, inviting glow. Its sweetness seems to fill the air, promising endless joy and delicious smoothies. Congratulations, brave adventurer!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "tinkling_trap",
+            "scene_description": "You follow the tinkling sound into a small alcove. As you step inside, the tinkling stops, and a sticky, sweet-smelling goo erupts from the floor, covering your feet!",
+            "character_pose_description": "Stuck with both feet in a pile of harmless, gooey, banana-scented slime, looking surprised and slightly annoyed.",
+            "narration": "Oh dear! The tinkling was a trap! The goo is quite sticky, and it smells wonderfully of bananas, but you can't move your feet. It seems you'll have to wait for the goo to dissolve. Better luck next time!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "stone_trap",
+            "scene_description": "You try to push the loose stone. With a rumble, the ground beneath you gives way, and you slide down a short, slippery chute, landing safely but a bit dizzy in a room filled with sleepy, giggling monkeys.",
+            "character_pose_description": "Sitting on the floor, looking surprised and a little dizzy, surrounded by a small group of harmless, giggling monkeys who are playfully trying to share their regular bananas with you.",
+            "narration": "Whoops! That stone led to a secret slide! You've landed amongst some very friendly monkeys who seem quite amused by your arrival. They offer you a regular banana, but the Golden Banana remains elusive. Perhaps a different path would have been wiser.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Curse of the Banana King"
+}

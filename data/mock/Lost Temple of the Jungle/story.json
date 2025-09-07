@@ -1,0 +1,101 @@
+{
+    "prologue": "For centuries, whispers have echoed through the ancient world of the Sunstone, a legendary artifact said to possess the warmth of a thousand suns and the power to bring light to the darkest corners. It is hidden deep within the heart of the Whispering Jungle, guarded by trials of wit and ancient magic. Brave explorers have sought it, but none have returned, their tales lost to time. You, a young and eager adventurer with a spirit as bright as the artifact itself, have finally deciphered the final clue on a tattered map. The jungle beckons, promising untold wonders and the chance to be a hero. With your trusty satchel and an unshakeable sense of curiosity, you stand at the edge of the overgrown path, ready to uncover the secrets of the forgotten temple and claim the Sunstone for yourself.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "A dense, emerald jungle canopy overhead filters dappled sunlight onto a moss-covered stone archway, the entrance to an ancient temple. Vines hang like curtains, and exotic flowers bloom in vibrant colors. The air is thick with the scent of damp earth and mystery. Strange, carved symbols adorn the weathered stone, hinting at ancient guardians and forgotten secrets.",
+            "character_pose_description": "Standing at the temple entrance, looking curious and determined, with a satchel slung over one shoulder and a hand resting on the mossy stone.",
+            "narration": "You stand before the entrance to the forgotten temple, the air humming with a quiet energy. The jungle has led you this far, and the legendary Sunstone is said to be within. Ancient carvings hint at the trials ahead, but your heart beats with excitement for the adventure that awaits. What path will you choose to enter this mysterious place?",
+            "choices": [
+                {
+                    "text": "Step through the main archway.",
+                    "next_id": "main_entrance"
+                },
+                {
+                    "text": "Look for a hidden side entrance.",
+                    "next_id": "side_entrance"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "main_entrance",
+            "scene_description": "Inside the temple, the grand hall is dimly lit by glowing fungi on the walls. A massive stone puzzle mechanism, featuring rotating discs with symbols, blocks the path forward. The air is still and silent, except for the faint drip of water.",
+            "character_pose_description": "Looking intently at the stone puzzle mechanism, with a finger pointing towards a specific symbol.",
+            "narration": "The main hall opens into a chamber dominated by an enormous stone puzzle. Ancient symbols cover its rotating discs, a lock that guards the way deeper into the temple. It looks like a riddle from a bygone era, and solving it might reveal the secrets of the Sunstone. How will you approach this challenge?",
+            "choices": [
+                {
+                    "text": "Try to align the symbols based on the sun pattern.",
+                    "next_id": "sun_pattern_success"
+                },
+                {
+                    "text": "Give the discs a gentle push to see if they move easily.",
+                    "next_id": "puzzle_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "side_entrance",
+            "scene_description": "You discover a narrow, overgrown crevice hidden behind a waterfall. Slipping through, you find yourself in a small, damp chamber filled with harmless, glowing moss. A rickety rope bridge spans a dark chasm.",
+            "character_pose_description": "Peeking cautiously through the crevice, looking a bit damp but excited, with a hand on the mossy rocks.",
+            "narration": "This hidden passage leads you to a secret chamber, damp and glowing with soft, natural light. A chasm yawns before you, spanned only by an old rope bridge. It looks a little wobbly, but it's the only way across from here. Do you dare to cross?",
+            "choices": [
+                {
+                    "text": "Carefully walk across the rope bridge.",
+                    "next_id": "bridge_failure"
+                },
+                {
+                    "text": "Look for another way around the chasm.",
+                    "next_id": "no_other_way"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "sun_pattern_success",
+            "scene_description": "As you align the symbols on the puzzle discs to match the sun's path, a soft click echoes through the hall. A section of the wall grinds open, revealing a shimmering chamber bathed in golden light. In the center, resting on a pedestal, is the magnificent Sunstone, radiating warmth and energy.",
+            "character_pose_description": "Standing with a triumphant smile, reaching out towards the glowing Sunstone, bathed in its warm light.",
+            "narration": "With a satisfying click, the puzzle is solved! The wall slides open, revealing the legendary Sunstone. It glows with an inner light, filling the chamber with a comforting warmth. You have found the artifact, its light promising hope and wonder. Congratulations, brave adventurer!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "puzzle_failure",
+            "scene_description": "You give the puzzle discs a gentle nudge, but instead of moving, a puff of harmless, colorful dust erupts from the mechanism, covering you from head to toe in sparkly glitter. The puzzle remains stubbornly in place.",
+            "character_pose_description": "Covered in sparkly glitter, looking surprised and slightly sticky, with a confused expression.",
+            "narration": "Oh dear! A cloud of giggling glitter erupted from the puzzle, coating you in a shimmering mess. It seems brute force isn't the answer here. You'll need to rethink your approach, or perhaps find a different path to the Sunstone.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "bridge_failure",
+            "scene_description": "You take a step onto the rope bridge, and with a creak, one of the ropes snaps! You find yourself gently lowered by the remaining ropes into a bed of incredibly soft, springy moss at the bottom of the chasm. It's quite comfortable, but you can't reach the bridge anymore.",
+            "character_pose_description": "Sitting comfortably in a large pile of soft, bouncy moss at the bottom of a shallow chasm, looking a bit sheepish.",
+            "narration": "Uh oh! The bridge gave way, but luckily, you landed in something wonderfully soft. You're safe and sound, but quite stuck at the bottom of this little chasm. Maybe this wasn't the best way forward, but at least you're comfy!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "no_other_way",
+            "scene_description": "You examine the crevice further, but there are no other passages or ways to bypass the chasm. The rope bridge is the only option from this hidden chamber.",
+            "character_pose_description": "Standing by the chasm, looking disappointed, with hands on hips, having realized there's no alternative.",
+            "narration": "After a thorough search, you realize this hidden passage offers no other way forward. The only path across the chasm is the wobbly rope bridge. You must make a choice: brave the bridge or go back and try the main entrance.",
+            "choices": [
+                {
+                    "text": "Try the rope bridge after all.",
+                    "next_id": "bridge_failure"
+                },
+                {
+                    "text": "Return to the main entrance.",
+                    "next_id": "main_entrance"
+                }
+            ],
+            "is_ending": false
+        }
+    ],
+    "theme": "Lost Temple of the Jungle"
+}

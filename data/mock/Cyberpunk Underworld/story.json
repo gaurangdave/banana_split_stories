@@ -1,0 +1,67 @@
+{
+    "prologue": "The year is 2092. Neo-Kyoto gleams under a perpetual twilight, its towering skyscrapers laced with rivers of neon light. You are Kai, a private investigator known for your sharp wit and even sharper sense of style. Lately, whispers have slithered through the city's underbelly about OmniCorp, a mega-corporation that controls everything from synth-food to hover-cars. Strange energy readings have been detected from their abandoned research facility on the docks, and an old contact, a quirky robot named Gizmo, has gone missing after hinting at a huge discovery. Your mission: find Gizmo and uncover OmniCorp's secrets before the rain washes away the evidence, and perhaps Kai too.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "A dimly lit alleyway in Neo-Kyoto. Rain slicks the grimy pavement, reflecting the vibrant neon signs of noodle stands and gadget shops. Steam rises from grates, creating an atmospheric haze.  A holographic advertisement flickers erratically above a dumpster.",
+            "character_pose_description": "Kai stands with a trench coat collar pulled up, a fedora casting a shadow over their eyes. They are scanning the alley with a futuristic handheld device, looking thoughtful.",
+            "narration": "The rain is relentless tonight, each drop a tiny drumbeat against the city's synthetic skin. You're deep in the labyrinthine backstreets, following Gizmo's last known signal. OmniCorp's neon glow feels like a predator's stare from the towering spires above.",
+            "choices": [
+                {
+                    "text": "Investigate the flickering holographic ad.",
+                    "next_id": "hologram_clue"
+                },
+                {
+                    "text": "Follow the sound of dripping water down a darker path.",
+                    "next_id": "dark_path_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "hologram_clue",
+            "scene_description": "The flickering holographic ad is for 'Synth-Noodle Delight.' As it glitches, it momentarily reveals a faint schematic of OmniCorp's research facility, with a specific sub-level highlighted. A small, discarded data-chip lies near the base of the flickering projector.",
+            "character_pose_description": "Kai crouches down, picking up the data-chip with a gloved hand, their eyes narrowed in concentration as they examine the holographic schematic.",
+            "narration": "This ad isn't just a glitch; it's a breadcrumb! Gizmo must have planted this. The schematic points to a hidden entrance, and this data-chip might be the key. OmniCorp is definitely up to something on that sub-level.",
+            "choices": [
+                {
+                    "text": "Head to the OmniCorp research facility.",
+                    "next_id": "research_facility"
+                },
+                {
+                    "text": "Try to decrypt the data-chip right here.",
+                    "next_id": "decrypt_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "research_facility",
+            "scene_description": "The abandoned OmniCorp research facility looms, a monolithic structure half-submerged in the murky dockside water. Rain lashes against its reinforced windows.  A faint, rhythmic humming emanates from within, and a barely visible service entrance glows with a soft, blue light.",
+            "character_pose_description": "Kai stands determinedly before the service entrance, the data-chip held aloft, ready to insert it into the access panel. A slight smile plays on their lips.",
+            "narration": "This is it. The heart of the mystery. The humming suggests active machinery, and the glowing entrance is our way in. With this data-chip, we should be able to bypass their security and find out what Gizmo discovered.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "dark_path_failure",
+            "scene_description": "The darker path leads to a dead end. The dripping water is merely a leaky pipe, and the air is thick with the smell of stale refuse. A swarm of harmless, glowing cyber-moths flutters around Kai's head, attracted by their detective's lamp.",
+            "character_pose_description": "Kai stumbles back, brushing away the gentle swarm of cyber-moths with a sigh. Their expression is one of mild annoyance.",
+            "narration": "Well, this was a damp squib. Just a leaky pipe and some overly friendly cyber-moths. Looks like Gizmo wasn't this way. We've wasted precious time, and the trail is getting colder.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "decrypt_failure",
+            "scene_description": "Kai attempts to decrypt the data-chip using their handheld scanner. However, the chip is booby-trapped with a harmless, but potent, sleep-inducing gas.  The scanner emits a puff of glittery smoke, and Kai suddenly feels very drowsy.",
+            "character_pose_description": "Kai slumps against a grimy wall, eyes drooping, a look of surprised drowsiness on their face. The data-chip slips from their fingers.",
+            "narration": "Oops! This chip was a bit more advanced than expected. Instead of data, it released a cloud of delightful, sleep-inducing glitter-gas. You'll be snoozing for a good while, and OmniCorp's secrets will have to wait for another day.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Cyberpunk Underworld"
+}
