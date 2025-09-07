@@ -1,70 +1,46 @@
 {
-   "prologue":"A distress signal, faint but desperate, has been traced to the derelict starship 'Odyssey,' lost years ago in the treacherous Nebula X-7. Your mission: board the station, locate the survivor, and bring them back alive. But rumors swirl of the 'Odyssey' being haunted, a tomb for its entire crew.",
+   "prologue":"Legends whisper of the Golden Banana, an artifact of unparalleled deliciousness and immense power, hidden within the Temple of the Watchful Trees. You, a renowned (or perhaps just very hungry) adventurer, have braved treacherous jungles to seek this legendary fruit, said to grant eternal potassium.",
    "story_tree":[
       {
          "id":"start",
-         "scene_description":"The airlock hisses open, revealing a dimly lit, dust-covered corridor of an abandoned space station. Emergency lights flicker erratically, casting long, dancing shadows. The silence is oppressive, broken only by the distant hum of failing machinery.",
-         "narration":"You cautiously step onto the Odyssey, the heavy airlock door sealing behind you with a clang. The silence is unnerving. A faint, rhythmic tapping echoes from deeper within the ship. Your objective is clear: find any survivors.",
+         "scene_description":"A grand, ancient temple entrance carved into a mountainside, overgrown with lush jungle vines. Giant, gnarled banana trees with unsettlingly human-like knots stand sentinel on either side. Sunlight filters through the dense canopy, casting eerie shadows.",
+         "narration":"You stand before the fabled Temple of the Watchful Trees. The air is thick with humidity and the scent of overripe fruit. The ancient banana trees seem to lean in, their leafy canopies like watching eyes.",
          "choices":[
             {
-               "text":"Investigate the tapping sound.",
-               "next_id":"corridor_approach"
+               "text":"Enter the temple boldly.",
+               "next_id":"main_hall"
             },
             {
-               "text":"Head towards the bridge for station logs.",
-               "next_id":"bridge_approach"
+               "text":"Try to sneak around the watchful trees.",
+               "next_id":"sneaky_fail"
             }
          ],
          "is_ending":false
       },
       {
-         "id":"corridor_approach",
-         "scene_description":"The corridor ahead is choked with debris. A spectral, translucent figure drifts slowly between floating crates, its form indistinct. The tapping sound intensifies, seeming to come from a sealed compartment further down the hall.",
-         "narration":"The tapping grows louder, a frantic, desperate rhythm. As you advance, a chilling presence washes over you, the air growing cold. The spectral figure seems to coalesce into a wailing apparition.",
+         "id":"main_hall",
+         "scene_description":"Inside the temple, a vast hall with crumbling stone pillars. Golden banana motifs adorn the walls. In the center, a pedestal holds three ornate chests. Strange, faint whispers echo.",
+         "narration":"The main hall is surprisingly intact, though dust motes dance in the shafts of light. Three chests beckon, each possibly containing the Golden Banana, or perhaps just a terrible curse.",
          "choices":[
             {
-               "text":"Attempt to open the sealed compartment.",
-               "next_id":"compartment_open"
+               "text":"Open the left chest.",
+               "next_id":"left_chest_success"
             },
             {
-               "text":"Retreat and try the bridge.",
-               "next_id":"bridge_approach"
-            }
-         ],
-         "is_ending":false
-      },
-      {
-         "id":"bridge_approach",
-         "scene_description":"You reach the entrance to the bridge. The main viewscreen is shattered, revealing the swirling nebulae outside. Control consoles spark sporadically. A lone, hunched figure is visible slumped over a console.",
-         "narration":"The bridge is a mess of shattered glass and sparking wires. The only sign of life, or perhaps undeath, is a figure silhouetted against the dying console lights. It doesn't move.",
-         "choices":[
-            {
-               "text":"Approach the slumped figure.",
-               "next_id":"bridge_figure"
+               "text":"Open the middle chest.",
+               "next_id":"middle_chest_trap"
             },
             {
-               "text":"Search the auxiliary data terminal.",
-               "next_id":"data_terminal"
+               "text":"Open the right chest.",
+               "next_id":"right_chest_trap"
             }
          ],
          "is_ending":false
       },
       {
-         "id":"compartment_open",
-         "scene_description":"With a surge of adrenaline, you force the compartment door open. Inside, a terrified technician, barely alive, is trapped amidst fallen machinery. As you pull them free, a ghostly hand reaches from the shadows towards you.",
-         "narration":"You managed to free the survivor just as a spectral entity emerged from the darkness. With the survivor secured, you must now escape the haunted vessel as quickly as possible.",
-         "choices":[
-            {
-               "text":"Race back to the airlock with the survivor.",
-               "next_id":"escape_success"
-            }
-         ],
-         "is_ending":false
-      },
-      {
-         "id":"bridge_figure",
-         "scene_description":"As you approach, the slumped figure slowly raises its head. Its eyes are empty, hollow sockets, and its skin is desiccated. It lets out a bone-chilling shriek, its skeletal hands reaching for you, draining your life force.",
-         "narration":"The figure is a desiccated husk, animated by a malevolent spirit. Its touch drains the very life from you. You have become another victim of the Odyssey.",
+         "id":"sneaky_fail",
+         "scene_description":"Thorny vines erupt from the ground, ensnaring your legs. The banana trees rustle menacingly, their shadows lengthening and twisting.",
+         "narration":"Your attempt to be stealthy was a mistake. The temple's guardians, the very trees themselves, have caught you. Their roots lash out, pulling you into the earth.",
          "choices":[
             
          ],
@@ -72,24 +48,34 @@
          "outcome":"failure"
       },
       {
-         "id":"data_terminal",
-         "scene_description":"The auxiliary data terminal flickers to life, displaying a corrupted log entry. It speaks of a 'containment breach' and 'unavoidable sacrifice.' Suddenly, the console explodes in a shower of sparks, throwing you across the room.",
-         "narration":"The information was too dangerous to access. The station's failing systems lash out, and you are overwhelmed by the surge of energy. Your mission ends here, in darkness.",
-         "choices":[
-            
-         ],
-         "is_ending":true,
-         "outcome":"failure"
-      },
-      {
-         "id":"escape_success",
-         "scene_description":"You burst through the airlock, dragging the survivor with you, and slam the outer door shut. Your ship's engines roar to life, pulling you away from the spectral grasp of the Odyssey as it recedes into the nebula.",
-         "narration":"Against all odds, you've succeeded. The survivor is safe, and you've escaped the haunted depths of the Odyssey. The faint tapping has finally ceased.",
+         "id":"left_chest_success",
+         "scene_description":"A radiant, golden banana rests inside the chest, glowing with an inner light. The air shimmers with ancient energy. A faint, triumphant chime sounds.",
+         "narration":"Success! The legendary Golden Banana is yours. Its peel gleams with an almost blinding light, and you feel a surge of pure, unadulterated potassium power.",
          "choices":[
             
          ],
          "is_ending":true,
          "outcome":"success"
+      },
+      {
+         "id":"middle_chest_trap",
+         "scene_description":"As you open the middle chest, a cloud of spores erupts, causing uncontrollable laughter and making your vision blur into a psychedelic swirl of yellow.",
+         "narration":"A burst of enchanted banana dust fills the air! You can't stop laughing, and the temple walls seem to melt and reform into dancing banana shapes. You've succumbed to the Banana King's jest.",
+         "choices":[
+            
+         ],
+         "is_ending":true,
+         "outcome":"failure"
+      },
+      {
+         "id":"right_chest_trap",
+         "scene_description":"A swarm of angry, tiny monkeys, guarding the chest, leaps out. They chatter furiously and begin pelting you with rotten banana peels.",
+         "narration":"Beware the monkey guardians! They defend the treasure with surprising ferocity, and their aim with rotten fruit is impeccable. You are quickly overwhelmed and forced to retreat.",
+         "choices":[
+            
+         ],
+         "is_ending":true,
+         "outcome":"failure"
       }
    ]
 }
