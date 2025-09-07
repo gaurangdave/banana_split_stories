@@ -1,0 +1,74 @@
+{
+   "prologue":"For years, whispers of the legendary Golden Banana have echoed through the jungle. This mythical fruit, said to grant unparalleled potassium-based power, is hidden within the Temple of the Watchful Trees, guarded by the spectral curse of the ancient Banana King. You, a seasoned (and slightly desperate) adventurer, have finally found its hidden entrance.",
+   "story_tree":[
+      {
+         "id":"start",
+         "scene_description":"A dimly lit, ancient stone temple entrance overgrown with vibrant, unnaturally large banana leaves. Strange, eye-like patterns are carved into the stone archway. The air is thick with the scent of overripe fruit and damp earth.",
+         "character_pose_description":"A determined adventurer, clad in worn leather gear, stands at the temple entrance. Their eyes scan the surroundings warily, a slight smirk on their face, holding a torch aloft to illuminate the path.",
+         "narration":"You stand at the threshold of the Temple of the Watchful Trees, the air heavy with the forgotten magic of the Banana King. The leaves rustle, though no wind blows, as if the very flora is aware of your presence.",
+         "choices":[
+            {
+               "text":"Venture into the main chamber, ignoring the unsettling rustling.",
+               "next_id":"main_chamber"
+            },
+            {
+               "text":"Try to decipher the eye-like carvings on the archway.",
+               "next_id":"carving_trap"
+            }
+         ],
+         "is_ending":false
+      },
+      {
+         "id":"main_chamber",
+         "scene_description":"A vast, echoing chamber filled with crumbling statues of monkeys holding bananas. In the center, a pedestal glows faintly, surrounded by impossibly tall, watchful banana trees whose leaves seem to form a canopy of eyes above.",
+         "character_pose_description":"The adventurer cautiously steps into the main chamber, their gaze fixed on the glowing pedestal. They grip their machete tighter, a bead of sweat trickling down their temple.",
+         "narration":"The main chamber reveals the heart of the temple. The oppressive silence is broken only by the faint hum of the pedestal's light and the incessant, unnerving rustle of the watchful banana trees.",
+         "choices":[
+            {
+               "text":"Approach the pedestal directly.",
+               "next_id":"pedestal_success"
+            },
+            {
+               "text":"Attempt to sneak around the edges of the room.",
+               "next_id":"sneaky_failure"
+            }
+         ],
+         "is_ending":false
+      },
+      {
+         "id":"carving_trap",
+         "scene_description":"As you touch the eye carvings, the stone slides inward, revealing a pit filled with sharpened bamboo spikes. The large banana leaves above rustle menacingly.",
+         "character_pose_description":"The adventurer recoils in surprise, eyes wide with shock, as a section of the temple wall gives way beneath their hand. They stumble backward, narrowly avoiding the pit.",
+         "narration":"A clever trap! The 'eyes' were not for observation, but for a sudden, spiky demise. You narrowly avoid a fatal plunge thanks to your quick reflexes.",
+         "choices":[
+            {
+               "text":"Proceed cautiously into the main chamber.",
+               "next_id":"main_chamber"
+            }
+         ],
+         "is_ending":false
+      },
+      {
+         "id":"pedestal_success",
+         "scene_description":"The adventurer reaches the pedestal. Resting atop it is a single, perfectly formed Golden Banana, radiating a warm, inviting glow. The watchful eyes of the leaves seem to nod in approval.",
+         "character_pose_description":"The adventurer gazes in awe at the Golden Banana, a triumphant smile spreading across their face. They reach out with a steady hand to grasp the legendary fruit.",
+         "narration":"Success! You've reached the Golden Banana. As your fingers close around its smooth, warm surface, a wave of pure, unadulterated potassium energy surges through you. The curse of the Banana King is broken!",
+         "choices":[
+            
+         ],
+         "is_ending":true,
+         "outcome":"success"
+      },
+      {
+         "id":"sneaky_failure",
+         "scene_description":"As you attempt to creep along the wall, a thick vine, disguised as part of the scenery, lashes out and ensnares you. The watchful banana leaves rustle with a chilling, victorious sound.",
+         "character_pose_description":"The adventurer is caught mid-stride, entangled in a thick, sticky vine. Their expression is one of shock and dismay as they are pulled helplessly towards the ceiling.",
+         "narration":"Your attempt at stealth was futile. The temple's guardians, the ever-vigilant banana trees, caught you in their grasp. You are now a permanent, albeit slightly sticky, exhibit in the Temple of the Watchful Trees.",
+         "choices":[
+            
+         ],
+         "is_ending":true,
+         "outcome":"failure"
+      }
+   ]
+}

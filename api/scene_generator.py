@@ -4,7 +4,22 @@ from typing import Any, Dict, Optional
 from PIL import Image
 from google import genai
 
-from api.constants import IMAGE_MODEL_ID, AI_IMAGE_DIR
+from api.constants import IMAGE_MODEL_ID, AI_IMAGE_DIR, MOCK_DATA_DIR
+
+
+def _mock_scene_generation() -> Image.Image:
+    """
+    Helper funtion to mock the scene generation to avoid expensive API calls
+
+    Returns:
+        Image.Image: Image from saved disk
+    """
+    print("🙃 mocking scene generation...")
+
+    ## open image file from mock data directory
+    ## TODO: Make the function little bit dynamic to return image from a pool of saved images. 
+    scene = Image.open(Path(MOCK_DATA_DIR,"start.png"))
+    return scene
 
 
 def generate_scene(
@@ -13,11 +28,16 @@ def generate_scene(
     character_asset: Image.Image,
     previous_scene_image: Optional[Image.Image],
     client: genai.Client,
-):
+    mock: bool = False,
+) -> Image.Image :
     """
     Generates the visual scene for a specific step in the story.
     This final version uses a unified prompt structure for clarity and power.
     """
+    
+    if mock:
+        return _mock_scene_generation()
+    
     # 1. Look up the current step's data.
     current_step = next((step for step in story_data["story_tree"] if step["id"] == step_id), None)
     if not current_step:
@@ -59,10 +79,7 @@ def generate_scene(
     print("✅ Scene Generated!")
 
     for part in response.candidates[0].content.parts:
-        # if part.text is not None:
-        #     print(part.text)
         if part.inline_data is not None:
             image = Image.open(BytesIO(part.inline_data.data))
-            # image.save(Path(ai_image_dir, f"{step_id}.png"))
 
     return image

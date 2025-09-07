@@ -25,8 +25,9 @@ DEFAULT_THEME = "Curse of the Banana King"
 IMAGE_DIR = Path("..","images")
 AI_IMAGE_DIR = Path(IMAGE_DIR,"ai_images")
 DATA_DIR = Path("data")
+STATIC_DIR = Path("static")
 MOCK_DATA_DIR = Path(DATA_DIR, "mock")
-GAME_DATA_DIR = Path(DATA_DIR, "games")
+GAME_DATA_DIR = Path(STATIC_DIR, "games")
 
 
 
