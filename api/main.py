@@ -7,6 +7,7 @@ import io
 import uuid
 import json
 from api.character_generator import generate_character_asset
+from api.scene_generator import generate_scene
 from api.story_generator import generate_story
 from api.schemas import Story
 from google import genai
@@ -31,8 +32,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"], # Allows all methods (GET, POST, etc.)
-    allow_headers=["*"], # Allows all headers
+    allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
 )
 
 # In-memory storage for game states (for simplicity in a hackathon)
@@ -62,43 +63,46 @@ async def start_game(
     selfie_image: UploadFile = File(...),
 ):
     """
-    Start a new game.
-    """
-    """
     Starts a new game instance.
     Generates story, character, and initial scene.
     """
     game_id = str(uuid.uuid4())
-    
-    ## create game_id folder to store details
-    ## TODO: check if folder exists to avoid overwriting games
+
+    # create game_id folder to store details
+    # TODO: check if folder exists to avoid overwriting games
     os.makedirs(f"data/games/{game_id}", exist_ok=True)
-    
+
     print(f"Starting new game with ID: {game_id}")
 
-    ## Step 1 - Generate Story
-    story_data = generate_story(theme=theme, step_count=3, client=client, mock=mock)
-    ## save story to game data json
+    # Step 1 - Generate Story
+    story_data = generate_story(
+        theme=theme, step_count=3, client=client, mock=mock)
+    # save story to game data json
     with open(f"data/games/{game_id}/story.json", "w") as f:
         json.dump(story_data, f, indent=4)
-    
-    ## Step 2 - Generate Character Asset
+
+    # Step 2 - Generate Character Asset
     # Read the uploaded file's content
     contents = await selfie_image.read()
 
     # Open the image using PIL from the in-memory bytes
     image = Image.open(io.BytesIO(contents))
-        
+
+    # Generate the character asset
     character_asset = generate_character_asset(
-        theme=theme, gender=gender, selfie_image=image, client=client
+        theme=theme, gender=gender, selfie_image=image, client=client, mock=mock
     )
-    # ## save character_asset to game data
-    
+
+    # save character_asset to game data
     character_asset.save(f"data/games/{game_id}/character_sheet.png")
-    
+
+    # Step 3 - Generate first scene
+    # step_id = story_data["story_tree"][0]["id"]
+    # first_scene = generate_scene(
+    #     step_id, story_data, character_asset, None, client)
+    # first_scene.save(f"data/games/{game_id}/{step_id}.png")
+
     return story_data
-
-
 
 
 @app.get("/ping")

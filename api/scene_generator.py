@@ -4,7 +4,7 @@ from typing import Any, Dict, Optional
 from PIL import Image
 from google import genai
 
-from api.constants import IMAGE_MODEL_ID, ai_image_dir
+from api.constants import IMAGE_MODEL_ID, AI_IMAGE_DIR
 
 
 def generate_scene(
@@ -63,6 +63,6 @@ def generate_scene(
         #     print(part.text)
         if part.inline_data is not None:
             image = Image.open(BytesIO(part.inline_data.data))
-            image.save(Path(ai_image_dir, f"{step_id}.png"))
+            # image.save(Path(ai_image_dir, f"{step_id}.png"))
 
     return image

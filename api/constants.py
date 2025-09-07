@@ -22,9 +22,13 @@ THEME_CONFIG = {
 
 DEFAULT_THEME = "Curse of the Banana King"
 
-image_dir = Path("..","images")
-ai_image_dir = Path(image_dir,"ai_images")
-data_dir = Path("..", "data")
+IMAGE_DIR = Path("..","images")
+AI_IMAGE_DIR = Path(IMAGE_DIR,"ai_images")
+DATA_DIR = Path("data")
+MOCK_DATA_DIR = Path(DATA_DIR, "mock")
+GAME_DATA_DIR = Path(DATA_DIR, "games")
+
+
 
 IMAGE_MODEL_ID = "gemini-2.5-flash-image-preview"
 TEXT_MODEL_ID = "gemini-2.5-flash-lite"
