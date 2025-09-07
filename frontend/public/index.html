@@ -24,7 +24,36 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Banana Split Stories</title>
+
+
+
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link
+      as="style"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Newsreader%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+      onload="this.rel='stylesheet'"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+      :root {
+        --primary-color: #f2a20d;
+      }
+      .glow-on-hover {
+        transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+      }
+      .glow-on-hover:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px 5px rgba(242, 162, 13, 0.4);
+      }
+    </style>
+
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
