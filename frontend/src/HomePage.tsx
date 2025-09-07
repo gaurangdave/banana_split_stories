@@ -70,12 +70,12 @@ interface ThemeTileProps {
   themeName: string;
   description: string;
   imageUrl: string;
-  linkUrl: string;
+  theme: string;
 }
 
-const ThemeTile: React.FC<ThemeTileProps> = ({ themeName, description, imageUrl, linkUrl }) => {
+const ThemeTile: React.FC<ThemeTileProps> = ({ themeName, description, imageUrl, theme }) => {
   return (
-    <Link to={linkUrl} className="group flex flex-col rounded-lg overflow-hidden border border-stone-800/50 glow-on-hover bg-stone-900/40">
+    <Link to="/character-creation" state={{ theme: theme }} className="group flex flex-col rounded-lg overflow-hidden border border-stone-800/50 glow-on-hover bg-stone-900/40">
       <div className="relative w-full aspect-square overflow-hidden">
         <img
           alt={themeName}
@@ -101,25 +101,25 @@ const ThemeSelection: React.FC = () => {
       themeName: 'Haunted Space Station',
       description: 'Explore a derelict space station haunted by unknown entities.',
       imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDAW4ClLoZEgtXqLXQf4HnipH3lCUgjevAvOiK4TlkFpjCrZm4-k_ANQ1N_6XY2ddP8n-2HW5Zqeo3HKxVOtIaZw1oJ7hDJpdgJzgpdjAQVSjPn49WpmFEX7acrvdWDeQwxLhlbPguG74EUNO5uEBdJaAAM-suKFNcYfOCs5JmIUFyQy43aJVHbB3Tv0wxJI7jSnN5F3fdsMwy5qvDA-LnSGY6Qehc39nx0DVtAihDm1msaoq92aY1YKQFSWPVuNLsOKb_yP6KzZBA',
-      linkUrl: '/character-creation?theme=space',
+      theme: 'space',
     },
     {
       themeName: 'Lost Temple of the Jungle',
       description: 'Uncover the secrets of an ancient temple hidden in the jungle.',
       imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDipurnS1MRdW5pJ1SHNPCStyTsTRVmRZOIcA5t9srnOMBwXKxuzeBDP4Xa3EjiWMS6uPKIFrvV1G26z9hMcB2Hx9J8C7B0N-VgUeFtDPA8RbzXZA6rcm7KNyWyfu47AYDUs2MzSLvGVzHM5R73j6Oxgp6duNg_XzL8W6PfU5f9DiWRGksjGAJ2UYY7GMEnyRl9fiFm5ecOOA5SP10rgV7q7Ulaq1Vz0f7-oJ2DdBTvPwgTyNYueMzxG88HDaxUt3QyPlwOd7b-xJc',
-      linkUrl: '/character-creation?theme=jungle',
+      theme: 'jungle',
     },
     {
       themeName: 'Cyberpunk Underworld',
       description: 'Navigate the gritty underworld of a futuristic city.',
       imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFFSAMkvxsVQy9uJRHrOdBIrsJ6LNXLOQ8_oMimCnShoBqP9Q-a_5KBWTadJ6ZOhDPs1gvKPADUR_rl4myaqk5C-FqSu5eLJm1n9YT2rUp6ho9gu8jAf1imC8RSjaLgvR4qEZbjbosTnY2mHWDPUDRX2mR-RyuISLRJJ0skBFbGl6343-Igw0isVETkDHzLDcZ9imW6CruZDsu9-k7LgGjBNTapoHMzNQ5jaOOkU2eV78ZOd2aA3_fEeeQvMEfJsvOqGqfSWwYPJk',
-      linkUrl: '/character-creation?theme=cyberpunk',
+      theme: 'cyberpunk',
     },
     {
       themeName: 'Curse of the Banana King',
       description: 'Embark on a quest to break the curse of the Banana King.',
       imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuABcRV32kyCoyvVJ5KL1djQaQw3VO5Fveog2s4gDwWtCdZ0_UMvBmDutwBlpij_gf_2SC-JrxjgiyGZLmkK4I2Wq5HBo-aEkJPF71J6cFk1aksQexfWj1whrWrgG1NDdQHagYU_lDSHp0DcJBqNtpGUEqRvFtyBUKPkQTbl4ZRcekeca6LaxOKAtJy8Peg3bN5ChzaRTlPUziJVw8O5xxJGfKihmnHGK5mXIpMronA_SprJw1OrLWPL81wbJsa6p8_2cHbsTnWxvWw',
-      linkUrl: '/character-creation?theme=banana',
+      theme: 'banana',
     },
   ];
 
@@ -136,7 +136,7 @@ const ThemeSelection: React.FC = () => {
               themeName={theme.themeName}
               description={theme.description}
               imageUrl={theme.imageUrl}
-              linkUrl={theme.linkUrl}
+              theme={theme.theme}
             />
           ))}
         </div>
