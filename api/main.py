@@ -62,8 +62,11 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 @app.post("/start_game")
 async def start_game(
     theme: str = Form(...),
-    gender: str = Form(...),
-    selfie_image: UploadFile = File(...),
+    gender: str = Form(None),
+    selfie_file: UploadFile = File(None),
+    animal: str = Form(None),
+    personalities: str = Form(None),
+    accessories: str = Form(None),
 ):
     """
     Starts a new game instance.
@@ -87,16 +90,21 @@ async def start_game(
         json.dump(story_data, f, indent=4)
 
     # Step 2 - Generate Character Asset
-    # Read the uploaded file's content
-    contents = await selfie_image.read()
+    if selfie_file:
+        # Read the uploaded file's content
+        contents = await selfie_file.read()
 
-    # Open the image using PIL from the in-memory bytes
-    image = Image.open(io.BytesIO(contents))
+        # Open the image using PIL from the in-memory bytes
+        image = Image.open(io.BytesIO(contents))
 
-    # Generate the character asset
-    character_asset = generate_character_asset(
-        theme=theme, gender=gender, selfie_image=image, client=client, mock=mock
-    )
+        # Generate the character asset
+        character_asset = generate_character_asset(
+            theme=theme, gender=gender, selfie_image=image, client=client, mock=mock
+        )
+    else:
+        # Use a mock character sheet for fictional characters
+        character_asset = Image.open("data/mock/character_sheet.png")
+
 
     # save character_asset to game data
     character_asset_image_path = f"{current_game_path}/character_sheet.png"
@@ -110,19 +118,19 @@ async def start_game(
     first_scene.save(first_scene_image_path)
     
     return_data = story_data["story_tree"][0]
-    return_data["scene_image"] = first_scene_image_path
-    return_data["character_sheet"] = character_asset_image_path
+    return_data["scene_image_url"] = f"/static/games/{game_id}/{step_id}.png"
+    return_data["character_sheet_url"] = f"/static/games/{game_id}/character_sheet.png"
 
     ## TODO: remove next_id from return_data["choices"] array to keep the suspense. 
 
-    return return_data
+    return {"game_id": game_id, "step": return_data}
 
 
 @app.post("/next_step")
 async def next_step(
     game_id: str = Form(...),
     current_step_id: str = Form(...),
-    step_id: str = Form(...),
+    choice_index: int = Form(...),
 ):
     current_game_path = os.path.join(GAME_DATA_DIR, game_id)
     ## step 1 - read story data from current game
@@ -137,24 +145,31 @@ async def next_step(
     previous_scene_path = f"{current_game_path}/{current_step_id}.png"
     previous_scene = Image.open(previous_scene_path)
 
-    ## step 4 - generate the next scene
-    next_scene = generate_scene(
-        step_id, story_data, character_asset, previous_scene, client, mock=mock)
+    ## step 4 - get the next step id from the story data
+    current_step_data = next((step for step in story_data["story_tree"] if step["id"] == current_step_id), None)
+    if not current_step_data:
+        return {"error": "Invalid current_step_id"}, 404
+    
+    next_step_id = current_step_data["choices"][choice_index]["next_id"]
 
-    ## step 5 - save the next scene
-    next_scene_image_path = f"{current_game_path}/{step_id}.png"    
+    ## step 5 - generate the next scene
+    next_scene = generate_scene(
+        next_step_id, story_data, character_asset, previous_scene, client, mock=mock)
+
+    ## step 6 - save the next scene
+    next_scene_image_path = f"{current_game_path}/{next_step_id}.png"    
     next_scene.save(next_scene_image_path)
     
-    ## step 6 - extract scene details from story data based on step_id
-    next_step_data = next((step for step in story_data["story_tree"] if step["id"] == step_id), None)
+    ## step 7 - extract scene details from story data based on step_id
+    next_step_data = next((step for step in story_data["story_tree"] if step["id"] == next_step_id), None)
 
     if not next_step_data:
     # Handle the case where an invalid step_id is provided
-        return {"error": "Invalid step_id"}, 404
+        return {"error": "Invalid next_step_id"}, 404
         
-    next_step_data["scene_image"] = next_scene_image_path
-    next_step_data["character_sheet"] = character_asset_path
-    return next_step_data
+    next_step_data["scene_image_url"] = f"/static/games/{game_id}/{next_step_id}.png"
+    next_step_data["character_sheet_url"] = f"/static/games/{game_id}/character_sheet.png"
+    return {"step": next_step_data}
 
 
 @app.get("/ping")
