@@ -59,6 +59,15 @@ os.makedirs("static/games", exist_ok=True)
 os.makedirs("data/games", exist_ok=True)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+# --- THE FIX: Correct Static File Mounting ---
+# This mount serves our dynamically generated images and audio.
+# It maps the URL path /static/games to the data/games directory on the server's filesystem.
+# app.mount("/static/games", StaticFiles(directory="data/games"), name="games")
+
+# This mount serves the entire built React application.
+# It MUST be the LAST mount. It acts as a catch-all for any request that didn't match an API route.
+app.mount("/", StaticFiles(directory="frontend/build", html=True), name="app")
+
 
 # --- API Endpoints ---
 @app.post("/api/restart_game")
