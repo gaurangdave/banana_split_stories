@@ -1,122 +1,110 @@
-<img width="1024" height="1024" alt="banner" src="https://github.com/user-attachments/assets/fe8efa46-45b7-4128-8b06-993e74399fb0" />
+<p align="center">
+  <img width="1024" height="auto" alt="Banana Split Stories Banner" src="https://github.com/user-attachments/assets/fe8efa46-45b7-4128-8b06-993e74399fb0">
+</p>
 
 # Banana Split Stories 🍌
-A web-based, D&D-style generative adventure game. "Banana Split Stories" allows a user to co-create a unique, cinematic story by making choices that dynamically generate the visual and auditory world around them.
 
-<!-- TODO: Add a GIF of the final application in action! -->
+**A web-based, D&D-style generative adventure game where you become the hero.** "Banana Split Stories" co-creates a unique, cinematic story by making choices that dynamically generate the visual and auditory world around you.
+
+---
+
+### 🚀 [**Live Demo**](https://banana-split-stories-demo-5ce6a38b40e0.herokuapp.com/) 🚀
+
+*(Note: As this is a free Heroku deployment, the application may take 15-30 seconds to wake up on the first visit.)*
+
+---
 
 ## ✨ Project Overview
-This project is a submission for the [Nano Banana Hackathon](https://www.kaggle.com/competitions/banana/overview), utilizing the new Gemini 2.5 Flash Image Preview ("Nano Banana") API.
 
-The core idea is to create a deeply personal and immersive storytelling experience. Users can cast themselves as the main character of a fantasy adventure by uploading a selfie. Our application then generates a visually consistent hero and crafts a rich, branching narrative with atmospheric audio, all in real-time based on the player's choices.
+This project is a submission for the **Nano Banana Hackathon**, built in 48 hours to showcase the power of the Gemini 2.5 Flash Image Preview ("Nano Banana") API.
+
+The core idea is to create a deeply personal and immersive storytelling experience. Users can cast themselves as the main character of an adventure by uploading a selfie. Our application then uses Gemini's powerful editing features to generate a visually consistent hero. A second "Dungeon Master" AI crafts a rich, branching narrative, and each step is brought to life with dynamically generated scenes and atmospheric audio from ElevenLabs, all based on the player's choices.
 
 ### Core Technologies
-Frontend: React
-
-Backend: Python with FastAPI
-
-AI Image Generation: Google Gemini 2.5 Flash Image Preview
-
-AI Audio Generation: ElevenLabs API (Planned)
+- **Frontend:** React, TypeScript, Tailwind CSS
+- **Backend:** Python with FastAPI
+- **Deployment:** Heroku
+- **AI Image Generation:** Google Gemini 2.5 Flash Image
+- **AI Story Generation:** Google Gemini 1.5 Flash
+- **AI Audio Generation:** ElevenLabs API
 
 ## 🚀 Getting Started
+
 Follow these instructions to set up and run the project locally.
 
 ### Prerequisites
-Python 3.8+
-
-Node.js v18+ and npm
-
-A Google AI API Key. You can get one from Google AI Studio.
+- Python 3.11+
+- Node.js v18+ and npm
+- A `.env` file in the project root with your `GEMINI_API_KEY` and `ELEVENLABS_API_KEY`.
 
 ### Installation & Setup
-1. Clone the repository:
 
-```bash
-git clone <your-repo-url>
-cd banana-split-stories
-```
+1.  **Clone the repository:**
+    ```bash
+    git clone <your-repo-url>
+    cd banana-split-stories
+    ```
 
-2. Set up environment variables:
-Create a new file named `.env` in the root of the project directory. This file will hold your secret API keys. Copy the contents of `.env.example` (you will create this file) and add your key.
+2.  **Set up environment variables:**
+    Create a new file named `.env` in the root of the project. Add your secret API keys like so:
+    ```bash
+    GEMINI_API_KEY="YOUR_API_KEY_HERE"
+    ELEVENLABS_API_KEY="YOUR_API_KEY_HERE"
+    ```
 
-`.env.example` file:
+3.  **Install all dependencies:**
+    This project uses a single script to install both frontend and backend dependencies.
+    ```bash
+    # Make the script executable (you only need to do this once)
+    chmod +x install.sh
 
-```bash
-GEMINI_API_KEY="YOUR_API_KEY_HERE"
-ELEVENLABS_API_KEY="YOUR_API_KEY_HERE"
-```
-
-Your .env file should look like this:
-
-```bash
-GEMINI_API_KEY="aIzaSy...xxxxxxxxxxxx"
-```
-
-3. Install backend dependencies:
-
-```bash
-pip install -r api/requirements.txt
-```
-
-4. Install frontend dependencies:
-
-```bash
-cd frontend
-npm install
-```
+    # Run the installation
+    ./install.sh
+    ```
 
 ## 🏃 Running the Application
-We have two primary ways to run the application.
 
-### A) Development Mode (Recommended for Hacking)
-This method runs the frontend and backend as separate processes, allowing for hot-reloading and faster development.
+A single script handles the entire process of building the frontend and launching the backend server.
 
-Start the Backend API:
-Open a terminal, navigate to the /api directory, and run:
-
+**To start the application:**
 ```bash
-cd api
-uvicorn main:app --reload
+# Make the script executable (you only need to do this once)
+chmod +x start.sh
+
+# Run the start script
+./start.sh
+
 ```
-
-Your API will be running on http://localhost:8000.
-
-Start the Frontend App:
-Open a second terminal, navigate to the /frontend directory, and run:
-
-```bash
-cd frontend
-npm start
-```
-
-Your React application will open in your browser at http://localhost:3000.
-
-### B) Production-like Mode (For Final Testing/Judges)
-This method builds the frontend and serves it directly from the FastAPI backend, simulating a production environment. A single script will handle everything.
-
-*(This will be finalized with the `start.sh` script we designed).
 
 📂 Project Structure
 A brief overview of the key directories:
 ```bash
-
 /
-├── api/                # Contains the Python FastAPI backend code
-│   └── main.py         # Main API application file
-├── frontend/           # Contains the Create React App frontend
-│   └── src/            # Main source code for the React app
-├── notebooks/          # Jupyter notebooks for API experimentation
+├── api/                # Contains the Python FastAPI backend and all generator modules
+├── frontend/           # Contains the React (TypeScript) frontend application
+├── assets/             # Dynamically generated game assets (images, audio)
+├── scripts/            # Helper scripts (e.g., mock data generation)
+├── Procfile            # Heroku startup command
+├── requirements.txt    # Python dependencies
 └── README.md           # You are here!
 ```
 
 ## 🗺️ Roadmap & Future Work
 While the core focus of the hackathon is the MVP, here is the future vision for Banana Split Stories:
 
-[ ] Version 1 (MVP): A functional 3-step dynamic adventure with branching choices, selfie-to-character generation, and AI-powered visuals and audio.
+[X] Version 1 (MVP): A functional 3-step dynamic adventure with branching choices, selfie-to-character generation, and AI-powered visuals and audio.
 
 [ ] Version 2 (Dice Mechanics): Introduce a dice roll system for skill checks and choice outcomes to enhance the "game" feel.
 
 [ ] Version 3 (Video Generation): Evolve the experience from static images to short, animated clips using generative video models.
 
 [ ] Version 4 (Multi-player): Transform the solo adventure into a collaborative, multi-player campaign.
+
+## 🚀 About Me
+
+A jack of all trades in software engineering, with 15 years of crafting full-stack solutions, scalable architectures, and pixel-perfect designs. Now expanding my horizons into AI/ML, blending experience with curiosity to build the future of tech—one model at a time.
+
+## 🔗 Links
+
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://gaurangdave.me/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gaurangvdave/)
