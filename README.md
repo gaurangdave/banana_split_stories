@@ -12,6 +12,21 @@
 
 *(Note: As this is a free Heroku deployment, the application may take 15-30 seconds to wake up on the first visit.)*
 
+### 📷 Screen Shots 📷
+
+#### One Face, Many Worlds
+*A gallery of heroes generated from a single selfie across all four themes, showcasing the power of Gemini 2.5 Flash.*
+
+<p align="center">
+<img alt="character_sheet" src="https://github.com/user-attachments/assets/00e44a6a-796b-4986-950a-0945acf0fb37" height="250" style="margin: 0 10px; border-radius: 8px;" />
+<img  alt="character_sheet" src="https://github.com/user-attachments/assets/badead37-462e-4e3e-ada4-465fc73d6c02" height="250" style="margin: 0 10px; border-radius: 8px;"/>
+<img  alt="character_sheet" src="https://github.com/user-attachments/assets/3aab8672-4afd-4897-9e39-498c5b480da4" height="250" style="margin: 0 10px; border-radius: 8px;"/>
+<img  alt="start" src="https://github.com/user-attachments/assets/3cdfb887-d761-4966-8481-0ef5d2219342" height="250" style="margin: 0 10px; border-radius: 8px;" />
+<img alt="prologue" src="https://github.com/user-attachments/assets/0cec710a-63ba-476d-8cea-1ee47e3b4315" height="250" style="margin: 0 10px; border-radius: 8px;"/>
+
+</p>
+
+
 ---
 
 ## ✨ Project Overview
