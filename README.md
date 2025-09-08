@@ -23,10 +23,18 @@
 <img  alt="character_sheet" src="https://github.com/user-attachments/assets/3aab8672-4afd-4897-9e39-498c5b480da4" height="250" style="margin: 0 10px; border-radius: 8px;"/>
 <img  alt="start" src="https://github.com/user-attachments/assets/3cdfb887-d761-4966-8481-0ef5d2219342" height="250" style="margin: 0 10px; border-radius: 8px;" />
 <img alt="prologue" src="https://github.com/user-attachments/assets/0cec710a-63ba-476d-8cea-1ee47e3b4315" height="250" style="margin: 0 10px; border-radius: 8px;"/>
-
 </p>
 
+#### Every Choice Matters
+<p align="center">
+<img  alt="image" src="https://github.com/user-attachments/assets/9704f340-897f-4770-90c3-2d447334fce1" height="250" style="margin: 0 10px; border-radius: 8px;"/>
 
+<img  alt="image" src="https://github.com/user-attachments/assets/be1cd170-253e-4499-940f-c9a765968d15" height="250" style="margin: 0 10px; border-radius: 8px;"/>
+<img alt="image" src="https://github.com/user-attachments/assets/fa1a797b-114d-4120-9980-6c333c8e1532" height="250" style="margin: 0 10px; border-radius: 8px;"/>
+<img alt="image" src="https://github.com/user-attachments/assets/91e0e8d8-2bf4-4360-b0f5-13ce4a440c8e" height="250" style="margin: 0 10px; border-radius: 8px;"/>
+
+  
+</p>
 ---
 
 ## ✨ Project Overview
