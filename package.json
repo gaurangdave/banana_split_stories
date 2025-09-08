@@ -1,0 +1,10 @@
+{
+  "name": "banana-split-stories",
+  "version": "1.0.0",
+  "description": "A generative adventure game.",
+  "scripts": {
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
+  },
+  "author": "",
+  "license": "ISC"
+}
