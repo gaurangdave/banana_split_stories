@@ -1,6 +1,7 @@
 import React, { useState, useEffect, FC } from "react";
 import { useLocation } from "react-router-dom";
 import { useSound } from "./SoundContext";
+import LoadingSpinner from "./LoadingSpinner";
 
 // --- Reusable Components ---
 
@@ -20,29 +21,23 @@ const ChoiceButton: FC<ChoiceButtonProps> = ({ text, onClick, disabled }) => (
   </button>
 );
 
-const LoadingSpinner: FC = () => (
-  <div className="flex justify-center items-center h-full">
-    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#f2a20d]"></div>
-  </div>
-);
+// type GameEndScreenProps = {
+//   outcome: "success" | "failure";
+//   message: string;
+// };
 
-type GameEndScreenProps = {
-  outcome: "success" | "failure";
-  message: string;
-};
-
-const GameEndScreen: FC<GameEndScreenProps> = ({ outcome, message }) => (
-  <div className="text-center">
-    <h2
-      className={`font-newsreader text-4xl font-bold mb-4 ${
-        outcome === "success" ? "text-green-400" : "text-red-400"
-      }`}
-    >
-      {outcome === "success" ? "Victory!" : "Game Over"}
-    </h2>
-    <p className="text-stone-300 text-lg">{message}</p>
-  </div>
-);
+// const GameEndScreen: FC<GameEndScreenProps> = ({ outcome, message }) => (
+//   <div className="text-center">
+//     <h2
+//       className={`font-newsreader text-4xl font-bold mb-4 ${
+//         outcome === "success" ? "text-green-400" : "text-red-400"
+//       }`}
+//     >
+//       {outcome === "success" ? "Victory!" : "Game Over"}
+//     </h2>
+//     <p className="text-stone-300 text-lg">{message}</p>
+//   </div>
+// );
 
 // --- Main Game Page Component ---
 
@@ -56,31 +51,33 @@ const GamePage: FC = () => {
 
   useEffect(() => {
     const startGame = async () => {
-      const { theme, character } = location.state || {};
+      const { theme, game_id } = location.state || {};
 
-      if (!theme || !character) {
+      if (!theme || !game_id) {
         // Handle case where state is not passed correctly
-        console.error("Theme or character data not found in location state.");
+        console.error("Theme or game_id data not found in location state.");
         setIsLoading(false);
         return;
       }
 
       const formData = new FormData();
       formData.append("theme", theme);
+      formData.append("game_id", game_id);
 
-      if (character.mode === "selfie") {
-        formData.append("gender", character.gender);
-        if (character.file) {
-          formData.append("selfie_file", character.file);
-        }
-      } else {
-        formData.append("animal", character.animal);
-        formData.append(
-          "personalities",
-          JSON.stringify(character.personalities)
-        );
-        formData.append("accessories", JSON.stringify(character.accessories));
-      }
+
+      // if (character.mode === "selfie") {
+      //   formData.append("gender", character.gender);
+      //   if (character.file) {
+      //     formData.append("selfie_file", character.file);
+      //   }
+      // } else {
+      //   formData.append("animal", character.animal);
+      //   formData.append(
+      //     "personalities",
+      //     JSON.stringify(character.personalities)
+      //   );
+      //   formData.append("accessories", JSON.stringify(character.accessories));
+      // }
 
       try {
         const response = await fetch("/api/start_game", {
@@ -89,7 +86,7 @@ const GamePage: FC = () => {
         });
         const data = await response.json();
         setCurrentStep(data.step);
-        setGameId(data.game_id);
+        setGameId(game_id);
       } catch (error) {
         console.error("Error starting game:", error);
       } finally {
@@ -236,7 +233,7 @@ const GamePage: FC = () => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center p-4 bg-[#1a1611] text-white">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-stone-wall.png')] opacity-5"></div>
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/gravel.png')] opacity-5"></div>
       <div className="w-full max-w-6xl min-h-[80vh] bg-stone-900/40 backdrop-blur-sm border border-stone-800/50 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden flex items-center justify-center">
         {renderContent()}
       </div>

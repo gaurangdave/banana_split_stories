@@ -83,8 +83,9 @@ async def restart_game(game_id: str = Form(...)):
     return {"game_id": game_id, "step": return_data}
 
 
-@app.post("/api/start_game")
-async def start_game(
+
+@app.post("/api/prologue")
+async def prologue(
     theme: str = Form(...),
     gender: str = Form(None),
     selfie_file: UploadFile = File(None),
@@ -93,23 +94,6 @@ async def start_game(
     accessories: str = Form(None),
     game_id: str = Form(None),  # Optional game_id for restarting
 ):
-    """
-    Starts a new game instance or restarts an existing one.
-    Generates story, character, and initial scene if it's a new game.
-    """
-    if game_id:
-        # If a game_id is provided, treat it as a restart
-        current_game_path = os.path.join(GAME_DATA_DIR, game_id)
-        if os.path.exists(current_game_path):
-            with open(f"{current_game_path}/story.json", "r") as f:
-                story_data = json.load(f)
-
-            step_id = story_data["story_tree"][0]["id"]
-            return_data = story_data["story_tree"][0]
-            return_data["scene_image_url"] = f"/assets/games/{game_id}/{step_id}.png"
-            return_data["character_sheet_url"] = f"/assets/games/{game_id}/character_sheet.png"
-            return {"game_id": game_id, "step": return_data}
-
     # If no game_id or the game_id doesn't exist, create a new game
     game_id = str(uuid.uuid4())
 
@@ -117,7 +101,7 @@ async def start_game(
     current_game_path = os.path.join(GAME_DATA_DIR, game_id)
     os.makedirs(current_game_path, exist_ok=True)
 
-    print(f"Starting new game with ID: {game_id}")
+    print(f"Starting prologue with ID: {game_id}")
 
     # Step 1 - Generate Story
     story_data = generate_story(
@@ -148,12 +132,99 @@ async def start_game(
     character_asset_image_path = f"{current_game_path}/character_sheet.png"
     character_asset.save(character_asset_image_path)
 
-    # Step 3 - Generate first scene & narration
+    # Step 3 - Generate Prologue Assets
+    prologue_text = story_data.get("prologue", "The adventure begins....")
+    
+    # Create parallel tasks for generating prologue image and narration
+    prologue_image_task = asyncio.to_thread(
+        generate_scene, 
+        theme, 
+        "prologue", 
+        story_data, 
+        character_asset, 
+        None, 
+        client, 
+        mock=mock,
+        is_prologue=True
+    )
+    prologue_narration_task = generate_narration(prologue_text, game_id, "prologue_narration")
+
+    # Run both tasks at the same time
+    prologue_image, prologue_narration_url = await asyncio.gather(
+        prologue_image_task, prologue_narration_task
+    )
+
+    # Save the generated assets
+    prologue_image_path = f"{current_game_path}/prologue.png"
+    prologue_image.save(prologue_image_path)
+
+    # # Step 4: Prepare the initial game state response
+    # character_details = {}
+    # if selfie_file:
+    #     character_details = {
+    #         "mode": "selfie",
+    #         "gender": gender,
+    #         # file cannot be passed directly, but we can indicate its presence
+    #         "file_uploaded": True if selfie_file else False
+    #     }
+    # else:
+    #     character_details = {
+    #         "mode": "fictional",
+    #         "animal": animal,
+    #         "personalities": json.loads(personalities) if personalities else [],
+    #         "accessories": json.loads(accessories) if accessories else []
+    #     }
+
+    return {
+        "game_id": game_id,
+        "theme": theme,        
+        "prologue_image_url": f"/assets/games/{game_id}/prologue.png",
+        "prologue_narration_url": prologue_narration_url,
+        "prologue": prologue_text
+    }
+
+
+@app.post("/api/start_game")
+async def start_game(
+    theme: str = Form(...),
+    game_id: str = Form(None), 
+):
+    """
+    Starts a new game instance or restarts an existing one.
+    Generates story, character, and initial scene if it's a new game.
+    """
+    # if game_id:
+    #     # If a game_id is provided, treat it as a restart
+    #     current_game_path = os.path.join(GAME_DATA_DIR, game_id)
+    #     if os.path.exists(current_game_path):
+    #         with open(f"{current_game_path}/story.json", "r") as f:
+    #             story_data = json.load(f)
+
+    #         step_id = story_data["story_tree"][0]["id"]
+    #         return_data = story_data["story_tree"][0]
+    #         return_data["scene_image_url"] = f"/assets/games/{game_id}/{step_id}.png"
+    #         return_data["character_sheet_url"] = f"/assets/games/{game_id}/character_sheet.png"
+    #         return {"game_id": game_id, "step": return_data}
+
+    # If no game_id or the game_id doesn't exist, create a new game
+    # game_id = str(uuid.uuid4())
+
+    # create game_id folder to store details
+    current_game_path = os.path.join(GAME_DATA_DIR, game_id)
+    os.makedirs(current_game_path, exist_ok=True)
+
+    print(f"Starting new game with ID: {game_id}")
+
+    ## step 1 : load story
+    with open(f"{current_game_path}/story.json", "r") as f:
+        story_data = json.load(f)
+
+    ## step 2 : generate screen & naration
     narration_text = story_data["story_tree"][0]["narration"]    
     step_id = story_data["story_tree"][0]["id"]
     
-    # first_scene = generate_scene(
-    #     theme, step_id, story_data, character_asset, None, client, mock=mock)
+    character_asset = Image.open(f"{current_game_path}/character_sheet.png")
+    
     ## create parallel tasks
     image_task = asyncio.to_thread(generate_scene, theme, step_id, story_data, character_asset, None, client, mock=mock)    
     audio_task = generate_narration(narration_text, game_id, step_id)
@@ -231,7 +302,6 @@ async def next_step(
     # step 7 - save the next scene
     next_scene_image_path = f"{current_game_path}/{next_step_id}.png"
     next_scene.save(next_scene_image_path)
-
 
     next_step_data["scene_image_url"] = f"/assets/games/{game_id}/{next_step_id}.png"
     next_step_data["character_sheet_url"] = f"/assets/games/{game_id}/character_sheet.png"

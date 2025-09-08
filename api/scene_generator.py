@@ -30,6 +30,7 @@ def generate_scene(
     previous_scene_image: Optional[Image.Image],
     client: genai.Client,
     mock: bool = False,
+    is_prologue: bool = False,
 ) -> Image.Image:
     """
     Generates the visual scene for a specific step in the story.
@@ -37,40 +38,52 @@ def generate_scene(
     """
 
     if mock:
+        # For prologue, we need a different mock image
+        if is_prologue:
+            step_id = "start" # using start image for prologue
         return _mock_scene_generation(theme, step_id=step_id)
 
-    # 1. Look up the current step's data.
-    current_step = next(
-        (step for step in story_data["story_tree"] if step["id"] == step_id), None)
-    if not current_step:
-        raise ValueError(f"Step with ID '{step_id}' not found in story_tree.")
+    if is_prologue:
+        scene_description = story_data.get("prologue", "A cinematic opening shot for the story.")
+        full_narrative_prompt = f"Generate a cinematic, establishing shot for a story with the following theme: {theme}. The scene should be described as: {scene_description}. This is the opening shot of the story, so it should be epic and inviting. Do not include any characters in this shot."
+        prompt_parts = [
+            full_narrative_prompt,
+            "**STYLE:** The image must be a photorealistic, high-resolution, cinematic shot.",
+            "**FORMAT:** The image MUST have a landscape 16:9 aspect ratio. Do NOT generate a portrait (vertical) image."
+        ]
+    else:
+        # 1. Look up the current step's data.
+        current_step = next(
+            (step for step in story_data["story_tree"] if step["id"] == step_id), None)
+        if not current_step:
+            raise ValueError(f"Step with ID '{step_id}' not found in story_tree.")
 
-    scene_description = current_step["scene_description"]
-    pose_description = current_step["character_pose_description"]
+        scene_description = current_step["scene_description"]
+        pose_description = current_step["character_pose_description"]
 
-    # 2. Combine the narrative descriptions into a single, cohesive paragraph.
-    full_narrative_prompt = f"{scene_description}. Our hero is {pose_description}."
+        # 2. Combine the narrative descriptions into a single, cohesive paragraph.
+        full_narrative_prompt = f"{scene_description}. Our hero is {pose_description}."
 
-    # 3. Assemble the final prompt parts list.
-    prompt_parts = [
-        # The main narrative instruction
-        full_narrative_prompt,
+        # 3. Assemble the final prompt parts list.
+        prompt_parts = [
+            # The main narrative instruction
+            full_narrative_prompt,
 
-        # The Character Consistency instruction
-        "**CHARACTER FACE:** The hero's face MUST look exactly like the person in this character sheet.",
-        character_asset,
+            # The Character Consistency instruction
+            "**CHARACTER FACE:** The hero's face MUST look exactly like the person in this character sheet.",
+            character_asset,
 
-        # The global style and format instruction (your excellent suggestion)
-        "**STYLE:** The image must be a photorealistic, high-resolution, cinematic shot.",
-        "**FORMAT:** The image MUST have a landscape 16:9 aspect ratio. Do NOT generate a portrait (vertical) image."
-    ]
+            # The global style and format instruction (your excellent suggestion)
+            "**STYLE:** The image must be a photorealistic, high-resolution, cinematic shot.",
+            "**FORMAT:** The image MUST have a landscape 16:9 aspect ratio. Do NOT generate a portrait (vertical) image."
+        ]
 
-    # 4. Add the previous scene for continuity, if it exists.
-    if previous_scene_image:
-        prompt_parts.extend([
-            "**SCENE CONTINUITY:** This new scene directly follows the previous one. Maintain a consistent art style and mood.",
-            previous_scene_image
-        ])
+        # 4. Add the previous scene for continuity, if it exists.
+        if previous_scene_image:
+            prompt_parts.extend([
+                "**SCENE CONTINUITY:** This new scene directly follows the previous one. Maintain a consistent art style and mood.",
+                previous_scene_image
+            ])
 
     # 5. Make the API call.
     print(f"🚀 Generating scene for step: {step_id}...")
@@ -81,7 +94,7 @@ def generate_scene(
     print("✅ Scene Generated!")
 
     # --- DEFENSIVE CHECKING ---
-    # First, check if there are any candidates at all.
+    # First, a`SBC`check if there are any candidates at all.
     if not response.candidates:
         print(
             "❌ ERROR: No candidates returned from API. The request may have been blocked.")
