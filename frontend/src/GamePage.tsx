@@ -106,7 +106,7 @@ const GamePage: FC = () => {
   const handleChoice = async (choiceIndex: number) => {
     if (!gameId || !currentStep) return;
 
-    playRandomVoiceLine('comment');
+    playRandomVoiceLine("comment");
     setIsLoading(true);
 
     const formData = new FormData();
@@ -140,9 +140,23 @@ const GamePage: FC = () => {
       );
     }
 
-    function handleGameRestart(): void {
-      throw new Error("Function not implemented.");
-    }
+    const handleGameRestart = async () => {
+      if (!gameId) return;
+
+      setIsLoading(true);
+
+      try {
+        const response = await fetch(`/api/restart_game?game_id=${gameId}`, {
+          method: "POST",
+        });
+        const data = await response.json();
+        setCurrentStep(data.step);
+      } catch (error) {
+        console.error("Error restarting game:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
     // if (currentStep.is_ending) {
     //     return <GameEndScreen outcome={currentStep.outcome} message={currentStep.narration} />
@@ -179,7 +193,7 @@ const GamePage: FC = () => {
           )}
 
           {currentStep.is_ending && currentStep.outcome === "failure" && (
-            <ChoiceButton              
+            <ChoiceButton
               text={"Restart Game"}
               onClick={() => handleGameRestart()}
             />

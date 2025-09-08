@@ -59,6 +59,26 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 # --- API Endpoints ---
+@app.post("/api/restart_game")
+async def restart_game(game_id: str = Form(...)):
+    """
+    Restarts a game that has already been created.
+    """
+    current_game_path = os.path.join(GAME_DATA_DIR, game_id)
+    if not os.path.exists(current_game_path):
+        return {"error": "Game not found"}, 404
+
+    with open(f"{current_game_path}/story.json", "r") as f:
+        story_data = json.load(f)
+
+    step_id = story_data["story_tree"][0]["id"]
+    return_data = story_data["story_tree"][0]
+    return_data["scene_image_url"] = f"/static/games/{game_id}/{step_id}.png"
+    return_data["character_sheet_url"] = f"/static/games/{game_id}/character_sheet.png"
+
+    return {"game_id": game_id, "step": return_data}
+
+
 @app.post("/api/start_game")
 async def start_game(
     theme: str = Form(...),
@@ -67,15 +87,29 @@ async def start_game(
     animal: str = Form(None),
     personalities: str = Form(None),
     accessories: str = Form(None),
+    game_id: str = Form(None),  # Optional game_id for restarting
 ):
     """
-    Starts a new game instance.
-    Generates story, character, and initial scene.
+    Starts a new game instance or restarts an existing one.
+    Generates story, character, and initial scene if it's a new game.
     """
+    if game_id:
+        # If a game_id is provided, treat it as a restart
+        current_game_path = os.path.join(GAME_DATA_DIR, game_id)
+        if os.path.exists(current_game_path):
+            with open(f"{current_game_path}/story.json", "r") as f:
+                story_data = json.load(f)
+
+            step_id = story_data["story_tree"][0]["id"]
+            return_data = story_data["story_tree"][0]
+            return_data["scene_image_url"] = f"/static/games/{game_id}/{step_id}.png"
+            return_data["character_sheet_url"] = f"/static/games/{game_id}/character_sheet.png"
+            return {"game_id": game_id, "step": return_data}
+
+    # If no game_id or the game_id doesn't exist, create a new game
     game_id = str(uuid.uuid4())
 
     # create game_id folder to store details
-    # TODO: check if folder exists to avoid overwriting games
     current_game_path = os.path.join(GAME_DATA_DIR, game_id)
     os.makedirs(current_game_path, exist_ok=True)
 
@@ -87,7 +121,6 @@ async def start_game(
     story_data["theme"] = theme
 
     # save story to game data json
-    # TODO: Write this to different location to limit access from the client
     with open(f"{current_game_path}/story.json", "w") as f:
         json.dump(story_data, f, indent=4)
 
@@ -121,8 +154,6 @@ async def start_game(
     return_data = story_data["story_tree"][0]
     return_data["scene_image_url"] = f"/static/games/{game_id}/{step_id}.png"
     return_data["character_sheet_url"] = f"/static/games/{game_id}/character_sheet.png"
-
-    # TODO: remove next_id from return_data["choices"] array to keep the suspense.
 
     return {"game_id": game_id, "step": return_data}
 
