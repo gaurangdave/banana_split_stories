@@ -98,15 +98,18 @@ const GamePage: FC = () => {
   }, [location.state]);
 
   useEffect(() => {
-    if (currentStep && currentStep.outcome) {
-      playRandomVoiceLine(currentStep.outcome);
-    }
+    const playOutcomeSound = async () => {
+      if (currentStep && currentStep.outcome) {
+        await playRandomVoiceLine(currentStep.outcome);
+      }
+    };
+    playOutcomeSound();
   }, [currentStep, playRandomVoiceLine]);
 
   const handleChoice = async (choiceIndex: number) => {
     if (!gameId || !currentStep) return;
 
-    playRandomVoiceLine("comment");
+    await playRandomVoiceLine('comment');
     setIsLoading(true);
 
     const formData = new FormData();

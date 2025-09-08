@@ -46,8 +46,8 @@ export interface SoundContextType {
   toggleMute: () => void;
   playBackgroundMusic: () => void;
   stopBackgroundMusic: () => void;
-  playRandomVoiceLine: (category: VoiceLineCategory) => void;
-  playNarration: (audioUrl: string) => void;
+  playRandomVoiceLine: (category: VoiceLineCategory) => Promise<void>;
+  playNarration: (audioUrl: string) => Promise<void>;
 }
 
 // 2. Implement the Context and Provider
@@ -128,23 +128,40 @@ export const SoundProvider: React.FC<SoundProviderProps> = ({ children }) => {
     backgroundMusicRef.current?.pause();
   }, []);
 
-  const playRandomVoiceLine = useCallback((category: VoiceLineCategory) => {
-    if (isMuted) return;
+  const playRandomVoiceLine = useCallback(async (category: VoiceLineCategory): Promise<void> => {
+    if (isMuted) return Promise.resolve();
     const lines = voiceLineCategories[category];
     if (lines && lines.length > 0) {
       const randomIndex = Math.floor(Math.random() * lines.length);
       const audio = new Audio(lines[randomIndex]);
-      audio.play().catch(error => {
-        console.error(`Error playing voice line for category ${category}:`, error);
+      return new Promise((resolve, reject) => {
+        audio.onended = () => resolve();
+        audio.onerror = (e) => {
+          console.error(`Error playing voice line for category ${category}:`, e);
+          reject(e);
+        };
+        audio.play().catch(error => {
+          console.error(`Error playing voice line for category ${category}:`, error);
+          reject(error);
+        });
       });
     }
+    return Promise.resolve();
   }, [isMuted]);
 
-  const playNarration = useCallback((audioUrl: string) => {
-    if (isMuted) return;
+  const playNarration = useCallback(async (audioUrl: string): Promise<void> => {
+    if (isMuted) return Promise.resolve();
     const audio = new Audio(audioUrl);
-    audio.play().catch(error => {
-      console.error("Error playing narration:", error);
+    return new Promise((resolve, reject) => {
+      audio.onended = () => resolve();
+      audio.onerror = (e) => {
+        console.error("Error playing narration:", e);
+        reject(e);
+      };
+      audio.play().catch(error => {
+        console.error("Error playing narration:", error);
+        reject(error);
+      });
     });
   }, [isMuted]);
 
