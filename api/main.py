@@ -146,16 +146,30 @@ async def start_game(
     character_asset_image_path = f"{current_game_path}/character_sheet.png"
     character_asset.save(character_asset_image_path)
 
-    # Step 3 - Generate first scene
+    # Step 3 - Generate first scene & narration
+    narration_text = story_data["story_tree"][0]["narration"]    
     step_id = story_data["story_tree"][0]["id"]
-    first_scene = generate_scene(
-        theme, step_id, story_data, character_asset, None, client, mock=mock)
+    
+    # first_scene = generate_scene(
+    #     theme, step_id, story_data, character_asset, None, client, mock=mock)
+    ## create parallel tasks
+    image_task = asyncio.to_thread(generate_scene, theme, step_id, story_data, character_asset, None, client, mock=mock)    
+    audio_task = generate_narration(narration_text, game_id, step_id)
+    
+    # Run both tasks at the same time
+    results = await asyncio.gather(image_task, audio_task)
+
+    # Unpack the results
+    first_scene,first_scene_narration_audio_url = results
+    
+    
     first_scene_image_path = f"{current_game_path}/{step_id}.png"
     first_scene.save(first_scene_image_path)
 
     return_data = story_data["story_tree"][0]
     return_data["scene_image_url"] = f"/static/games/{game_id}/{step_id}.png"
     return_data["character_sheet_url"] = f"/static/games/{game_id}/character_sheet.png"
+    return_data["narration_audio_url"] = first_scene_narration_audio_url
 
     return {"game_id": game_id, "step": return_data}
 
@@ -196,12 +210,10 @@ async def next_step(
         # Handle the case where an invalid step_id is provided
         return {"error": "Invalid next_step_id"}, 404
     
-    next_step_narration_text = next_step_data["narration"]
 
     # step 6 - generate the next scene & narration
-    # next_scene = generate_scene(
-    #     theme, next_step_id, story_data, character_asset, previous_scene, client, mock=mock)
-    
+    next_step_narration_text = next_step_data["narration"]
+
     ## create parallel tasks
     image_task = asyncio.to_thread(generate_scene, theme, next_step_id, story_data, character_asset, previous_scene, client, mock=mock)    
     audio_task = generate_narration(
