@@ -1,4 +1,5 @@
 
+import asyncio
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -11,6 +12,7 @@ import shutil
 
 from api.character_generator import generate_character_asset
 from api.constants import GAME_DATA_DIR
+from api.narration_generator import generate_narration
 from api.scene_generator import generate_scene
 from api.story_generator import generate_story
 from api.schemas import Story
@@ -186,24 +188,41 @@ async def next_step(
 
     next_step_id = current_step_data["choices"][choice_index]["next_id"]
 
-    # step 5 - generate the next scene
-    next_scene = generate_scene(
-        theme, next_step_id, story_data, character_asset, previous_scene, client, mock=mock)
-
-    # step 6 - save the next scene
-    next_scene_image_path = f"{current_game_path}/{next_step_id}.png"
-    next_scene.save(next_scene_image_path)
-
-    # step 7 - extract scene details from story data based on step_id
+    # step 5 - extract scene details from story data based on step_id
     next_step_data = next(
         (step for step in story_data["story_tree"] if step["id"] == next_step_id), None)
-
+    
     if not next_step_data:
         # Handle the case where an invalid step_id is provided
         return {"error": "Invalid next_step_id"}, 404
+    
+    next_step_narration_text = next_step_data["narration"]
+
+    # step 6 - generate the next scene & narration
+    # next_scene = generate_scene(
+    #     theme, next_step_id, story_data, character_asset, previous_scene, client, mock=mock)
+    
+    ## create parallel tasks
+    image_task = asyncio.to_thread(generate_scene, theme, next_step_id, story_data, character_asset, previous_scene, client, mock=mock)    
+    audio_task = generate_narration(
+        next_step_narration_text, game_id, next_step_id)
+
+    # Run both tasks at the same time and wait for them both to complete
+    results = await asyncio.gather(image_task, audio_task)
+
+    # Unpack the results
+    next_scene,next_scene_narration_audio_url = results
+
+
+    # step 7 - save the next scene
+    next_scene_image_path = f"{current_game_path}/{next_step_id}.png"
+    next_scene.save(next_scene_image_path)
+
 
     next_step_data["scene_image_url"] = f"/static/games/{game_id}/{next_step_id}.png"
     next_step_data["character_sheet_url"] = f"/static/games/{game_id}/character_sheet.png"
+    next_step_data["narration_audio_url"] = next_scene_narration_audio_url
+
     return {"step": next_step_data}
 
 
