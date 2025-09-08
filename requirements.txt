@@ -6,3 +6,4 @@ elevenlabs
 google-auth
 google-genai
 Pillow
+python-multipart
