@@ -197,7 +197,7 @@ const HomePage: React.FC = () => {
     <div className="bg-[#1a1611] text-white" style={{ fontFamily: "Newsreader, 'Noto Sans', sans-serif" }}>
       <div className="relative flex size-full min-h-screen flex-col dark group/design-root overflow-x-hidden">
         <div className="layout-container flex h-full grow flex-col">
-          <Header />
+          {/* <Header /> */}
           <main className="flex-1">
             <HeroSection />
             <ThemeSelection />

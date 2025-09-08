@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FC } from "react";
 import { useLocation } from "react-router-dom";
+import { useSound } from "./SoundContext";
 
 // --- Reusable Components ---
 
@@ -48,6 +49,7 @@ const GamePage: FC = () => {
   const [currentStep, setCurrentStep] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [gameId, setGameId] = useState<string | null>(null);
+  const { playRandomVoiceLine } = useSound();
 
   useEffect(() => {
     const startGame = async () => {
@@ -95,9 +97,16 @@ const GamePage: FC = () => {
     startGame();
   }, [location.state]);
 
+  useEffect(() => {
+    if (currentStep && currentStep.outcome) {
+      playRandomVoiceLine(currentStep.outcome);
+    }
+  }, [currentStep, playRandomVoiceLine]);
+
   const handleChoice = async (choiceIndex: number) => {
     if (!gameId || !currentStep) return;
 
+    playRandomVoiceLine('comment');
     setIsLoading(true);
 
     const formData = new FormData();
