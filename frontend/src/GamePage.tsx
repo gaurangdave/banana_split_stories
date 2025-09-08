@@ -109,7 +109,7 @@ const GamePage: FC = () => {
   const handleChoice = async (choiceIndex: number) => {
     if (!gameId || !currentStep) return;
 
-    await playRandomVoiceLine('comment');
+    await playRandomVoiceLine("comment");
     setIsLoading(true);
 
     const formData = new FormData();
@@ -149,8 +149,12 @@ const GamePage: FC = () => {
       setIsLoading(true);
 
       try {
-        const response = await fetch(`/api/restart_game?game_id=${gameId}`, {
+        const formData = new FormData();
+        formData.append("game_id", gameId);
+
+        const response = await fetch(`/api/restart_game`, {
           method: "POST",
+          body: formData,
         });
         const data = await response.json();
         setCurrentStep(data.step);
