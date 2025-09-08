@@ -3,5 +3,6 @@ uvicorn
 python-dotenv
 gunicorn
 elevenlabs
-google-generativeai
+google-auth
+google-genai
 Pillow
