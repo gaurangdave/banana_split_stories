@@ -57,16 +57,18 @@ client = genai.Client(api_key=API_KEY)
 # Ensure the 'static' directory exists for saving images
 os.makedirs("static/games", exist_ok=True)
 os.makedirs("data/games", exist_ok=True)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# --- THE FIX: Correct Static File Mounting ---
-# This mount serves our dynamically generated images and audio.
-# It maps the URL path /static/games to the data/games directory on the server's filesystem.
-# app.mount("/static/games", StaticFiles(directory="data/games"), name="games")
+# --- Corrected Static File Mounting ---
 
-# This mount serves the entire built React application.
-# It MUST be the LAST mount. It acts as a catch-all for any request that didn't match an API route.
-app.mount("/", StaticFiles(directory="frontend/build", html=True), name="app")
+# This mount serves our dynamically generated images and audio from the /static URL path.
+# It correctly points to the 'static' folder in your project root.
+app.mount("/static", StaticFiles(directory="static"), name="static_assets") # Gave it a unique name
+
+# This mount serves the entire built React application from the root URL.
+# It correctly points to the 'frontend/build' folder in your project root.
+# It MUST be the LAST mount and have a UNIQUE name.
+app.mount("/", StaticFiles(directory="./frontend/build", html=True), name="react_app")
 
 
 # --- API Endpoints ---
@@ -255,4 +257,4 @@ def ping():
     return {"status": "ok", "message": "API is alive!"}
 
 
-app.mount("/", StaticFiles(directory="./frontend/build", html=True), name="static")
+# app.mount("/", StaticFiles(directory="./frontend/build", html=True), name="static")
