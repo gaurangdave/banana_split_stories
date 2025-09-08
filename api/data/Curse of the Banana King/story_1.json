@@ -1,0 +1,106 @@
+{
+    "prologue": "Whispers tell of the legendary Golden Banana, a fruit so radiant it glows with the warmth of a thousand suns! This isn't just any banana, oh no! It's said to be guarded by the ancient Banana King within a hidden temple, a place filled with strange magic and even stranger sights. The very banana trees surrounding the temple are rumored to have eyes, watching every adventurer who dares approach. Legend says only the bravest and most playful of hearts can find it. You, a renowned seeker of peculiar treasures, have finally found a map leading to this mythical grove. Get ready for a quest that's sure to be a-peeling!",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "You stand at the entrance of a vine-covered temple, sunlight dappling through the dense jungle canopy. Giant, unusually large banana leaves rustle all around, some seeming to sway even without a breeze. The air hums with a gentle, ancient energy. Before you are two paths: one leads into the dark, shadowy mouth of the temple, and the other winds around the side towards a softly glowing waterfall.",
+            "character_pose_description": "standing at the temple entrance, looking curious and excited, with a slight smile.",
+            "narration": "You've arrived at the legendary temple of the Golden Banana! The air is thick with mystery and the scent of ripe fruit. Giant leaves seem to whisper secrets as they sway. Two paths lie before you, each promising adventure.",
+            "choices": [
+                {
+                    "text": "Enter the dark temple.",
+                    "next_id": "temple_entrance"
+                },
+                {
+                    "text": "Follow the path to the glowing waterfall.",
+                    "next_id": "waterfall_path"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "temple_entrance",
+            "scene_description": "Inside the temple, the air is cool and smells faintly of damp earth and overripe bananas. Strange hieroglyphs depicting smiling bananas adorn the walls. In the center of the chamber, a pedestal stands empty, but a series of colorful, slippery banana peels are scattered on the floor leading towards a large, ornate door.",
+            "character_pose_description": "hesitating slightly, looking at the slippery banana peels with wide eyes.",
+            "narration": "The temple interior is dimly lit, but the hieroglyphs are cheerful. A trail of banana peels leads to a grand door. It looks like a slippery challenge awaits!",
+            "choices": [
+                {
+                    "text": "Try to carefully tiptoe across the peels.",
+                    "next_id": "tiptoe_success"
+                },
+                {
+                    "text": "Attempt to jump over the peels.",
+                    "next_id": "jump_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "waterfall_path",
+            "scene_description": "You follow the winding path around the temple, passing by more watchful banana trees. You arrive at a beautiful waterfall that shimmers with an otherworldly light. Behind the curtain of water, you can just make out the glint of something golden. However, the path leading directly to the waterfall is blocked by a mischievous monkey juggling three coconuts.",
+            "character_pose_description": "watching the monkey and the waterfall with a thoughtful expression, hands on hips.",
+            "narration": "The path leads to a magical, glowing waterfall. A cheeky monkey guards the way, engrossed in a juggling act. It seems you'll need to get past him to see what's behind the shimmering water.",
+            "choices": [
+                {
+                    "text": "Offer the monkey a shiny pebble you found.",
+                    "next_id": "pebble_offer"
+                },
+                {
+                    "text": "Try to sneak past the monkey while he's distracted.",
+                    "next_id": "sneak_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "tiptoe_success",
+            "scene_description": "With great concentration, you carefully place each foot, balancing perfectly like a circus performer. You glide across the slippery peels without a single slip! The ornate door swings open to reveal a small chamber where the Golden Banana rests on a velvet cushion, glowing brilliantly.",
+            "character_pose_description": "standing triumphantly in front of the open door, arms raised in victory.",
+            "narration": "You navigated the slippery path with amazing skill! The grand door creaks open, revealing your prize. There it is, the magnificent Golden Banana, shining with a warm, inviting light!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "jump_failure",
+            "scene_description": "You take a running leap, aiming to clear the banana peels. However, your foot lands on one with an unexpected wobble! You slide and spin in a comical fashion, landing softly in a pile of oversized, very fragrant banana leaves. The door remains firmly shut.",
+            "character_pose_description": "sitting in a pile of large, soft banana leaves, looking a bit dizzy and amused.",
+            "narration": "Oops! That jump didn't quite go as planned. You ended up in a rather soft, leafy landing. While not the treasure, it's certainly a comfy spot for a rest!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "pebble_offer",
+            "scene_description": "You hold out the shiny pebble. The monkey stops juggling, its eyes light up, and it snatches the pebble with a delighted squeak, scampering off to admire its new treasure. The way to the waterfall is clear!",
+            "character_pose_description": "smiling, watching the monkey happily run away with the pebble.",
+            "narration": "The monkey is delighted with its new shiny toy! It happily abandons its post, leaving the path to the waterfall completely open. You can now approach the glowing water.",
+            "choices": [
+                {
+                    "text": "Step behind the waterfall.",
+                    "next_id": "behind_waterfall_success"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "sneak_failure",
+            "scene_description": "You try to creep past the juggling monkey, but you accidentally step on a loose vine. It snaps loudly, startling the monkey! It drops its coconuts and squawks indignantly, then proceeds to playfully pelt you with ripe bananas until you retreat, giggling.",
+            "character_pose_description": "covered in a few harmless, squishy bananas, looking surprised and a little sticky.",
+            "narration": "Bother! The sneaky plan didn't work. The monkey, annoyed by the noise, decided to have some fruity fun at your expense. It seems a direct approach or a clever trade might be better here.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "behind_waterfall_success",
+            "scene_description": "You step through the shimmering curtain of water and find yourself in a hidden grotto. The light here is magical, and in the center, bathed in a soft glow, is the Golden Banana, perched atop a mossy stone! You've found it!",
+            "character_pose_description": "standing in a hidden grotto, reaching out with a joyous expression towards the Golden Banana.",
+            "narration": "You've discovered a secret grotto behind the magical waterfall! The air is filled with sparkling mist and the gentle sound of water. And there, gleaming before you, is the legendary Golden Banana!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        }
+    ],
+    "theme": "Curse of the Banana King"
+}

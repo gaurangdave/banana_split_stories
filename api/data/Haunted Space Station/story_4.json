@@ -1,0 +1,88 @@
+{
+    "prologue": "The year is 3472. You are Captain Eva Rostova, a renowned xenobotanist with a knack for bravery. Your mission: to board the 'Star Wanderer,' a research vessel that mysteriously went silent weeks ago. It's adrift in the Nebulon Cluster, a region known for its bizarre space anomalies. Whispers among the salvage crews speak of strange lights and unsettling silence emanating from the ship. Your mission is vital: to find any survivors and retrieve the valuable research data on alien flora. You board your trusty scout ship, the 'Firefly,' armed with your scanner and a determination to uncover the truth, no matter how strange the phenomena may be.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "You stand in the dimly lit docking bay of the 'Star Wanderer.' Strange, bioluminescent fungi coat the bulkheads, pulsing with a soft, ethereal glow. The air hums with an unknown energy, and the silence is broken only by the gentle drip of an unknown fluid.",
+            "character_pose_description": "Captain Eva Rostova, looking determined and cautious, holds a glowing scanner, its light beam cutting through the dimness.",
+            "narration": "The docking bay is eerily quiet, bathed in the soft, pulsating light of alien fungi. Your scanner picks up faint, unusual energy signatures all around. It seems the 'Star Wanderer' has become a garden for something new and unknown.",
+            "choices": [
+                {
+                    "text": "Investigate the glowing fungi.",
+                    "next_id": "fungi_path"
+                },
+                {
+                    "text": "Head towards the bridge.",
+                    "next_id": "bridge_path"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "fungi_path",
+            "scene_description": "As you approach the fungi, they emit a cloud of shimmering spores. They don't seem harmful, but they swirl around you, creating beautiful, harmless patterns.",
+            "character_pose_description": "Captain Eva Rostova, with a curious smile, watches the colorful spore patterns dance around her.",
+            "narration": "The fungi release a harmless, iridescent cloud of spores that swirl around you like tiny, living stars. It's a dazzling display, and your scanner indicates the spores are purely decorative, fascinating but not dangerous.",
+            "choices": [
+                {
+                    "text": "Collect a spore sample.",
+                    "next_id": "spore_sample"
+                },
+                {
+                    "text": "Continue to the bridge.",
+                    "next_id": "bridge_path"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "spore_sample",
+            "scene_description": "You carefully collect a sample of the shimmering spores. As you seal the container, a stray spore lands on your sleeve and dissolves into a tiny, harmless sparkle.",
+            "character_pose_description": "Captain Eva Rostova, holding a sealed sample container, smiles at the lingering sparkle on her sleeve.",
+            "narration": "The spore sample is secured! It's unlike anything you've cataloged before. You feel a sense of accomplishment for gathering this unique piece of data. Now, to find any signs of the crew.",
+            "choices": [
+                {
+                    "text": "Proceed to the bridge.",
+                    "next_id": "bridge_path"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "bridge_path",
+            "scene_description": "You enter the bridge. The main viewscreen flickers, displaying a mesmerizing, swirling vortex of cosmic colors. In the captain's chair, a large, gentle space-jellyfish creature floats serenely, its tendrils gently tapping the console.",
+            "character_pose_description": "Captain Eva Rostova, amazed and surprised, slowly walks onto the bridge, observing the creature.",
+            "narration": "The bridge is surprisingly serene. A peaceful, translucent creature floats where the captain should be, seemingly fascinated by the star maps. It appears to be the source of the station's strange energy, and it's quite docile.",
+            "choices": [
+                {
+                    "text": "Attempt to communicate with the creature.",
+                    "next_id": "success_ending"
+                },
+                {
+                    "text": "Try to access the ship's logs.",
+                    "next_id": "failure_ending"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "success_ending",
+            "scene_description": "You approach the creature cautiously and offer a friendly wave. It responds by extending a luminous tendril, which gently touches your scanner. Your scanner lights up, showing complex, friendly greetings in an unknown language. The creature is the station's new, benevolent caretaker.",
+            "character_pose_description": "Captain Eva Rostova, smiling warmly, makes a friendly gesture towards the space-jellyfish, which responds with a gentle, glowing tendril.",
+            "narration": "Incredible! The creature is intelligent and peaceful. It shares a burst of data: it merged with the ship's systems to protect itself from a minor asteroid shower, and has been gently guiding the 'Star Wanderer' ever since. You've successfully discovered the 'crew' and retrieved valuable data on peaceful interspecies communication!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "failure_ending",
+            "scene_description": "You try to use the console, but your hand slips on a patch of harmless, sticky space-goo. The console sparks playfully, and a soothing, musical chime sounds, indicating the system has locked you out for safety. The jellyfish creature gives you a gentle, pitying look.",
+            "character_pose_description": "Captain Eva Rostova, with a comically frustrated expression, wipes sticky goo from her hand and stares at the locked console.",
+            "narration": "Oh dear! It seems the 'Star Wanderer' has its own security system, and it doesn't appreciate your prying. The console is now completely unresponsive, and you haven't recovered the data. Time to report this unusual discovery and plan a more diplomatic return trip.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Haunted Space Station"
+}

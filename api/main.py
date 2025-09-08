@@ -45,7 +45,7 @@ app.add_middleware(
 # In-memory storage for game states (for simplicity in a hackathon)
 # A real app would use a database.
 game_states = {}
-mock = True
+mock = False
 
 # read api key
 API_KEY = os.environ.get("GEMINI_API_KEY")

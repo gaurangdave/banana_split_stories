@@ -1,0 +1,84 @@
+{
+    "prologue": "A distress signal, faint and garbled, crackled through the void. It emanated from the 'Aethelred,' a research vessel that vanished years ago near the infamous Xylos Nebula. Legends spoke of strange lights and unsettling whispers surrounding the nebula, tales dismissed as space-faring folklore. But this signal, however weak, was real. Your mission: pilot a small scout ship to the Aethelred, investigate the disappearance of its crew, and if possible, bring back any survivors or vital data. The ship is drifting, its outer hull scarred by micrometeorites and something\u2026 else. An eerie silence hangs in space, broken only by the hum of your own ship. The Aethelred awaits, a ghost in the cosmic dark, and you are its only hope.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "You are aboard your scout ship, approaching the colossal, derelict space station 'Aethelred.' Its metallic surface is covered in strange, pulsating bioluminescent growths that cast an otherworldly glow. Panels flicker erratically, and a faint, harmonic hum resonates from within.",
+            "character_pose_description": "You are seated in the pilot's chair, eyes wide with a mix of apprehension and determination, hands steady on the controls.",
+            "narration": "The Aethelred looms before you, a silent titan in the star-dusted blackness. Its once-proud structure is now draped in alien flora, pulsing with an inner light. A chilling, yet beautiful, symphony of silence and faint hums fills your comms.",
+            "choices": [
+                {
+                    "text": "Find a way to dock with the station.",
+                    "next_id": "docking_bay"
+                },
+                {
+                    "text": "Scan the station for life signs.",
+                    "next_id": "scanning_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "docking_bay",
+            "scene_description": "You've managed to find a precarious docking port. The airlock hisses open, revealing a dimly lit corridor. The bioluminescent growths are thicker here, illuminating strange, crystalline formations clinging to the walls. The air smells faintly of ozone and something sweet, like exotic fruit.",
+            "character_pose_description": "You stand at the threshold of the airlock, holding a multi-tool, looking cautiously into the corridor with a curious expression.",
+            "narration": "Success! The docking was tricky, but you're inside. The Aethelred's interior is a bizarre fusion of advanced technology and strange, organic overgrowth. The gentle pulsing of the growths seems to beckon you deeper into the station.",
+            "choices": [
+                {
+                    "text": "Venture down the glowing corridor.",
+                    "next_id": "bridge_access"
+                },
+                {
+                    "text": "Try to find the engineering bay.",
+                    "next_id": "engineering_goo"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "bridge_access",
+            "scene_description": "You reach what appears to be the bridge. The main viewscreen shows a mesmerizing swirl of nebulae. In the center of the room, a small, floating orb of light hovers, emitting soft chimes. It seems to be projecting holographic data about the station's final moments.",
+            "character_pose_description": "You stand before the orb, reaching out a tentative hand, your face illuminated by the holographic display, a look of wonder on your face.",
+            "narration": "The bridge is strangely serene. The orb of light pulses gently, a silent guardian of the Aethelred's secrets. It displays fascinating astronomical data, suggesting the crew was studying a unique cosmic phenomenon before their disappearance.",
+            "choices": [
+                {
+                    "text": "Interact with the orb.",
+                    "next_id": "success_ending"
+                },
+                {
+                    "text": "Look for crew logs.",
+                    "next_id": "success_ending"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "success_ending",
+            "scene_description": "As you interact with the orb or find the crew logs, they reveal the Aethelred's crew discovered a friendly, sentient energy being within the nebula. They chose to join it, leaving the station to drift peacefully. You have found the truth and can now report back, the mystery solved.",
+            "character_pose_description": "You are smiling with relief and wonder, looking back towards your scout ship, having uncovered the station's peaceful secret.",
+            "narration": "You've discovered the truth! The crew wasn't lost to horror, but found a new, wondrous existence. You have gathered the data and can return home, your mission a success, bringing news of a peaceful cosmic encounter.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "scanning_failure",
+            "scene_description": "Your scanner emits a burst of energy, but instead of data, it's overwhelmed by a strange, harmonic frequency from the station. The scanner sputters and dies, leaving you temporarily blind to the station's inner workings.",
+            "character_pose_description": "You are slumped in your chair, looking frustrated, holding the defunct scanner with a sigh.",
+            "narration": "Oh no! The station's unique energy signature has overloaded your scanner. Without its guidance, navigating the derelict vessel will be much harder, and you've lost a valuable tool.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "engineering_goo",
+            "scene_description": "You find your way to the engineering bay. It's filled with bubbling vats of a thick, iridescent goo. As you step further in, the floor shifts, and you find yourself sinking into the surprisingly sticky, harmless substance.",
+            "character_pose_description": "You are comically stuck, up to your knees in shimmering, alien goo, looking surprised but not in danger.",
+            "narration": "Whoops! It seems the engineering bay has been repurposed by the station's new inhabitants. This goo is quite sticky, and you'll need some help to get free. Your rescue mission is temporarily on hold!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Haunted Space Station"
+}

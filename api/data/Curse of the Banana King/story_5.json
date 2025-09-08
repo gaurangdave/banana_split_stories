@@ -1,0 +1,84 @@
+{
+    "prologue": "Legends whisper of the Golden Banana, a fruit of unparalleled deliciousness and mystical powers, hidden deep within the Temple of the Wobbly Jungle. For centuries, it has been guarded by the ancient Banana King, whose curse makes the very trees of the temple sentient, their leafy eyes always watching. You, a brave and adventurous explorer with a rumbling tummy and a nose for adventure, have heard these tales and are determined to find the Golden Banana. Many have tried, but none have returned with its shimmering peel. This is your chance to prove your bravery, outsmart the watchful trees, and claim the most legendary fruit in all the land!",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "You stand at the entrance of a colossal, vine-covered temple. Giant banana leaves rustle ominously overhead, and the air is thick with the scent of overripe fruit. Sunlight filters through the canopy, casting dappled shadows that seem to writhe like watching eyes. Ahead, the path splits into two distinct routes: one leads through a grove of unusually large banana trees, the other towards a shimmering, misty waterfall.",
+            "character_pose_description": "Standing bravely at the temple entrance, a determined grin on your face, one hand on your hip and the other pointing forward.",
+            "narration": "You've made it to the Temple of the Wobbly Jungle! The entrance is grand and a little spooky, with leafy sentinels rustling all around. Two paths lie before you: one through a grove of suspiciously large banana trees, and another leading to a misty, sparkling waterfall. Which way will you go to begin your quest for the Golden Banana?",
+            "choices": [
+                {
+                    "text": "Venture through the grove of giant banana trees.",
+                    "next_id": "banana_grove"
+                },
+                {
+                    "text": "Head towards the shimmering waterfall.",
+                    "next_id": "waterfall_path"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "banana_grove",
+            "scene_description": "You step into a grove where banana trees tower over you, their massive leaves bending and swaying as if in greeting, or perhaps suspicion. Strange, glowing fruit hangs from their branches. In the center of the grove, you see a pedestal with a single, perfectly ripe, normal-looking banana, and nearby, a hidden opening in the temple wall.",
+            "character_pose_description": "Cautiously walking amongst the giant banana trees, eyes wide with wonder and a hint of nervousness, looking from the pedestal to the hidden opening.",
+            "narration": "The banana trees here are enormous! Their leaves seem to follow your every move, and the air buzzes with a strange energy. On a mossy pedestal rests a tempting banana, while a dark opening beckons from the temple wall. Which clue will you follow to uncover the Golden Banana's secret?",
+            "choices": [
+                {
+                    "text": "Examine the banana on the pedestal.",
+                    "next_id": "pedestal_banana"
+                },
+                {
+                    "text": "Investigate the hidden opening.",
+                    "next_id": "hidden_passage"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "waterfall_path",
+            "scene_description": "You approach a magnificent waterfall, its water shimmering with all the colors of the rainbow. As you get closer, you notice that behind the curtain of water, there appears to be a hidden chamber. The mist is cool and refreshing, and the sound of the water is like a gentle song. However, the ground around the waterfall is covered in a sticky, bright pink goo.",
+            "character_pose_description": "Standing at the edge of the shimmering waterfall, looking with fascination at the hidden chamber, but hesitating due to the sticky pink goo on the ground.",
+            "narration": "Wow, this waterfall is magical! It sparkles and sings, and there's a secret chamber hidden behind the water. But beware, the ground is covered in a goopy, bright pink substance that looks very sticky! Will you brave the goo to reach the hidden chamber?",
+            "choices": [
+                {
+                    "text": "Try to carefully step through the goo to the waterfall.",
+                    "next_id": "sticky_goo_fail"
+                },
+                {
+                    "text": "Turn back and try the banana grove instead.",
+                    "next_id": "banana_grove"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "pedestal_banana",
+            "scene_description": "You reach out and pluck the banana from the pedestal. As your fingers touch it, the banana glows with a warm, golden light! It's not just any banana; it's the legendary Golden Banana! The temple around you seems to cheer, and the watchful trees rustle with approval.",
+            "character_pose_description": "Smiling triumphantly, holding aloft a glowing, golden banana, surrounded by admiring temple flora.",
+            "narration": "Success! You found it! The banana on the pedestal was the real Golden Banana, radiating a glorious golden light. You have outsmarted the temple and its guardians. Congratulations, brave adventurer, you have completed your quest!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "hidden_passage",
+            "scene_description": "You duck into the hidden opening. Inside, the passage is dark and narrow. Suddenly, the floor beneath you gives way, and you slide down a smooth, slippery tunnel. You land softly at the bottom in a pile of harmless, fluffy moss, but the way back up is now completely blocked by a giant, friendly-looking boulder.",
+            "character_pose_description": "Sitting on a pile of soft moss at the bottom of a tunnel, looking a bit surprised and dismayed, with a large boulder blocking the exit.",
+            "narration": "Whoops! That passage was a trapdoor! You've slid all the way down and landed in a comfy pile of moss. Unfortunately, a huge, friendly boulder has rolled in and sealed the way you came. It seems you're stuck here for a little while, but at least it's cozy!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "sticky_goo_fail",
+            "scene_description": "You attempt to step through the sticky pink goo, but it's much thicker and stickier than it looks! Your feet get stuck fast, and no matter how hard you pull, you can't move. You're firmly planted, like a statue, covered in shimmering pink goo, while the waterfall continues to sparkle just out of reach.",
+            "character_pose_description": "Stuck fast in bright pink goo up to your knees, looking slightly embarrassed and annoyed, with the waterfall just a few feet away.",
+            "narration": "Oh no! The pink goo is incredibly sticky and has completely trapped you. You can't move an inch! The magical waterfall is so close, but you're stuck here like a silly statue. It looks like your treasure hunt is over for today, but at least you're covered in something sparkly!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Curse of the Banana King"
+}

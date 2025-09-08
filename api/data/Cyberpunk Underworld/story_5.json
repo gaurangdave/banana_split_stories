@@ -1,0 +1,290 @@
+{
+    "prologue": "The year is 2077. Neo-Kyoto glistens under a perpetual twilight, its towering chrome skyscrapers pierced by the neon glow of countless advertisements. Rain slicks the streets, reflecting the vibrant, hurried world above. You are Spark, a young, ambitious cyber-detective with a knack for finding things others miss. Your trusty companion, a chirping drone named Glitch, hovers nearby.  A mysterious message has arrived, hinting at a secret that could shake the city's foundations. A powerful corporation, OmniCorp, is at the center of it all, but their secrets are buried deep within the city's underbelly. It's time to dive into the shadows and uncover the truth.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "You stand in a narrow, rain-drenched alleyway. Steam rises from grates, carrying the scent of synthetic noodles and ozone. Flickering neon signs cast long, distorted shadows.  A holographic koi fish swims lazily through the air, its colors bleeding into the puddles.",
+            "character_pose_description": "Spark stands with a determined expression, pulling up the collar of a sleek trench coat. Glitch, the drone, zips around Spark's head, emitting soft beeping sounds.",
+            "narration": "The city hums with a thousand secrets, but this alleyway feels different, quieter, charged with hidden meaning. Glitch picks up a faint energy signature emanating from a locked maintenance hatch.  This could be your first clue, or a dead end.",
+            "choices": [
+                {
+                    "text": "Try to open the maintenance hatch.",
+                    "next_id": "hatch_open"
+                },
+                {
+                    "text": "Follow the shimmering light down the alley.",
+                    "next_id": "light_follow"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "hatch_open",
+            "scene_description": "With a soft click, the hatch swings open, revealing a dark, narrow shaft leading down. Strange, glowing fungi illuminate the damp walls. A faint, rhythmic thrumming can be heard from below.",
+            "character_pose_description": "Spark kneels by the open hatch, peering into the darkness with a curious and slightly cautious look. Glitch hovers directly above the opening, its lights scanning the interior.",
+            "narration": "The hatch yields easily, almost too easily. This underground passage seems to be a hidden route, possibly used by OmniCorp for clandestine operations. The thrumming suggests some kind of machinery is at work below, powering a secret project.",
+            "choices": [
+                {
+                    "text": "Descend into the shaft.",
+                    "next_id": "shaft_descend"
+                },
+                {
+                    "text": "Close the hatch and rethink.",
+                    "next_id": "hatch_close_rethink"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "light_follow",
+            "scene_description": "You follow the shimmering light deeper into the labyrinthine alleys. The neon glow intensifies, revealing a small, cluttered electronics shop. Inside, an old, bespectacled robot tinkers with a complex device.",
+            "character_pose_description": "Spark walks with a confident stride, looking around the shop with keen interest. Glitch hovers near a display of blinking circuits.",
+            "narration": "The light leads you to a curious shop, a haven of forgotten tech in the heart of the bustling city. The robot, Unit 734, is known for his unique inventions and his deep knowledge of the city's undercurrents. He might know something about OmniCorp's activities.",
+            "choices": [
+                {
+                    "text": "Ask the robot about OmniCorp.",
+                    "next_id": "robot_ask"
+                },
+                {
+                    "text": "Examine the strange device.",
+                    "next_id": "device_examine"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "shaft_descend",
+            "scene_description": "You carefully descend into the shaft, landing in a dimly lit chamber. Rows of glowing servers hum, and a large holographic projection displays complex data streams. In the center, a single, ornate data-chip rests on a pedestal.",
+            "character_pose_description": "Spark stands in the center of the chamber, eyes wide with discovery, reaching out a hand towards the data-chip. Glitch circles the room, its scanner lights dancing over the servers.",
+            "narration": "This is it! The heart of the conspiracy. This secret chamber holds the evidence you need to expose OmniCorp. The data-chip likely contains all the information you're looking for, a vital piece of the puzzle.",
+            "choices": [
+                {
+                    "text": "Take the data-chip.",
+                    "next_id": "chip_take_success"
+                },
+                {
+                    "text": "Scan the servers first.",
+                    "next_id": "servers_scan_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "hatch_close_rethink",
+            "scene_description": "You close the heavy hatch, the clicking sound echoing in the alley. The rain continues to fall, washing away any immediate answers. The street seems to shimmer with possibilities, but you feel a moment of indecision.",
+            "character_pose_description": "Spark stands up, brushing rain off their coat, a thoughtful frown on their face. Glitch hovers patiently, awaiting instructions.",
+            "narration": "Sometimes, the bravest choice is to pause and consider. The alleyway still holds its secrets, but perhaps another approach is needed. The city is vast, and there are many paths to truth, some less direct than others.",
+            "choices": [
+                {
+                    "text": "Go back to the main street.",
+                    "next_id": "main_street_again"
+                },
+                {
+                    "text": "Look for another entrance.",
+                    "next_id": "another_entrance"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "robot_ask",
+            "scene_description": "Unit 734 pauses its work, its optical sensors glowing softly. 'OmniCorp,' it whirs, 'they are\u2026 efficient. They seek to control the flow of information. I overheard whispers of a 'Project Chimera' hidden beneath Sector 7.  But beware, their security is formidable.'",
+            "character_pose_description": "Spark leans forward, listening intently to the robot, a look of intense concentration on their face. Glitch beeps inquisitively near the robot's head.",
+            "narration": "Unit 734's words confirm your suspicions. Project Chimera sounds like something worth investigating. Sector 7 might be your next destination, but getting in will require careful planning.  The robot's warning about security is not to be taken lightly.",
+            "choices": [
+                {
+                    "text": "Head towards Sector 7.",
+                    "next_id": "sector_7_head"
+                },
+                {
+                    "text": "Ask the robot for help.",
+                    "next_id": "robot_help_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "device_examine",
+            "scene_description": "You carefully examine the device. It appears to be a sophisticated signal scrambler, emitting a low, warbling tone. As you get closer, a tiny, almost invisible sensor activates, triggering a silent alarm.",
+            "character_pose_description": "Spark reaches out a tentative finger towards the device, their brow furrowed in concentration. Suddenly, their eyes widen in surprise as a tiny red light flashes on the device.",
+            "narration": "Curiosity almost got the better of you! That device was a trap, designed to detect unwanted guests. The alarm, though silent, has surely alerted someone. You need to act quickly before OmniCorp's enforcers arrive.",
+            "choices": [
+                {
+                    "text": "Run back into the alley.",
+                    "next_id": "run_alley_failure"
+                },
+                {
+                    "text": "Quickly grab the device and run.",
+                    "next_id": "grab_device_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "chip_take_success",
+            "scene_description": "You pluck the data-chip from the pedestal. As soon as your fingers close around it, the servers whir down, and the holographic projection flickers out. A small, green light blinks on the chip. Success!",
+            "character_pose_description": "Spark holds the glowing data-chip triumphantly in their hand, a broad smile on their face. Glitch buzzes excitedly, doing a little loop in the air.",
+            "narration": "With the data-chip secured, you've achieved your goal! You have the evidence needed to expose OmniCorp's secrets. The conspiracy is unraveling, and the city will soon know the truth. This is a major victory for justice!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "servers_scan_failure",
+            "scene_description": "As Glitch begins to scan the servers, a sudden surge of energy erupts from them. The room is filled with a blinding flash, and a powerful energy field locks you in place. You can't move!",
+            "character_pose_description": "Spark is frozen in place, arms outstretched slightly, a look of shock on their face. Glitch spins rapidly, unable to escape the energy field's effect.",
+            "narration": "Oh no! The servers were booby-trapped. You're stuck in an energy field, unable to reach the data-chip or escape. OmniCorp's security is more advanced than you thought. This is a setback, and you've been caught!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "main_street_again",
+            "scene_description": "You emerge from the alley back onto the main thoroughfare, the bright lights and bustling crowds a stark contrast to the quiet shadows you just left. The rain has lessened, and a faint rainbow is visible in the distance.",
+            "character_pose_description": "Spark stands with hands on hips, looking back at the alleyway with a thoughtful expression. Glitch hovers steadily, ready for a new direction.",
+            "narration": "The city streets offer a fresh start. While that alleyway was intriguing, sometimes it's better to regroup and find a more promising lead. The investigation continues, and there are always more secrets to uncover in Neo-Kyoto.",
+            "choices": [
+                {
+                    "text": "Try a different alley.",
+                    "next_id": "start"
+                },
+                {
+                    "text": "Look for another clue.",
+                    "next_id": "light_follow"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "another_entrance",
+            "scene_description": "You scan the surrounding buildings, looking for any unusual access points. You spot a ventilation grate high on a wall, leading into a dark, unknown area. It looks difficult to reach.",
+            "character_pose_description": "Spark points upwards towards the ventilation grate, a determined glint in their eyes. Glitch whirs, its scanning lights focused on the grate.",
+            "narration": "A high ventilation grate could lead to many places, perhaps even closer to the truth. However, reaching it will require some clever thinking and a bit of teamwork with Glitch. It's a risky, but potentially rewarding, path.",
+            "choices": [
+                {
+                    "text": "Attempt to climb up.",
+                    "next_id": "climb_failure"
+                },
+                {
+                    "text": "Have Glitch scout ahead.",
+                    "next_id": "glitch_scout"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "robot_help_failure",
+            "scene_description": "You ask Unit 734 for direct assistance, but its programming only allows it to offer information, not physical aid. As you implore it, a patrol bot from OmniCorp, alerted by your prolonged conversation, rounds the corner, its red optical sensors locking onto you.",
+            "character_pose_description": "Spark looks pleadingly at the robot. Suddenly, their head snaps up, eyes wide with alarm as a menacing OmniCorp patrol bot appears, weapons systems active.",
+            "narration": "Your plea for help came too late. The OmniCorp patrol bot has detected you, and it doesn't look friendly! With its advanced weaponry, you're in for a tough time. It seems your investigation has been compromised.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "run_alley_failure",
+            "scene_description": "You turn and sprint back into the alley, but your boots slip on the slick pavement. You tumble into a pile of overflowing, harmless goo. You're stuck!",
+            "character_pose_description": "Spark is sprawled in a heap of brightly colored, sticky goo, looking rather embarrassed. Glitch hovers above, emitting a series of sad beeps.",
+            "narration": "Oops! That was a clumsy escape. You've landed yourself in a sticky situation, quite literally. The goo is harmless but incredibly sticky, making it impossible to get away. OmniCorp's enforcers will surely find you now.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "grab_device_failure",
+            "scene_description": "You snatch the scrambler, but as you turn to flee, the shop door slams shut and locks. A high-pitched alarm blares, and a net of glowing energy drops from the ceiling, trapping you.",
+            "character_pose_description": "Spark is caught in a shimmering energy net, struggling futilely, the scrambler clutched tightly in their hand. Glitch buzzes frantically outside the net.",
+            "narration": "That was a quick grab, but not a quick escape. The shop's defenses have activated, and you're caught fast. The scrambler is in your hand, but your mission ends here, tangled and apprehended by OmniCorp's security system.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "sector_7_head",
+            "scene_description": "You navigate the neon-drenched streets towards Sector 7, a notoriously corporate-controlled district. The buildings here are sleeker, the atmosphere more sterile. You spot a discreet service entrance with OmniCorp's insignia.",
+            "character_pose_description": "Spark walks with purpose, scanning the area with keen eyes. Glitch hovers closely, its sensors actively probing for security measures.",
+            "narration": "Sector 7 is the heart of OmniCorp's operations. This service entrance might be your best bet to infiltrate their facilities. The security here is likely top-notch, so a stealthy approach is crucial to avoid detection.",
+            "choices": [
+                {
+                    "text": "Attempt to bypass the security.",
+                    "next_id": "bypass_security"
+                },
+                {
+                    "text": "Look for a less obvious entry point.",
+                    "next_id": "less_obvious_entry"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "climb_failure",
+            "scene_description": "You try to climb, but the wall is slick with rain and grime. Your hands can't get a good grip, and you slide back down, landing ungracefully in a puddle.",
+            "character_pose_description": "Spark sits in a puddle, looking annoyed and slightly damp. Glitch hovers nearby, tilting its 'head' in a sympathetic gesture.",
+            "narration": "That climb was tougher than it looked. Without the right gear or a better grip, you're stuck on the ground. It seems this entrance isn't your path to uncovering OmniCorp's secrets. Time to find another way.",
+            "choices": [
+                {
+                    "text": "Look for another entrance.",
+                    "next_id": "another_entrance"
+                },
+                {
+                    "text": "Go back to the main street.",
+                    "next_id": "main_street_again"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "glitch_scout",
+            "scene_description": "You instruct Glitch to fly into the ventilation shaft. Its tiny camera feed shows a network of dusty ducts, but also a faint light further within. Glitch reports a small opening that leads to what looks like a lab.",
+            "character_pose_description": "Spark stands with their head tilted up, eyes closed, focusing on the audio feed from Glitch. Glitch's indicator light pulses as it transmits data.",
+            "narration": "Glitch's reconnaissance is invaluable! It has found a potential pathway into OmniCorp's inner sanctum. This ventilation system could be your secret route to uncovering their conspiracy, bypassing most of the outer security.",
+            "choices": [
+                {
+                    "text": "Follow Glitch into the shaft.",
+                    "next_id": "shaft_descend"
+                },
+                {
+                    "text": "Wait for Glitch to find more information.",
+                    "next_id": "wait_glitch_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "bypass_security",
+            "scene_description": "You attempt to disable the laser grid guarding the service entrance. Glitch works diligently, but a stray pulse from a passing hovercar interferes with its delicate work. The alarm blares loudly!",
+            "character_pose_description": "Spark crouches low, watching Glitch attempt to hack the security system. Suddenly, their eyes widen as alarms flash and sirens wail. Glitch zips around frantically.",
+            "narration": "A momentary distraction and a rogue energy pulse have foiled your attempt to bypass security. The alarm is blaring, and OmniCorp guards will be here any second! Your infiltration attempt has failed spectacularly.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "less_obvious_entry",
+            "scene_description": "You notice a maintenance panel slightly ajar a few blocks away, humming with low power. It seems connected to the same OmniCorp network. This could be a less guarded entry point.",
+            "character_pose_description": "Spark points to a slightly open maintenance panel, a speculative look on their face. Glitch hovers near the panel, its sensors blinking rapidly.",
+            "narration": "This hidden panel looks promising, a potential backdoor into OmniCorp's systems. It might lead you directly to the information you seek, without having to confront their main security forces. It's a chance for a stealthy approach.",
+            "choices": [
+                {
+                    "text": "Investigate the maintenance panel.",
+                    "next_id": "shaft_descend"
+                },
+                {
+                    "text": "Decide it's too risky and return.",
+                    "next_id": "main_street_again"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "wait_glitch_failure",
+            "scene_description": "You wait patiently, but Glitch is taking too long to gather more intel. As you stand there, a cleaning bot, programmed to report any loiterers, rounds the corner and alerts security. You're discovered!",
+            "character_pose_description": "Spark stands with their arms crossed, looking impatient. Suddenly, their eyes widen in alarm as a small cleaning bot scans them and emits a distress signal. Glitch beeps a warning from the ventilation shaft.",
+            "narration": "Patience is a virtue, but waiting too long led to your discovery. The cleaning bot's alert has summoned OmniCorp security. You've been caught snooping before you could even enter. Your mission is over before it truly began.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Cyberpunk Underworld"
+}

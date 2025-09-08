@@ -1,0 +1,75 @@
+{
+    "prologue": "Young adventurer, the Whispering Jungle holds many secrets, but none so grand as the Sunstone of Eldoria! Legend says it can bring light and laughter to the darkest corners of the world. Your brave explorer aunt, the famed Professor Elara, vanished years ago searching for it. Now, you've found her tattered journal, filled with cryptic clues and a map leading to the forgotten Temple of the Serpent. It's time to follow in her footsteps, brave the ancient ruins, and uncover the mystery of the Sunstone and your aunt's disappearance. The jungle calls, and an incredible discovery awaits!",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "The entrance to the Temple of the Serpent is a colossal stone serpent's mouth, overgrown with vibrant green vines. Sunlight filters through the dense jungle canopy, illuminating ancient carvings on the temple walls. A faint, humming sound can be heard from within.",
+            "character_pose_description": "Standing at the entrance, looking determined, with a backpack slung over your shoulders and a friendly smile.",
+            "narration": "You stand before the legendary Temple of the Serpent, a place whispered about in tales of ancient wonders. The air is thick with the scent of exotic flowers and damp earth. According to your aunt's journal, the Sunstone of Eldoria is hidden deep within these hallowed halls.",
+            "choices": [
+                {
+                    "text": "Brave the serpent's mouth.",
+                    "next_id": "serpent_mouth_chamber"
+                },
+                {
+                    "text": "Examine the carvings more closely.",
+                    "next_id": "carving_puzzle"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "serpent_mouth_chamber",
+            "scene_description": "Inside, the chamber is vast and dimly lit. Giant stone snake statues line the walls, their eyes seeming to follow you. In the center of the room is a large, circular platform with strange symbols etched on its surface. A gentle breeze carries the sound of trickling water.",
+            "character_pose_description": "Cautiously stepping onto the circular platform, looking around with wide, curious eyes.",
+            "narration": "The serpent's mouth leads to a grand chamber. The air feels ancient and still. The central platform seems important, perhaps a puzzle or a test. You feel a strange energy emanating from the symbols.",
+            "choices": [
+                {
+                    "text": "Step on the central symbol.",
+                    "next_id": "artifact_room"
+                },
+                {
+                    "text": "Try to decipher the wall symbols.",
+                    "next_id": "wall_symbol_trap"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "artifact_room",
+            "scene_description": "As you step onto the central symbol, the platform gently lowers, revealing a hidden staircase leading down. You descend into a smaller, glowing chamber. In the center, resting on a pedestal, is a magnificent gem radiating warm, golden light \u2013 the Sunstone of Eldoria!",
+            "character_pose_description": "Standing proudly before the glowing Sunstone, a look of awe and accomplishment on your face.",
+            "narration": "Success! The Sunstone of Eldoria is found! Its radiant light fills the chamber, chasing away all shadows. You feel a sense of wonder and fulfillment, knowing you've uncovered this incredible artifact and honored your aunt's quest.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "carving_puzzle",
+            "scene_description": "You trace the intricate carvings on the temple wall. They depict constellations and ancient creatures. As you touch a specific sequence of symbols, a section of the wall slides open, revealing a hidden passage filled with colorful, harmless mist.",
+            "character_pose_description": "Smiling with delight as the wall opens, pointing towards the misty passage.",
+            "narration": "A clever puzzle solved! The carvings weren't just decorations; they were a key. This secret passage might lead to a shortcut or a different part of the temple. The mist smells like sweet berries!",
+            "choices": [
+                {
+                    "text": "Enter the misty passage.",
+                    "next_id": "artifact_room"
+                },
+                {
+                    "text": "Go back to the main entrance.",
+                    "next_id": "start"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "wall_symbol_trap",
+            "scene_description": "You focus intently on the symbols, trying to recall patterns from your aunt's journal. Suddenly, you press a symbol that looks like a sleepy owl. A hidden mechanism activates, and a soft, soporific gas fills the air. You feel an overwhelming urge to nap!",
+            "character_pose_description": "Yawning widely, eyes drooping, starting to lean against the wall, looking very sleepy.",
+            "narration": "Oh no! You accidentally triggered a slumber spell! The ancient guardians of the temple are rather enthusiastic about their naps. It seems you'll be snoozing for a while, missing your chance to find the Sunstone today.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Lost Temple of the Jungle"
+}

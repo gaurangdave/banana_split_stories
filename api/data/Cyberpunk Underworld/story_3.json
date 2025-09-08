@@ -1,0 +1,93 @@
+{
+    "prologue": "The city of Neo-Veridia hummed with a thousand neon dreams, but in its underbelly, shadows held secrets. You are a keen-eyed investigator, known for sniffing out the truth even when it's buried under layers of corporate lies. Your client, a worried inventor named Dr. Aris Thorne, claims OmniCorp, the city's biggest tech giant, stole his revolutionary clean energy invention. He believes they plan to use it for something sinister. The rain never stops here, making the already grimy streets glisten like dark glass. You've got a lead: a clandestine meeting happening tonight in the notorious Sector 7. It's time to dive into the neon-drenched labyrinth and uncover OmniCorp's dark plan, before it's too late.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "A narrow, rain-slicked alleyway lit by flickering neon signs in garish blues and purples. Steam rises from grates, swirling around overflowing bins. Across the alley, a shadowy figure in a trench coat leans against a graffitied wall, looking around nervously.",
+            "character_pose_description": "Standing in the shadows, peering intently at the nervous figure, a determined glint in your eyes.",
+            "narration": "The air in Sector 7 is thick with the smell of ozone and damp concrete. Raindrops slick the pavement, reflecting the dizzying glow of neon advertisements. You've tracked your informant to this seedy corner, hoping for a clue. The figure by the wall seems to be waiting for someone, their every movement broadcast with anxiety.",
+            "choices": [
+                {
+                    "text": "Approach the figure cautiously.",
+                    "next_id": "approach_informant"
+                },
+                {
+                    "text": "Observe from a distance.",
+                    "next_id": "observe_from_distance"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "approach_informant",
+            "scene_description": "The figure startles as you approach, their eyes widening behind a wide-brimmed hat. You notice a small, glowing data chip clutched in their gloved hand. The alley is suddenly much quieter, except for the drumming rain.",
+            "character_pose_description": "Holding up your hands in a non-threatening gesture, a calm but curious expression on your face.",
+            "narration": "As you draw nearer, the informant tenses, ready to bolt. You keep your movements slow and steady, projecting an air of trust. They hesitate, then look down at the peculiar chip in their hand, a device that seems to pulse with internal light. They might be willing to share what they know.",
+            "choices": [
+                {
+                    "text": "Ask about the chip.",
+                    "next_id": "ask_about_chip"
+                },
+                {
+                    "text": "Ask who they are waiting for.",
+                    "next_id": "ask_who_waiting_for"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "observe_from_distance",
+            "scene_description": "From your hidden vantage point, you see another figure emerge from a darkened doorway. This new figure is dressed in a sharp, dark suit with glowing cybernetic enhancements visible beneath their collar. They exchange hushed words with the first figure, who quickly hands over the glowing data chip.",
+            "character_pose_description": "Peeking from behind a dumpster, meticulously observing the exchange, a thoughtful frown on your face.",
+            "narration": "The suspense in the alley builds as a second, more imposing figure appears. Their presence is commanding, and the brief exchange is quick and furtive. The informant looks relieved to be done with the transaction, while the suited individual pockets the chip with a satisfied nod. This confirms your suspicions; something important just changed hands.",
+            "choices": [
+                {
+                    "text": "Follow the suited figure.",
+                    "next_id": "follow_suited_figure"
+                },
+                {
+                    "text": "Confront the informant.",
+                    "next_id": "confront_informant"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "ask_about_chip",
+            "scene_description": "The informant glances nervously down the alley before whispering, 'This chip... it's the key! OmniCorp's new energy source. They plan to weaponize it!' They press the chip into your hand just as a blinding light flashes from the alley entrance.",
+            "character_pose_description": "Taking the glowing data chip, your eyes widen in surprise and realization, feeling a sense of urgency.",
+            "narration": "The informant, sensing danger, quickly entrusts you with the vital data chip. This device holds the secrets to OmniCorp's dangerous plans. Just as the truth is revealed, a sudden flash suggests your presence has been discovered. You must act fast to protect this information and expose the conspiracy.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "ask_who_waiting_for",
+            "scene_description": "The informant looks even more agitated. 'I... I can't say! It's too dangerous!' Suddenly, a blast of static fills the air, and the informant collapses, their eyes glazed over, muttering about 'system override.' The data chip slips from their grasp and rolls into a drain.",
+            "character_pose_description": "Watching in dismay as the informant collapses, a look of concern and frustration on your face.",
+            "narration": "Your attempt to gather information is met with fear and a sudden, inexplicable incapacitation of your informant. The chip, the potential key to the conspiracy, is lost to the grimy depths of the city. It seems OmniCorp has ways of silencing their problems, and you've just missed your chance for direct answers.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "follow_suited_figure",
+            "scene_description": "You discreetly shadow the suited figure through the labyrinthine streets. They lead you to a sleek, imposing OmniCorp building. As they enter a private elevator, a hidden security drone spots you and emits a loud, attention-grabbing alarm.",
+            "character_pose_description": "Darting between overflowing bins and steam vents, trying to remain unseen, but a whirring sound makes you freeze.",
+            "narration": "The chase is on! You trail the mysterious figure, the neon glow guiding your path. They vanish into the heart of OmniCorp's fortress, but your pursuit has not gone unnoticed. A high-pitched alarm shatters the night, alerting everyone to your presence. Your stealthy investigation has taken a very public turn.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "confront_informant",
+            "scene_description": "You step out of the shadows, startling the informant. 'Who did you just give that chip to?' you demand. The informant yelps, drops the chip, and scrambles away, vanishing into the darkness. The chip skitters across the wet ground, coming to rest near a puddle of iridescent goo.",
+            "character_pose_description": "Stepping forward assertively, hands on your hips, demanding answers from the startled informant.",
+            "narration": "Your direct approach startles the informant, causing them to abandon their task and flee. The valuable data chip is lost, potentially contaminated by the strange, luminescent goo pooling nearby. This investigation has hit a dead end, and the secrets of OmniCorp remain hidden, for now.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Cyberpunk Underworld"
+}

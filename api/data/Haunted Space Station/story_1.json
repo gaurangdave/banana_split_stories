@@ -1,0 +1,145 @@
+{
+    "prologue": "The starship 'Stardust Explorer' has received a distress signal from the abandoned research outpost 'Xylos Prime'.  Reports indicate a strange energy surge and then silence. You are Captain Nova, the bravest explorer in the galaxy, and your mission is clear: pilot your nimble scout ship, the 'Comet', to Xylos Prime and find out what happened. The station is rumored to be a place of weird science and even weirder discoveries.  As you approach, eerie lights flicker from its damaged hull, and a peculiar hum echoes through the void.  Your crew, though small, is well-trained and ready for anything.  The fate of the missing researchers, and perhaps something more, depends on your courage and quick thinking.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "The derelict space station 'Xylos Prime' looms before the 'Comet'. Its metal hull is scarred, and strange, bioluminescent fungi pulse with an otherworldly glow in the vacuum. Wires spark erratically from breaches in the station's surface. The airlock door is slightly ajar, revealing a dark, cavernous interior.",
+            "character_pose_description": "Captain Nova is in the cockpit of the 'Comet', gripping the controls with determination, eyes wide with a mix of caution and excitement, ready to dock.",
+            "narration": "You've arrived at Xylos Prime, Captain Nova. The station looks even more unsettling up close. A faint, rhythmic pulsing emanates from within, and the airlock beckons. It's time to venture inside and uncover the mystery. What is your first move?",
+            "choices": [
+                {
+                    "text": "Enter through the main airlock.",
+                    "next_id": "main_airlock"
+                },
+                {
+                    "text": "Look for an auxiliary entrance.",
+                    "next_id": "aux_entrance"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "main_airlock",
+            "scene_description": "Inside the station, the main corridor is dimly lit by emergency lights. The air is thick with the scent of ozone and something faintly sweet, like overripe fruit. Strange, gelatinous pods cling to the walls, pulsing gently. A shimmering, ethereal mist drifts along the floor.",
+            "character_pose_description": "Captain Nova cautiously steps into the corridor, holding a scanner. They are looking around with intense focus, one hand ready to activate their suit's thrusters, a slight frown of concentration on their face.",
+            "narration": "The main airlock opens into a corridor filled with an unusual, glowing mist. The walls are covered in peculiar, pulsating pods. This is unlike anything you've encountered before. You need to proceed carefully and gather information.",
+            "choices": [
+                {
+                    "text": "Investigate the pulsing pods.",
+                    "next_id": "investigate_pods"
+                },
+                {
+                    "text": "Follow the shimmering mist.",
+                    "next_id": "follow_mist"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "aux_entrance",
+            "scene_description": "You find a smaller, service hatch that appears to have been forced open. Inside, it leads to a cramped engineering bay. Tools are scattered everywhere, and a strange, crystalline growth covers one of the main consoles, humming with soft light. The air here feels colder.",
+            "character_pose_description": "Captain Nova squeezes through the hatch, landing with a soft thud. They are looking around the cluttered bay, a thoughtful expression as they examine the glowing crystal.",
+            "narration": "This service entrance leads to a disused engineering bay. A peculiar crystal is growing on the main console, emitting a strange energy. This might hold clues about what happened here. You should examine it closely.",
+            "choices": [
+                {
+                    "text": "Touch the crystalline growth.",
+                    "next_id": "touch_crystal_failure"
+                },
+                {
+                    "text": "Scan the console for data.",
+                    "next_id": "scan_console_success"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "follow_mist",
+            "scene_description": "You cautiously follow the mist, which leads you deeper into the station, towards the central command module. The mist swirls and coalesces into playful, harmless shapes, like friendly sprites. It guides you to a control panel that is still active, displaying a schematic of the station.",
+            "character_pose_description": "Captain Nova is walking through the mist, which swirls gently around them. They are looking towards the control panel with hopeful curiosity, a slight smile appearing on their face.",
+            "narration": "The mist has led you safely to the command module! The control panel is active, showing a map of the station. It seems the researchers were trying to contain something, but accidentally amplified it. You can use this to shut down the energy surges.",
+            "choices": [
+                {
+                    "text": "Initiate the emergency shutdown sequence.",
+                    "next_id": "shutdown_success"
+                },
+                {
+                    "text": "Try to communicate with whatever caused the surges.",
+                    "next_id": "communicate_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "investigate_pods",
+            "scene_description": "As you get closer to the pods, they begin to wiggle. Suddenly, they burst open, not with anything dangerous, but with tiny, fluffy, glowing creatures that float out like dandelion seeds. They gently bump against you, emitting soft chimes.",
+            "character_pose_description": "Captain Nova jumps back slightly as the pods open, then relaxes as the harmless, fluffy creatures float out. They watch with wonder, arms outstretched slightly.",
+            "narration": "The pods contained harmless, glowing fluff-creatures! They seem friendly and are just curious about you. However, while you were distracted, a surge of energy caused a secondary hatch to seal shut behind you, trapping you in this section.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "touch_crystal_failure",
+            "scene_description": "As your finger touches the crystal, it flares with light and vibrates intensely. A burst of harmless, colorful glitter erupts, covering you from head to toe. You're completely coated in shimmering dust, making it impossible to see or move for a few moments, and the console powers down completely.",
+            "character_pose_description": "Captain Nova recoils slightly as the crystal erupts in glitter. They are standing still, covered in sparkling dust, blinking in surprise and a little frustration.",
+            "narration": "Oops! That crystal was more of a party popper than a data source. You're now covered in glitter and the console is unresponsive. While it's not dangerous, you've lost your chance to gather crucial information from this room.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "scan_console_success",
+            "scene_description": "Your scanner interfaces with the console through the crystal. It reveals that the researchers were experimenting with interdimensional flora, and the 'alien phenomena' are actually friendly, sentient spores. They accidentally amplified their own growth cycle, causing the station's systems to overload.",
+            "character_pose_description": "Captain Nova stands back, observing the scanner's readings with a look of understanding. Their expression is calm and focused, making notes on a digital pad.",
+            "narration": "Success! The scanner reveals the truth: the 'danger' was just enthusiastic, friendly spores! The researchers were trying to cultivate them. The station's systems are stable but overloaded. You can now use this information to safely guide the spores to a containment field.",
+            "choices": [
+                {
+                    "text": "Use the console to guide the spores to safety.",
+                    "next_id": "guide_spores_success"
+                },
+                {
+                    "text": "Return to your ship and report the findings.",
+                    "next_id": "report_findings_success"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "communicate_failure",
+            "scene_description": "You try to hail whatever is causing the surges. Instead of a response, the mist thickens rapidly, smelling strongly of bubblegum. It playfully wraps around you, like a giant, sticky hug, making it impossible to move or breathe properly. You're stuck in a sweet, gooey embrace!",
+            "character_pose_description": "Captain Nova is enveloped by the thick mist, struggling gently against its playful but immobilizing hold. Their expression is one of surprised discomfort.",
+            "narration": "It seems the 'entities' here prefer games to conversation! The mist has playfully trapped you. It's not harmful, but you're stuck here until someone else finds you. A bit of a sticky situation!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "shutdown_success",
+            "scene_description": "You activate the emergency shutdown sequence. The station's lights stabilize, and the strange hum subsides. The bioluminescent fungi dim, and the ethereal mist gently dissipates. The station is now safe and quiet.",
+            "character_pose_description": "Captain Nova stands back from the console, a look of relief and accomplishment on their face. They give a small, triumphant nod.",
+            "narration": "You've successfully stabilized the station and neutralized the energy surges! The mystery of Xylos Prime is solved, and the missing researchers can likely be found in stasis pods elsewhere. Your mission is a resounding success!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "guide_spores_success",
+            "scene_description": "Using the console, you reroute power and activate the station's dormant containment fields. The friendly spores are gently guided into the fields, where they begin to glow peacefully, no longer overloading the systems. The station returns to a stable state.",
+            "character_pose_description": "Captain Nova is focused on the console, their fingers moving quickly. A look of satisfaction spreads across their face as the spores safely settle into containment.",
+            "narration": "Excellent work, Captain! You've safely contained the friendly spores and stabilized Xylos Prime. The researchers' work can continue in a controlled environment. You've turned a potential disaster into a scientific triumph!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "report_findings_success",
+            "scene_description": "You decide that returning to base with the vital data is the priority. You carefully document everything and head back to the 'Comet'. The station, with its peaceful spore inhabitants, is left stable and secure.",
+            "character_pose_description": "Captain Nova is walking briskly back towards their ship, the 'Comet', holding a data pad. They have a confident and satisfied expression.",
+            "narration": "You've gathered crucial intelligence about the unique lifeforms on Xylos Prime and ensured the station's stability. Reporting back with this groundbreaking information will be a significant achievement for the Galactic Federation. A true success!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        }
+    ],
+    "theme": "Haunted Space Station"
+}

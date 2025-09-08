@@ -1,0 +1,67 @@
+{
+    "prologue": "Long ago, in a land sprinkled with sunshine and giggles, lived the legendary Banana King. He was known for his radiant smile and his most prized possession: the mythical Golden Banana. This wasn't just any banana; it glowed with a warmth that could make anyone feel joyful and was said to grant endless supplies of delicious banana bread. But one day, the King, fearing his treasure would be misused, hid it deep within a hidden temple. He then cast a silly curse: the banana trees themselves would watch over their precious fruit, their leaves rustling with ancient secrets. Now, brave adventurers like you, eager for a taste of pure joy and perhaps a slice of heavenly banana bread, embark on a quest to find the Golden Banana. The whispers of its magic have reached your ears, calling you to the forgotten temple.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "You stand at the moss-covered entrance of an ancient temple. Sunlight dapples through the giant, emerald leaves of banana trees that seem to lean in, their surfaces covered in swirling, ancient patterns. The air is thick with the sweet scent of overripe bananas and a hint of mystery. Strange, unblinking eyes seem to peek from the shadows between the massive trunks.",
+            "character_pose_description": "Standing at the temple entrance, looking determined, with a small, curious smile.",
+            "narration": "Welcome, brave explorer! You've found the legendary Temple of the Banana King. The entrance is overgrown, and the giant banana trees seem to be watching your every move. Do you dare step inside to seek the Golden Banana?",
+            "choices": [
+                {
+                    "text": "Enter the temple bravely.",
+                    "next_id": "hallway"
+                },
+                {
+                    "text": "Take a peek around the side first.",
+                    "next_id": "side_path_trap"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "hallway",
+            "scene_description": "Inside, a grand hallway stretches before you, lined with statues of monkeys holding golden bananas. The floor is a mosaic of yellow and brown tiles. In the distance, you see two paths: one leads to a shimmering, golden light, and the other to a dark, quiet alcove.",
+            "character_pose_description": "Walking cautiously down the hallway, eyes wide with wonder, pointing towards the golden light.",
+            "narration": "The temple's interior is even more wondrous than you imagined! The hallway is filled with ancient artistry, and two paths lie ahead. One beckons with a warm, inviting glow, while the other seems to hold a hushed secret.",
+            "choices": [
+                {
+                    "text": "Follow the shimmering golden light.",
+                    "next_id": "golden_banana_chamber"
+                },
+                {
+                    "text": "Investigate the dark, quiet alcove.",
+                    "next_id": "alcove_trap"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "side_path_trap",
+            "scene_description": "You tiptoe around the side of the temple, but suddenly, your foot lands on a squishy, yellow patch. It's not mud, but a pile of incredibly sticky, harmless banana goo! You're stuck fast, and the opportunity to find the Golden Banana slips away as you wiggle your feet.",
+            "character_pose_description": "Stuck in sticky banana goo, looking a bit embarrassed but not hurt, with a silly expression.",
+            "narration": "Oh no! It seems the Banana King's curse has a sticky side to it! This slippery goo is quite the predicament. While you're stuck here, the Golden Banana remains hidden.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "alcove_trap",
+            "scene_description": "You step into the dark alcove, and the floor suddenly gives way! You tumble down a short, cushioned slide made of soft moss, landing gently in a pile of fluffy, oversized banana leaves. The slide closes behind you, and you realize you've missed your chance to find the treasure.",
+            "character_pose_description": "Sitting dazed but unharmed in a pile of soft leaves, looking surprised and slightly disappointed.",
+            "narration": "Whoops! That was quite a tumble! The alcove held a playful trap, sending you on a soft slide away from the treasure. You're safe and sound, but the Golden Banana is still out of reach.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "golden_banana_chamber",
+            "scene_description": "You enter a magnificent chamber bathed in a golden glow. In the center, on a pedestal made of woven banana leaves, rests the Golden Banana. It shines with an inner light, radiating pure happiness. The banana trees outside seem to nod in approval.",
+            "character_pose_description": "Standing in awe before the Golden Banana, reaching out a hand with a look of pure joy and triumph.",
+            "narration": "You've done it! You've found the legendary Golden Banana! It shimmers before you, a beacon of joy and deliciousness. The temple seems to hum with ancient magic, celebrating your success. The Banana King would be pleased!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        }
+    ],
+    "theme": "Curse of the Banana King"
+}

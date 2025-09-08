@@ -1,0 +1,67 @@
+{
+    "prologue": "Legend tells of the Sunstone of Serendipity, an artifact said to grant boundless joy and laughter to its holder. For centuries, it has been hidden deep within the Whispering Jungle, protected by ancient riddles and clever guardians. Many brave explorers have sought its glow, but none have returned with tales of its discovery. You, a daring adventurer with a heart full of courage and a backpack full of snacks, have decided it's your turn to embark on this grand quest. The jungle hums with untold stories, and the air itself seems to whisper secrets of the past. With a map passed down through generations and a spirit of adventure, you step into the emerald embrace of the jungle, ready to uncover its greatest treasure.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "You stand at the entrance of a vine-covered temple, bathed in dappled sunlight filtering through the dense jungle canopy. Ancient stone carvings of smiling jaguars adorn the archway. A gentle breeze rustles the leaves, carrying the scent of exotic flowers.",
+            "character_pose_description": "Standing with a determined grin, clutching a worn, rolled-up map, gazing towards the temple entrance.",
+            "narration": "The jungle path has led you to this magnificent, ancient temple. Its entrance beckons, promising adventure and the legendary Sunstone. You can almost feel the warmth of the artifact from here, a beacon of joy waiting to be found.",
+            "choices": [
+                {
+                    "text": "Enter the temple bravely.",
+                    "next_id": "temple_entrance"
+                },
+                {
+                    "text": "Look for a hidden side entrance.",
+                    "next_id": "side_entrance_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "temple_entrance",
+            "scene_description": "Inside, the temple is illuminated by glowing moss. A chasm splits the floor, bridged by a series of oversized, colorful lily pads. Across the chasm, a pedestal awaits.",
+            "character_pose_description": "Eyes wide with wonder, balancing carefully on the first lily pad, arms outstretched for balance.",
+            "narration": "The main chamber is breathtaking! To reach the pedestal, you must cross a chasm using these magical lily pads. Each one seems to hum with a faint, friendly energy.",
+            "choices": [
+                {
+                    "text": "Leap across the lily pads.",
+                    "next_id": "lily_pad_leap"
+                },
+                {
+                    "text": "Try to find another way.",
+                    "next_id": "another_way_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "lily_pad_leap",
+            "scene_description": "You hop from one vibrant lily pad to the next, each landing with a soft 'boing'. The last leap lands you safely on the other side, right before the pedestal. On it rests the Sunstone of Serendipity, glowing with a soft, cheerful light.",
+            "character_pose_description": "Smiling triumphantly, reaching out to gently touch the radiant Sunstone.",
+            "narration": "With a series of successful leaps, you've navigated the chasm! The Sunstone is within reach, pulsing with pure happiness. This is the moment you've been working towards, the culmination of your brave quest!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "side_entrance_failure",
+            "scene_description": "You circle the temple, pushing aside thick foliage. Instead of an entrance, you stumble into a patch of enchanted, sticky goo that smells like blueberries. You're completely stuck!",
+            "character_pose_description": "Looking flustered and slightly gooey, legs stuck fast in the shimmering blue substance.",
+            "narration": "Oh no! It seems this 'secret' entrance was just a patch of surprisingly strong, delicious-smelling goo. While not dangerous, it's very sticky, and you can't budge. You'll have to wait for a friendly jungle creature to help you out!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "another_way_failure",
+            "scene_description": "You peer around the chamber, looking for another path. You spot a small, intriguing lever hidden behind a curtain of vines. Curious, you pull it.",
+            "character_pose_description": "Tilting head curiously, with a finger poised to pull a mysterious lever.",
+            "narration": "You tug the lever, hoping for a shortcut. Instead, a soft, rhythmic humming fills the air, and a gentle wave of sleepiness washes over you. You can't help but yawn, and soon you're fast asleep, dreaming of fluffy clouds.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Lost Temple of the Jungle"
+}

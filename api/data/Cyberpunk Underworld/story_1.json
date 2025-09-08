@@ -1,0 +1,118 @@
+{
+    "prologue": "The neon glow of Neo-Veridia slicked the rain-soaked streets, reflecting off your trench coat. You are Detective Kaito, a private investigator known for sniffing out trouble in the city's underbelly. A mysterious client, shrouded in digital static, hired you to uncover a dark secret hidden within the monolithic towers of OmniCorp. They say OmniCorp controls everything, from the city's power grid to its favorite noodle stands. But whispers of a conspiracy, something about stolen dreams and manufactured memories, have reached your ears. Tonight, the rain washes away the usual grime, but it can't wash away the unsettling feeling that something big is about to unfold. Your only clue is a data chip humming with secrets, dropped by a shadowy figure in the alley.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "A narrow, rain-slicked alleyway bathed in the garish glow of neon signs. Steam rises from grates, and holographic advertisements flicker erratically. You stand near a overflowing dumpster, a single data chip in your hand.",
+            "character_pose_description": "You are standing thoughtfully in the pouring rain, holding a small, glowing data chip, your trench coat collar pulled up.",
+            "narration": "The city's hum is a constant drone, a lullaby for the sleepless. This data chip, left behind by a phantom, feels warm in your palm. It's your only lead into the heart of OmniCorp's secrets. The rain whispers tales of what might be hidden within its circuits.",
+            "choices": [
+                {
+                    "text": "Head to the Chrome Dragon noodle bar for information.",
+                    "next_id": "chrome_dragon"
+                },
+                {
+                    "text": "Try to hack the chip yourself right here.",
+                    "next_id": "hack_fail"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "chrome_dragon",
+            "scene_description": "The Chrome Dragon noodle bar is a cozy, steamy haven, filled with the aroma of exotic spices. Patrons huddle around holographic menus, their faces illuminated by the warm glow. The bartender, a wise old cyber-cyborg with a knowing glint in his optic, polishes a glass.",
+            "character_pose_description": "You approach the counter with a confident stride, placing the data chip on the counter and giving the bartender a subtle nod.",
+            "narration": "This place is a hub for all sorts of information, from street gossip to corporate whispers. The old bartender has seen it all. Perhaps he knows who might be interested in a data chip like this, or who might have dropped it.",
+            "choices": [
+                {
+                    "text": "Ask the bartender if he recognizes the chip.",
+                    "next_id": "bartender_info"
+                },
+                {
+                    "text": "Observe the other patrons for anyone acting suspicious.",
+                    "next_id": "observe_patrons"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "bartender_info",
+            "scene_description": "The bartender's optic whirs as he examines the chip. He points a metallic finger towards a shadowed booth where a cloaked figure sips a glowing blue drink.",
+            "character_pose_description": "You lean in conspiratorially towards the bartender, then glance towards the indicated booth with a determined expression.",
+            "narration": "The bartender's mechanical eye recognizes the unique energy signature of the chip. He subtly gestures towards a patron who seems to be waiting for something, or someone. This could be the next piece of the puzzle.",
+            "choices": [
+                {
+                    "text": "Approach the cloaked figure.",
+                    "next_id": "approach_figure"
+                },
+                {
+                    "text": "Decide to leave and investigate the OmniCorp tower directly.",
+                    "next_id": "omnicorp_tower"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "approach_figure",
+            "scene_description": "The cloaked figure turns, revealing a face etched with worry but also a spark of defiance. They are a whistleblower, eager to share what they know about OmniCorp's shadowy dealings.",
+            "character_pose_description": "You stand calmly before the cloaked figure, offering a reassuring smile and holding up the data chip.",
+            "narration": "The figure, a disillusioned OmniCorp engineer, reveals that the chip contains proof of a plan to subtly alter citizens' emotions through subliminal messages in public broadcasts. They needed to get the evidence out before it was too late. Your investigation has reached its crucial turning point.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "omnicorp_tower",
+            "scene_description": "The towering OmniCorp building looms, its peak lost in the smog-filled clouds. Guards in sleek uniforms patrol the entrance, their scanners humming.",
+            "character_pose_description": "You stand at the foot of the OmniCorp tower, a sense of unease washing over you as you eye the imposing structure and its vigilant guards.",
+            "narration": "The OmniCorp tower is a fortress of secrets. Trying to get inside without proper credentials or a clever plan is a risky move. The sheer scale of the building is intimidating, and the guards seem to miss nothing.",
+            "choices": [
+                {
+                    "text": "Try to sneak past the guards using the alleyways.",
+                    "next_id": "sneak_fail"
+                },
+                {
+                    "text": "Turn back and reconsider your approach.",
+                    "next_id": "start"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "hack_fail",
+            "scene_description": "As you try to interface with the chip using a jury-rigged scanner, a surge of unexpected energy zaps through your device, causing a shower of harmless sparks.",
+            "character_pose_description": "You recoil slightly as your scanner sputters and dies, a look of mild annoyance on your face.",
+            "narration": "The chip's security protocols are far more advanced than you anticipated. It seems trying to crack it on the fly in a damp alley wasn't the best idea. You've managed to disable it for now, a small setback.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "observe_patrons",
+            "scene_description": "You discreetly scan the noodle bar patrons. Most are engrossed in their food or conversations. One individual, however, in a dark corner, keeps glancing nervously at the door, their movements jerky.",
+            "character_pose_description": "You lean casually against a pillar, eyes scanning the room with a keen, observant gaze.",
+            "narration": "Your detective instincts are on high alert. Most of the patrons are just enjoying their evening, but one person's nervous energy stands out. They seem to be waiting for something, perhaps a signal, or maybe they're the one who dropped the chip.",
+            "choices": [
+                {
+                    "text": "Approach the nervous patron.",
+                    "next_id": "approach_figure"
+                },
+                {
+                    "text": "Ask the bartender about the nervous patron.",
+                    "next_id": "bartender_info"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "sneak_fail",
+            "scene_description": "You attempt to slip through a dark, grimy service entrance, but a hidden sensor triggers a series of harmless, bright flashing lights and a polite but firm robotic voice announces, 'Unauthorized access detected. Please proceed to the main entrance.'",
+            "character_pose_description": "You freeze mid-step, caught in the unexpected flood of light, looking slightly embarrassed.",
+            "narration": "Your attempt at stealth was a bit too enthusiastic for OmniCorp's state-of-the-art security. The system, while not aggressive, made sure everyone knew you weren't supposed to be there. It seems a direct approach is necessary.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Cyberpunk Underworld"
+}

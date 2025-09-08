@@ -1,0 +1,84 @@
+{
+    "prologue": "You are Captain Nova, commander of the starship 'Stardust Explorer'. Your mission: a daring rescue on the abandoned research station 'Xylos Prime'. Years ago, Xylos Prime vanished from all star charts, shrouded in mystery and whispers of strange cosmic energies. Now, a faint distress signal has been detected, originating from the derelict station. A brave, but perhaps slightly clumsy, scientist, Dr. Quibble, is believed to be trapped aboard. You and your trusty droid companion, Bolt, are the only ones brave enough to venture into the unknown. The 'Stardust Explorer' docks with the silent station, its lights flickering erratically. Prepare yourselves for an adventure into the heart of cosmic strangeness!",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "The airlock hisses open, revealing a dimly lit corridor aboard the Xylos Prime station. Strange, bioluminescent fungi pulse softly on the walls, casting eerie green and blue light. The floor is littered with discarded equipment and strange, gelatinous puddles. A faint, rhythmic humming fills the air, making the metal deck vibrate slightly.",
+            "character_pose_description": "Captain Nova stands at the airlock entrance, helmet visor reflecting the strange lights, holding a multi-tool scanner. Bolt, the droid, hovers beside them, its optical sensors whirring.",
+            "narration": "The derelict space station greets you with an unsettling silence, broken only by the hum of unknown energy. Luminescent flora casts an otherworldly glow, hinting at the strange phenomena that may have befallen this place. Your mission is clear: find Dr. Quibble and get out safely. But first, you must navigate these alien-infused halls.",
+            "choices": [
+                {
+                    "text": "Investigate the humming sound to the left.",
+                    "next_id": "humming_path"
+                },
+                {
+                    "text": "Examine the strange, glowing fungi.",
+                    "next_id": "fungi_path"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "humming_path",
+            "scene_description": "You follow the humming to a large laboratory. In the center, a bizarre, pulsating orb of light hovers above a console, the source of the sound. It seems to be drawing energy from the station's systems, causing them to flicker. Strange, shimmering particles drift from the orb.",
+            "character_pose_description": "Captain Nova approaches the orb cautiously, hands held up defensively, eyes wide with curiosity and a touch of apprehension. Bolt scans the orb with intense focus.",
+            "narration": "This pulsating orb is unlike anything you've ever seen! It hums with an incredible, gentle energy. The particles around it seem to dance, almost like friendly dust motes. It could be the key to understanding what happened here, or perhaps a way to power up critical systems for your escape.",
+            "choices": [
+                {
+                    "text": "Try to stabilize the orb, hoping to restore power.",
+                    "next_id": "stabilize_orb_success"
+                },
+                {
+                    "text": "Attempt to capture a sample of the shimmering particles.",
+                    "next_id": "capture_particles_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "fungi_path",
+            "scene_description": "As you get closer to the glowing fungi, they begin to emit a sweet, soporific scent. The walls seem to shimmer, and the rhythmic humming intensifies, lulling you into a state of calm. Your eyelids feel heavy, and the urge to rest is overwhelming.",
+            "character_pose_description": "Captain Nova leans in to inspect the fungi, a look of wonder on their face, but their posture is becoming drowsy. Bolt emits a series of worried beeps.",
+            "narration": "These strange plants emit a peculiar aroma, a scent that feels wonderfully relaxing. It's so tempting to just sit down for a moment and admire their gentle glow. But remember, Dr. Quibble is waiting, and this station is full of surprises!",
+            "choices": [
+                {
+                    "text": "Resist the urge to sleep and press on.",
+                    "next_id": "humming_path"
+                },
+                {
+                    "text": "Give in to the soothing scent and take a short nap.",
+                    "next_id": "nap_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "stabilize_orb_success",
+            "scene_description": "With a delicate adjustment of your multi-tool, the orb's pulsating slows to a gentle throb. The station lights surge to full brightness, revealing a hidden compartment. Inside, a very relieved Dr. Quibble is waving energetically, surrounded by blinking emergency lights. Bolt lets out a cheerful series of chirps.",
+            "character_pose_description": "Captain Nova stands beside the now stable orb, smiling triumphantly. Dr. Quibble is waving happily from the opened compartment, looking a bit dishevelled but unharmed.",
+            "narration": "Success! By carefully interacting with the strange orb, you've stabilized its energy and restored power. The station's lights flare to life, illuminating Dr. Quibble who was hidden away. Your quick thinking and steady hands have saved the day, completing your rescue mission with bravery and skill!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "capture_particles_failure",
+            "scene_description": "As you try to scoop up the shimmering particles, they unexpectedly swirl around your multi-tool, coating it in a sticky, iridescent goo. The goo hardens rapidly, rendering your tool completely unusable and stuck fast to your glove. The orb's hum intensifies slightly, and the particles seem to giggle.",
+            "character_pose_description": "Captain Nova is frozen, staring in disbelief at their goo-covered multi-tool, which is now firmly attached to their glove. Bolt emits a series of sympathetic beeps.",
+            "narration": "Oh dear! It seems those shimmering particles were a bit more mischievous than they looked. Your trusty multi-tool is now thoroughly stuck in a very pretty, but very inconvenient, goo. This might make navigating the rest of the station a bit more\u2026 challenging.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "nap_failure",
+            "scene_description": "You sit down against the softly glowing wall, the sweet scent enveloping you. It feels so peaceful. You drift off into a deep, comfortable sleep, dreaming of fluffy space clouds. Bolt tries to nudge you awake, but the fungi's magic is too strong. You miss your chance to find Dr. Quibble as the station continues its lonely journey through space.",
+            "character_pose_description": "Captain Nova is fast asleep, slumped against the wall, a blissful smile on their face. Tiny, harmless sparkles from the fungi float around them. Bolt is beeping softly, looking concerned.",
+            "narration": "The restful scent of the fungi was just too inviting! You've fallen into a deep slumber, missing the critical window to complete your mission. While you're having a lovely dream, Dr. Quibble is still waiting, and the opportunity to rescue them has floated away. Perhaps next time, you'll stay a little more alert!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Haunted Space Station"
+}

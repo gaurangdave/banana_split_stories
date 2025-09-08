@@ -1,0 +1,80 @@
+{
+    "prologue": "Brave adventurer, legend speaks of the mythical Golden Banana, hidden deep within the Temple of the Watchful Trees. This isn't just any banana; it's said to grant the eater eternal giggles and the ability to float! For centuries, it has been guarded by the ancient Banana King, whose curse causes the very banana trees to peer with leafy eyes at any who dare approach. You've heard the whispers, seen the faded maps, and your heart beats with the thrill of discovery. You've journeyed for days, and now, the vine-covered entrance to the temple looms before you. The air is thick with the sweet scent of ripe fruit and a hint of ancient mystery. Are you ready to embark on this slightly absurd, yet thrilling, treasure hunt?",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "A grand, overgrown temple entrance shrouded in thick jungle vines. Sunlight filters through the canopy, illuminating a path leading into darkness. Giant, peculiar banana trees with large, leaf-like 'eyes' flank the entrance, their fronds rustling as if in silent greeting.",
+            "character_pose_description": "Standing at the temple entrance, looking determined and a little amazed, holding a tattered map.",
+            "narration": "You stand at the threshold of the Temple of the Watchful Trees, the air alive with the sweet perfume of bananas and the rustling of leaves. The legend of the Golden Banana and its guardian, the Banana King, fills your mind. The trees seem to watch your every move, their leafy eyes following your approach. What will you do first?",
+            "choices": [
+                {
+                    "text": "Brave the vine-covered entrance.",
+                    "next_id": "path_1_enter"
+                },
+                {
+                    "text": "Try to sneak past the watchful trees.",
+                    "next_id": "path_1_sneak"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "path_1_enter",
+            "scene_description": "Inside the temple, the air is cooler and filled with the soft glow of phosphorescent moss. The path splits: one way leads to a room with a giant, harmless-looking slime pit, and the other to a hall lined with ancient banana statues.",
+            "character_pose_description": "Stepping cautiously into the dimly lit temple interior, eyes wide with wonder and a slight tremble of excitement.",
+            "narration": "The jungle\u2019s heat gives way to a cool, mystical aura within the temple. Strange glowing moss illuminates the way, casting eerie shadows. The path ahead divides, presenting you with two intriguing, yet puzzling, routes. Which path will you choose to continue your quest for the Golden Banana?",
+            "choices": [
+                {
+                    "text": "Venture towards the slime pit.",
+                    "next_id": "path_2_slime"
+                },
+                {
+                    "text": "Explore the hall of statues.",
+                    "next_id": "path_2_statues"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "path_1_sneak",
+            "scene_description": "As you attempt to tiptoe past the trees, the ground beneath you suddenly gives way to a patch of sticky, sweet-smelling banana goo! You're stuck, but not hurt, just very, very sticky.",
+            "character_pose_description": "Stuck in a large blob of golden, sticky goo, looking surprised and slightly embarrassed, with goo up to your knees.",
+            "narration": "Your attempt at stealth proves to be a slippery mistake! The ground turned to goo, and now you're quite stuck. It smells rather nice, like banana pudding, but you can't move forward. It seems the Banana King's curse is quite effective at stopping intruders, even if it\u2019s just with a bit of sticky goo.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "path_2_slime",
+            "scene_description": "You bravely leap across the slime pit, landing safely on the other side. You find yourself in a small chamber where a single, perfectly ripe Golden Banana rests on a pedestal, glowing with an inner light.",
+            "character_pose_description": "Standing on the other side of a shimmering, wobbly slime pit, looking triumphant and reaching out a hand towards the glowing Golden Banana.",
+            "narration": "With a well-timed leap, you cleared the sticky, bubbling slime pit! Your bravery has paid off. Before you, bathed in a divine light, sits the legendary Golden Banana. Its surface shimmers, promising eternal giggles and the power of flight. You've found it!",
+            "choices": [
+                {
+                    "text": "Take the Golden Banana!",
+                    "next_id": "ending_success"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "path_2_statues",
+            "scene_description": "As you walk down the hall of statues, a trap is triggered! A shower of overripe, mushy bananas rains down, covering you completely. You're unharmed but can't see a thing and smell strongly of banana.",
+            "character_pose_description": "Completely covered in mushy, soft banana pulp, with only eyes peeking out, looking flustered and sticky.",
+            "narration": "Oh dear! A booby trap! Instead of treasure, you've found yourself in a rather squishy situation. A downpour of overripe bananas has buried you up to your chin. It\u2019s a sticky end to your quest, and you might smell like banana bread for a week!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "ending_success",
+            "scene_description": "You hold the Golden Banana, which radiates warmth and a feeling of pure joy. A faint humming sound fills the air as you feel a lightness in your step, ready to float away on a wave of giggles.",
+            "character_pose_description": "Holding the Golden Banana aloft with a huge, joyous smile, a faint golden glow surrounding you, looking ready to float.",
+            "narration": "Success! You've claimed the mythical Golden Banana! As you hold it, a wave of uncontrollable giggles washes over you, and you feel your feet lift off the ground. You can float! The Banana King's curse is broken, and your adventure ends with a delightful, bubbly triumph!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        }
+    ],
+    "theme": "Curse of the Banana King"
+}

@@ -1,0 +1,84 @@
+{
+    "prologue": "Long ago, in a land shrouded by mists and forgotten by time, lay the legendary Temple of the Sunstone. Whispers spoke of its incredible power, capable of bringing endless sunshine and warmth to any land. Many brave adventurers have sought it, but none have returned. You, a renowned explorer with a heart full of courage and a knack for puzzles, have discovered an ancient map. It marks the hidden entrance to the temple, deep within a vibrant, unexplored jungle. Your mission is to find the Sunstone and bring its radiant light back to your homeland, which has been shrouded in a mysterious, long-lasting twilight. The journey will be perilous, filled with ancient riddles and whimsical guardians, but the reward of a brighter future for all is well worth the risk. Prepare yourself, for the adventure of a lifetime awaits!",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "You stand at the entrance of a grand, vine-covered temple. Sunlight filters through the dense jungle canopy, illuminating ancient carvings of smiling suns and playful monkeys. A large stone door, intricately carved, blocks your path. To the left, a shimmering waterfall cascades into a clear pool. To the right, a path winds deeper into the jungle.",
+            "character_pose_description": "Standing at the temple entrance, looking determined and curious, holding a rolled-up ancient map.",
+            "narration": "You've finally found it! The legendary Temple of the Sunstone. The air hums with ancient magic, and the jungle seems alive with anticipation. Before you lies a magnificent stone door, but how to open it? Your map offers a clue, pointing towards the natural wonders surrounding the entrance. The path ahead promises both wonder and mystery.",
+            "choices": [
+                {
+                    "text": "Examine the waterfall.",
+                    "next_id": "waterfall_puzzle"
+                },
+                {
+                    "text": "Follow the jungle path.",
+                    "next_id": "jungle_path_dead_end"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "waterfall_puzzle",
+            "scene_description": "Behind the shimmering waterfall, you discover a hidden alcove. Inside, a series of colorful, interlocking stone discs are set into the wall, depicting different jungle creatures. A gentle breeze whispers through the alcove, as if encouraging you to solve the puzzle.",
+            "character_pose_description": "Kneeling before a wall of stone discs, hands poised to turn them, a look of deep concentration on your face.",
+            "narration": "Aha! A hidden passage behind the waterfall! This must be the way forward. The stone discs look like a puzzle, perhaps a riddle from the temple's ancient guardians. Each disc shows a creature, and they seem to fit together in a specific order. Let's try to arrange them correctly.",
+            "choices": [
+                {
+                    "text": "Arrange the discs to show the monkey, then the parrot, then the frog.",
+                    "next_id": "temple_interior"
+                },
+                {
+                    "text": "Arrange the discs to show the snake, then the jaguar, then the beetle.",
+                    "next_id": "goo_trap"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "temple_interior",
+            "scene_description": "With a soft click, the stone door grinds open, revealing a breathtaking chamber bathed in golden light. In the center, resting on a pedestal, is the Sunstone, glowing with a warm, radiant energy. Gentle, musical chimes fill the air, and friendly-looking stone statues of ancient jungle animals stand guard, smiling peacefully.",
+            "character_pose_description": "Standing triumphantly in the chamber, arms outstretched towards the glowing Sunstone, a joyful expression on your face.",
+            "narration": "You've done it! The path was clever, and the puzzle was solved with great wisdom. The Sunstone shines brightly, filling the temple with warmth and light. Its energy is palpable, promising to bring back the sun to your homeland. This is the moment of success, the culmination of your brave quest!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "goo_trap",
+            "scene_description": "As you touch the stone discs, the floor beneath you suddenly gives way! You slide down a smooth, wet chute and land with a gentle 'plop' in a pool of shimmering, harmless, rainbow-colored goo. It's sticky but not unpleasant, like a giant, fun bouncy castle.",
+            "character_pose_description": "Sitting in a pool of colorful, sparkling goo, looking surprised but not distressed, with goo on your nose.",
+            "narration": "Oops! It seems that combination wasn't quite right. Instead of a path, you've found a delightful, sticky goo pit! While it's not the way to the Sunstone, it's a fun, if unexpected, diversion. You're safe and sound, just a little covered in goo.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "jungle_path_dead_end",
+            "scene_description": "The jungle path leads you to a dense thicket of thorny vines and giant, sleepy-looking flowers. The path quickly disappears, and the vines seem to playfully tangle around your feet, tickling you.",
+            "character_pose_description": "Standing at a dead end, looking slightly confused as vines playfully wrap around your ankles, with a few giggles escaping.",
+            "narration": "This path seems to be a bit of a detour! The jungle here is so alive, it's almost like it doesn't want you to pass. The vines are more playful than prickly, but they've led you to a spot where you can't go any further. It looks like this isn't the way to the Sunstone.",
+            "choices": [
+                {
+                    "text": "Try to find your way back to the temple entrance.",
+                    "next_id": "start"
+                },
+                {
+                    "text": "Sit down and take a nap among the flowers.",
+                    "next_id": "nap_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "nap_failure",
+            "scene_description": "The giant flowers release a sweet, soporific scent. You feel an irresistible urge to rest your eyes, and before you know it, you're fast asleep. When you finally wake up, the sun is setting, and the temple entrance is no longer visible.",
+            "character_pose_description": "Curled up asleep at the base of a giant, blooming flower, a peaceful smile on your face.",
+            "narration": "Oh dear, those flowers were just too cozy! You drifted off into a lovely nap, but while you were dreaming, the opportunity to find the Sunstone has passed for today. Perhaps another day, brave explorer. For now, you'll have to find your way back home.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Lost Temple of the Jungle"
+}

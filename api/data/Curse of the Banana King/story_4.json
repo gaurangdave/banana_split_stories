@@ -1,0 +1,92 @@
+{
+    "prologue": "Legend tells of the Golden Banana, a fruit of immense power and flavor, hidden deep within the Whispering Temple. This sacred artifact was guarded by the ancient Banana King, whose spirit is said to linger, animating the very banana trees to watch over their domain. Many have sought the Golden Banana, drawn by tales of its legendary taste and the glory of its discovery. But beware, for the temple is filled with mischievous illusions and tricky paths, all designed to thwart those who aren't clever enough to outwit the watchful trees. You, brave adventurer, have heard these whispers and are ready to embark on this slightly absurd, thrilling quest. Your journey begins now, at the entrance of the ancient temple, where the air hums with an ancient, fruity magic.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "The entrance to the Whispering Temple is overgrown with vines and strange, oversized banana leaves that seem to rustle with an unseen breeze. Two moss-covered statues of grumpy-looking monkeys guard a dark, arched doorway. The path ahead splits into two.",
+            "character_pose_description": "Standing at the temple entrance, looking determined, with a slightly nervous grin.",
+            "narration": "You stand before the Whispering Temple, the air thick with the sweet scent of ripe bananas and ancient dust. The monkey statues seem to eye you warily. Two paths beckon: one that winds through a grove of unusually tall, shimmering banana trees, and another that leads into a dark, echoing cavern.",
+            "choices": [
+                {
+                    "text": "Venture into the shimmering banana grove.",
+                    "next_id": "grove_path"
+                },
+                {
+                    "text": "Enter the dark, echoing cavern.",
+                    "next_id": "cavern_path"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "grove_path",
+            "scene_description": "You are in a grove where the banana trees glow with a soft, golden light. Their leaves shimmer, and you feel as though you are being watched. In the center of the grove, a pedestal awaits, but it's guarded by a swirling mist.",
+            "character_pose_description": "Cautiously walking amongst the glowing banana trees, peering into the swirling mist.",
+            "narration": "The banana trees hum with a gentle energy, their leaves rustling as if whispering secrets. The mist before the pedestal is thick and seems to shift, making it hard to see what lies beyond. You can feel the ancient power of the Banana King all around you.",
+            "choices": [
+                {
+                    "text": "Brave the mist and step towards the pedestal.",
+                    "next_id": "pedestal_puzzle"
+                },
+                {
+                    "text": "Try to find a way around the mist.",
+                    "next_id": "around_mist_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "pedestal_puzzle",
+            "scene_description": "You have reached the pedestal. On it rests a single, magnificent Golden Banana, radiating warmth and a delightful aroma. The mist has cleared, revealing it as the true treasure. The watchful eyes of the banana trees seem to approve.",
+            "character_pose_description": "Smiling broadly, reaching out to gently pluck the Golden Banana from the pedestal.",
+            "narration": "With a deep breath, you step through the mist and behold the legendary Golden Banana! It glows with an inviting light, and the air around it smells like the most delicious dessert imaginable. You have found it!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "cavern_path",
+            "scene_description": "The cavern is damp and dark, with dripping water echoing. Strange, bioluminescent mushrooms cast an eerie glow. The path ahead is blocked by a chasm, with a rickety rope bridge spanning it.",
+            "character_pose_description": "Hesitantly standing at the edge of the chasm, looking at the wobbly rope bridge.",
+            "narration": "The darkness of the cavern presses in, and the sound of dripping water plays tricks on your ears. The chasm yawns before you, a deep, dark unknown. The only way across is a bridge made of old ropes and what look suspiciously like banana peels tied together.",
+            "choices": [
+                {
+                    "text": "Attempt to cross the rickety banana-peel bridge.",
+                    "next_id": "bridge_failure"
+                },
+                {
+                    "text": "Turn back and try the grove path instead.",
+                    "next_id": "grove_path"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "bridge_failure",
+            "scene_description": "As soon as you step onto the bridge, the banana peels become incredibly slippery! You do a comical little dance before tumbling harmlessly into a pile of soft, fragrant moss at the bottom of the chasm. The Golden Banana remains undiscovered.",
+            "character_pose_description": "Splayed out comically on soft moss, looking sheepish but unharmed, with a faint smell of banana peels.",
+            "narration": "Whoops! Those banana peels were slipperier than they looked! You land with a soft thump in a bed of moss, completely unharmed but very much not across the chasm. It seems this path wasn't meant to be.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "around_mist_failure",
+            "scene_description": "You try to sneak around the edge of the mist, but your foot gets caught in a hidden vine. You stumble and find yourself gently deposited back at the entrance of the grove, the mist still swirling around the pedestal, the Golden Banana just out of reach.",
+            "character_pose_description": "Sitting on the ground, looking slightly dizzy, with a vine still wrapped around one ankle.",
+            "narration": "Oh dear! It seems the watchful banana trees don't appreciate sneaky adventurers. A vine gently snared your ankle, and you found yourself back where you started, the mist guarding its prize. Perhaps another attempt is in order, or a different path entirely.",
+            "choices": [
+                {
+                    "text": "Try braving the mist after all.",
+                    "next_id": "pedestal_puzzle"
+                },
+                {
+                    "text": "Go back to the temple entrance.",
+                    "next_id": "start"
+                }
+            ],
+            "is_ending": false
+        }
+    ],
+    "theme": "Curse of the Banana King"
+}

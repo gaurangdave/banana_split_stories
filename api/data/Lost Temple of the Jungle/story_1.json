@@ -1,0 +1,114 @@
+{
+    "prologue": "Legends whispered of the Sunstone, an artifact of immense power, hidden deep within the Emerald Temple. This ancient relic was said to bring light and joy to all who beheld it. You, a brave young explorer, have always dreamed of finding it. Armed with a tattered map passed down through generations, you journeyed to the heart of a lush, uncharted jungle. The air hums with mystery and the scent of exotic flowers. After weeks of travel, you finally stand before the entrance of the legendary temple, its stone jaws gaping open, inviting you into the unknown. Your heart pounds with excitement, ready for the adventure of a lifetime. The quest for the Sunstone begins!",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "The entrance of a magnificent, vine-covered jungle temple. Sunlight streams through a hole in the ceiling, illuminating ancient carvings on mossy stone walls. Ahead, a wide corridor leads deeper into the darkness, with two paths branching off to the left and right.",
+            "character_pose_description": "Standing at the entrance, looking with wide-eyed wonder at the ancient temple, holding a rolled-up map.",
+            "narration": "You've made it! The Emerald Temple stands before you, shrouded in mystery and ancient magic. Sunlight filters through the dense jungle canopy, painting dappled patterns on the stone floor. Two paths beckon, each leading further into the temple's secrets. Which way will you choose?",
+            "choices": [
+                {
+                    "text": "Take the left path.",
+                    "next_id": "left_path_entrance"
+                },
+                {
+                    "text": "Take the right path.",
+                    "next_id": "right_path_entrance"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "left_path_entrance",
+            "scene_description": "A chamber filled with large, colorful, harmless butterflies. The path ahead is blocked by a gently flowing waterfall of sparkling, fragrant water. The walls are covered in murals depicting happy jungle creatures.",
+            "character_pose_description": "Gently waving a hand to shoo away a curious butterfly, looking thoughtfully at the waterfall.",
+            "narration": "The left path leads you into a peaceful grotto, alive with fluttering butterflies! The air is sweet and pleasant. Ahead, a shimmering waterfall blocks your way, its waters seeming to sing a soft melody. You wonder if you can pass through it.",
+            "choices": [
+                {
+                    "text": "Try to walk through the waterfall.",
+                    "next_id": "waterfall_success"
+                },
+                {
+                    "text": "Look for another way.",
+                    "next_id": "left_path_loop"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "right_path_entrance",
+            "scene_description": "A room with pressure plates on the floor. Some plates have pictures of smiling suns, while others have pictures of sleeping moons. A large, ornate door is at the far end.",
+            "character_pose_description": "Carefully stepping onto a 'sun' plate, looking at the other plates with concentration.",
+            "narration": "The right path presents a puzzle! The floor is a mosaic of sun and moon symbols. Stepping on the wrong one might cause trouble, but the right sequence could open the way. You recall ancient tales of sun gods favoring those who tread wisely.",
+            "choices": [
+                {
+                    "text": "Step on the sun plates only.",
+                    "next_id": "sun_plates_success"
+                },
+                {
+                    "text": "Step on a moon plate.",
+                    "next_id": "moon_plate_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "waterfall_success",
+            "scene_description": "You emerge from the sparkling waterfall into a hidden chamber. In the center, on a pedestal bathed in golden light, sits the magnificent Sunstone, radiating warmth and joy.",
+            "character_pose_description": "Stepping out of the waterfall, dripping but smiling, reaching out towards the glowing Sunstone.",
+            "narration": "The waterfall was a magical doorway! You've passed through its refreshing curtain and found yourself in a secret sanctuary. There, upon a pedestal, rests the legendary Sunstone! Its gentle glow fills the room with happiness.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "left_path_loop",
+            "scene_description": "You find a small, slightly damp alcove that seems to lead nowhere. The butterflies are now a bit more numerous, gently bumping into you.",
+            "character_pose_description": "Sitting cross-legged in a corner, looking a bit bored and covered in a light dusting of pollen.",
+            "narration": "Exploring further down the left path reveals only a dead end, surrounded by an abundance of rather persistent butterflies. It seems this route doesn't lead to the Sunstone. Perhaps you should have tried the waterfall, or maybe the other path held more promise.",
+            "choices": [
+                {
+                    "text": "Go back and try the waterfall.",
+                    "next_id": "left_path_entrance"
+                },
+                {
+                    "text": "Go back and try the right path.",
+                    "next_id": "right_path_entrance"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "sun_plates_success",
+            "scene_description": "As you step on the last sun plate, the ornate door at the end of the room swings open silently. Beyond it lies a chamber where the Sunstone rests on a pedestal, its light illuminating the space.",
+            "character_pose_description": "Standing tall with a triumphant grin, pointing towards the now open door revealing the Sunstone.",
+            "narration": "You navigated the puzzle perfectly! The sun plates guided you safely, and the grand door has opened, revealing the path forward. The legendary Sunstone awaits you in the chamber beyond, its warm light a beacon of your success.",
+            "choices": [
+                {
+                    "text": "Enter the chamber and claim the Sunstone.",
+                    "next_id": "sunstone_chamber_success"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "moon_plate_failure",
+            "scene_description": "You step on a moon plate, and a puff of soft, sparkly dust erupts from the floor, tickling your nose. You start to feel very sleepy, and a cozy, soft mossy patch appears nearby.",
+            "character_pose_description": "Yawning widely, with eyes half-closed, slumping gently onto a patch of moss.",
+            "narration": "Oh dear! That moon plate was a sleepy trap! A cloud of ticklish, sparkly dust has made you incredibly drowsy. It's far too cozy here to continue your quest right now. You decide to take a little nap, and the Sunstone will have to wait.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "sunstone_chamber_success",
+            "scene_description": "You enter the final chamber. In the center, bathed in a celestial glow, is the Sunstone. It hums with gentle energy, filling you with warmth and happiness.",
+            "character_pose_description": "Standing before the Sunstone, with hands outstretched, a look of pure joy and accomplishment on your face.",
+            "narration": "You've reached the heart of the temple and found the legendary Sunstone! Its light is like a warm hug, filling you with immense joy and a sense of wonder. You have succeeded in your quest, bringing light and happiness back into the world!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        }
+    ],
+    "theme": "Lost Temple of the Jungle"
+}

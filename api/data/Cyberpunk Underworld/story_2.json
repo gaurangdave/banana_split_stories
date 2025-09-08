@@ -1,0 +1,110 @@
+{
+    "prologue": "The neon glow of Neo-Kyoto slicks the perpetually rain-soaked streets, casting long, distorted shadows. You're Detective Kaito, a sharp-witted investigator known for sniffing out trouble in the city's underbelly. Your latest case: a whisper of a conspiracy deep within the monolithic OmniCorp. Rumor has it they're hoarding something vital, something that could change the city forever. Your contact, a shadowy informant named Glitch, promised answers tonight, down in the grimy Sector 7 alleys. The air crackles with secrets, and the rain washes away everything but the truth. It's time to dive in and uncover what OmniCorp is hiding before it's too late.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "You stand at the entrance to a narrow, dripping alleyway in Sector 7. Towering skyscrapers with glowing holographic advertisements loom overhead, their lights reflecting in puddles on the grimy pavement. Steam rises from grates, and the air smells of ozone and something vaguely metallic. A faint, rhythmic electronic hum emanates from deeper within.",
+            "character_pose_description": "Standing with your trench coat collar turned up, looking down the dark alley with a determined expression.",
+            "narration": "The alley beckons, a serpent's path into the heart of the mystery. Rain streaks down the chrome buildings, blurring the city lights into abstract art. This is where the secrets hide, where the whispers of conspiracy become shouts. You can almost taste the intrigue in the damp air.",
+            "choices": [
+                {
+                    "text": "Venture deeper into the alley.",
+                    "next_id": "alley_entrance"
+                },
+                {
+                    "text": "Look for another way in.",
+                    "next_id": "rooftop_access"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "alley_entrance",
+            "scene_description": "You proceed cautiously down the alley. Colorful graffiti adorns the damp walls, and discarded data chips litter the ground. Ahead, a small, cloaked figure is hunched over a glowing data terminal, their back to you.",
+            "character_pose_description": "Moving stealthily, with one hand near your pocket, eyes fixed on the figure.",
+            "narration": "The deeper you go, the more the city's true face is revealed. This is the underbelly, where OmniCorp's influence is less a whisper and more a shadow. The figure by the terminal seems to be waiting, or perhaps working on something important.",
+            "choices": [
+                {
+                    "text": "Approach the figure.",
+                    "next_id": "glitch_encounter"
+                },
+                {
+                    "text": "Try to observe them from a distance.",
+                    "next_id": "observation_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "observation_failure",
+            "scene_description": "You try to get closer without being seen, but your foot slips on a patch of slick algae-covered pavement. You tumble into a pile of discarded holographic projectors, which flicker to life, creating a chaotic light show that alerts the figure. They vanish into the shadows instantly.",
+            "character_pose_description": "Sitting amidst a mess of flashing lights, looking sheepish and annoyed.",
+            "narration": "Oops! Sometimes the shadows don't hide you as well as you'd hoped. Your clumsy misstep has scared off your contact. The trail has gone cold, and the secrets of OmniCorp remain locked away for now. This is a setback, but not the end of your detective career.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "glitch_encounter",
+            "scene_description": "As you approach, the figure turns. It's Glitch, your informant, their face obscured by a low hood, but their eyes twinkle with recognition. They gesture for you to come closer, pointing at the data terminal which is displaying complex schematics and financial transfers.",
+            "character_pose_description": "Approaching Glitch with a curious but cautious expression, peering at the terminal screen.",
+            "narration": "Glitch, the master of digital shadows, has the information you seek. The terminal hums, a portal to OmniCorp's clandestine dealings. These schematics look important, detailing a project code-named 'Chrono-Bloom.'",
+            "choices": [
+                {
+                    "text": "Ask Glitch about Chrono-Bloom.",
+                    "next_id": "chrono_bloom_success"
+                },
+                {
+                    "text": "Demand the full data dump.",
+                    "next_id": "demanding_failure"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "demanding_failure",
+            "scene_description": "You impatiently demand the entire data dump. Glitch recoils slightly, then shakes their head. 'Impatience gets you nowhere fast, Detective. Trust is earned.' They deactivate the terminal and melt back into the alley's darkness, leaving you with no answers and a lost lead.",
+            "character_pose_description": "Standing alone in the alley, fists clenched in frustration, watching Glitch disappear.",
+            "narration": "A little too eager, a little too demanding. Glitch valued discretion and patience, qualities you failed to show. The secrets remain hidden, and your investigation hits a dead end for tonight. You'll have to try again another time, perhaps with a softer approach.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "chrono_bloom_success",
+            "scene_description": "Glitch explains that 'Chrono-Bloom' is OmniCorp's project to artificially accelerate the growth of rare, bioluminescent flora for their exclusive sky-gardens. They've been diverting resources and energy, impacting city-wide power grids, all for a fleeting aesthetic. Glitch provides you with a data chip containing all the evidence.",
+            "character_pose_description": "Receiving a small, glowing data chip from Glitch with a satisfied nod.",
+            "narration": "The conspiracy is revealed: a secret project for vanity, causing real problems for the city. With the data chip safely in hand, you have the proof needed to expose OmniCorp's wasteful practices. The rain seems to wash away the tension, leaving behind the quiet satisfaction of a case well-solved.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "rooftop_access",
+            "scene_description": "You decide against the direct alley approach and spot a rickety fire escape leading up the side of a grimy building. It seems like a less direct, but potentially more secure, way to survey the area.",
+            "character_pose_description": "Looking up at the fire escape, assessing its stability with a thoughtful frown.",
+            "narration": "Sometimes, a higher perspective is needed to see the full picture. The fire escape offers a precarious path upwards, a chance to observe the alley from above and perhaps find a hidden entrance. The climb will be a challenge, but secrets are often found in unexpected places.",
+            "choices": [
+                {
+                    "text": "Climb the fire escape.",
+                    "next_id": "rooftop_challenge"
+                },
+                {
+                    "text": "Reconsider and enter the alley.",
+                    "next_id": "alley_entrance"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "rooftop_challenge",
+            "scene_description": "You begin to climb, the metal groaning under your weight. Halfway up, a section of the fire escape crumbles, sending you tumbling down into a conveniently placed (and surprisingly soft) pile of discarded packing foam. The noise attracts a patrol drone, which hovers over you menacingly.",
+            "character_pose_description": "Covered in foam, looking dazed and slightly embarrassed as a drone hovers above.",
+            "narration": "Well, that didn't go as planned! The unstable fire escape decided to take an early retirement, landing you in a foamy heap. The drone's arrival means your presence has been detected, and your chance to investigate discreetly has evaporated. Time to make a hasty, and foam-covered, retreat.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Cyberpunk Underworld"
+}

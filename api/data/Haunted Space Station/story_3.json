@@ -1,0 +1,75 @@
+{
+    "prologue": "The Star Wanderer, a deep-space exploration vessel, has gone silent near the mysterious Nebula X. You are Captain Eva Rostova, a seasoned explorer known for your quick thinking and bravery. Your mission: to board the derelict station, determine the fate of the crew, and retrieve any vital data. Scans indicate strange energy readings and peculiar biological signatures emanating from the station, unlike anything ever encountered. The airlock hisses open, revealing a chilling silence. Your helmet lights cut through the darkness, illuminating the first signs of what has befallen the Star Wanderer. You must navigate the eerie corridors, solve the puzzles left behind, and uncover the truth before the nebula's strange energies consume you too.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "The main corridor of the space station is dimly lit, with flickering emergency lights casting long shadows. Strange, bioluminescent moss glows softly on the metallic walls, pulsing with an ethereal light. Unfamiliar, crystalline structures have begun to grow in clusters, shimmering in the gloom.",
+            "character_pose_description": "Captain Eva stands at the entrance of the corridor, helmet visor reflecting the eerie glow, gripping her data scanner, her expression a mix of determination and caution.",
+            "narration": "You've entered the Star Wanderer's main artery. The silence is deafening, broken only by the hum of your suit's life support. The strange flora seems to react to your presence, its glow intensifying slightly. Where could the crew have gone?",
+            "choices": [
+                {
+                    "text": "Investigate the glowing moss.",
+                    "next_id": "glowing_moss"
+                },
+                {
+                    "text": "Head towards the bridge.",
+                    "next_id": "bridge_approach"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "glowing_moss",
+            "scene_description": "The bioluminescent moss forms a thick carpet on the floor and walls. As you get closer, tiny, harmless spores drift into the air, creating a dazzling, disco-ball effect. The spores hum with a gentle, melodic tone.",
+            "character_pose_description": "Captain Eva is kneeling, carefully collecting a sample of the glowing moss, a look of wonder on her face.",
+            "narration": "The moss is beautiful, almost mesmerizing. As you collect a sample, you notice it doesn't seem dangerous, but rather, it emits a soothing warmth. This alien life might be more curious than hostile.",
+            "choices": [
+                {
+                    "text": "Follow the moss deeper into the station.",
+                    "next_id": "moss_path_success"
+                },
+                {
+                    "text": "Return to the main corridor.",
+                    "next_id": "start"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "moss_path_success",
+            "scene_description": "Following the moss leads you to a hidden alcove. Inside, the station's main computer console is active, displaying a distress signal. The crew, guided by the moss's light, managed to activate a backup communication system before evacuating to a nearby escape pod.",
+            "character_pose_description": "Captain Eva stands triumphantly before the console, tapping her data scanner, a relieved smile on her face.",
+            "narration": "Incredible! The moss wasn't a danger, but a guide. You've found the distress signal and confirmed the crew's escape. Their location is transmitting, and rescue is imminent. Mission accomplished!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "bridge_approach",
+            "scene_description": "The corridor leading to the bridge is filled with swirling, iridescent mist that smells faintly of cinnamon. The mist clings to everything, making visibility difficult. You hear soft, playful giggling sounds echoing from within the fog.",
+            "character_pose_description": "Captain Eva is cautiously stepping into the mist, her hand outstretched, feeling the strange, harmless particles brush against her suit.",
+            "narration": "This mist is unlike any atmospheric anomaly you've ever encountered. It's strangely pleasant and doesn't seem to impede your breathing or equipment. The giggling is peculiar, almost like playful sprites.",
+            "choices": [
+                {
+                    "text": "Brave the mist and continue to the bridge.",
+                    "next_id": "mist_trap_failure"
+                },
+                {
+                    "text": "Turn back and investigate the moss instead.",
+                    "next_id": "glowing_moss"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "mist_trap_failure",
+            "scene_description": "As you step further into the mist, it thickens rapidly, becoming a delightful, fizzy lemonade-like substance. You find yourself gently suspended, unable to move, surrounded by the sweet scent and soft giggles. You've been playfully trapped in harmless, bubbly goo!",
+            "character_pose_description": "Captain Eva is bobbing gently, encased in shimmering, bubbly goo, looking slightly embarrassed but not harmed, a faint smile on her face.",
+            "narration": "Oh dear! The playful mist turned out to be an extremely sticky, albeit delicious-smelling, trap. You're stuck, but perfectly safe and quite comfortable. The crew is still missing, and your mission is on hold until someone can fish you out!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        }
+    ],
+    "theme": "Haunted Space Station"
+}

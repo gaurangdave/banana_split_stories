@@ -1,0 +1,118 @@
+{
+    "prologue": "The city of Neo-Veridian hums with a thousand neon dreams, but beneath its glittering facade lies a web of secrets. You are Ace, a junior detective with a knack for sniffing out trouble. Tonight, the rain slicks the streets like spilled ink, reflecting the garish glow of towering holo-ads. A cryptic message arrived just hours ago, hinting at a massive corporate conspiracy brewing in the shadowy underbelly of OmniCorp, the city's most powerful tech giant. Your contact, a usually reliable informant named Sparky, has gone silent. You know this is bigger than anything you've tackled before, but the truth, no matter how gritty, must be uncovered.",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "A narrow, rain-drenched alleyway in Neo-Veridian. Steam rises from grates, and flickering neon signs cast long, distorted shadows. A discarded datapad lies near a overflowing bin.",
+            "character_pose_description": "Ace, a young detective, stands in the alley, rain dripping from their trench coat, looking intently at the discarded datapad.",
+            "narration": "The air hangs heavy with the smell of ozone and damp concrete. This alley is usually teeming with whispers and illicit deals, but tonight it's eerily quiet. That datapad could be the first clue in Sparky's disappearance, or perhaps a trap.",
+            "choices": [
+                {
+                    "text": "Examine the datapad.",
+                    "next_id": "datapad_examine"
+                },
+                {
+                    "text": "Follow a suspicious noise deeper into the alley.",
+                    "next_id": "noise_follow"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "datapad_examine",
+            "scene_description": "Close up on the datapad. Its screen flickers with fragmented code and a partially visible map highlighting a district known for its abandoned factories.",
+            "character_pose_description": "Ace kneels down, carefully picking up the datapad, their brow furrowed in concentration as they try to decipher the glowing screen.",
+            "narration": "The datapad is locked, but a few lines of code are visible, hinting at a clandestine meeting place. The map points to the old industrial sector, a place where OmniCorp supposedly shut down all operations years ago. This could be the breakthrough you need.",
+            "choices": [
+                {
+                    "text": "Head to the abandoned factories.",
+                    "next_id": "factories_approach"
+                },
+                {
+                    "text": "Try to hack the datapad for more information.",
+                    "next_id": "datapad_hack_fail"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "noise_follow",
+            "scene_description": "The back of the alley opens into a small, cluttered courtyard filled with discarded robot parts and shimmering puddles.",
+            "character_pose_description": "Ace cautiously enters the courtyard, peering behind a pile of scrap metal where the strange noise seems to originate.",
+            "narration": "The noise turns out to be a small, broken maintenance bot sputtering erratically. It doesn't seem to have any information, just a loose wire sparking against a puddle. This was a dead end, a waste of precious time.",
+            "choices": [
+                {
+                    "text": "Return to examine the datapad.",
+                    "next_id": "datapad_examine"
+                },
+                {
+                    "text": "Give up and go home.",
+                    "next_id": "give_up_ending"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "datapad_hack_fail",
+            "scene_description": "The datapad suddenly flashes, a puff of harmless smoke emits from its casing, and the screen goes blank.",
+            "character_pose_description": "Ace holds the now-inert datapad, a look of mild frustration on their face as they realize their hacking attempt failed.",
+            "narration": "Bzzzt! Your attempt to force open the datapad's security backfired spectacularly. It seems the device was booby-trapped with a simple electrical surge. All that valuable information is now lost, and you're back to square one.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "give_up_ending",
+            "scene_description": "Ace stands at the mouth of the alley, looking back at the neon glow of the city, a sigh escaping their lips.",
+            "character_pose_description": "Ace turns away from the alley, shoulders slumped slightly, deciding to retreat from the investigation for the night.",
+            "narration": "Sometimes, the city's shadows are just too deep, and its secrets too well-guarded. For tonight, the mystery of OmniCorp and Sparky's disappearance will have to wait. Perhaps a hot cup of synth-coffee is a better reward than a potentially dangerous truth.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "factories_approach",
+            "scene_description": "The exterior of a massive, derelict factory looms in the rain. One of its large loading bay doors is slightly ajar, revealing a sliver of dim, flickering light within.",
+            "character_pose_description": "Ace stands before the imposing factory, rain plastering their hair to their forehead, a determined glint in their eyes as they approach the slightly open door.",
+            "narration": "This is it, the place the datapad hinted at. The air here is thick with disuse, yet there's a faint hum of activity from within. Whatever OmniCorp is hiding, it's likely right behind that door.",
+            "choices": [
+                {
+                    "text": "Enter the factory cautiously.",
+                    "next_id": "factory_enter_success"
+                },
+                {
+                    "text": "Look for another way in.",
+                    "next_id": "factory_other_way_fail"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "factory_enter_success",
+            "scene_description": "Inside the factory, rows of dormant robotic arms stand silent. In the center, a holographic projector displays a swirling OmniCorp logo, and a small, hidden panel is revealed by its light.",
+            "character_pose_description": "Ace enters the main factory floor, spotting the holographic projector and the revealed panel, a look of discovery on their face.",
+            "narration": "The factory is eerily still, but the projector is clearly active. Behind it, a hidden access panel! This must be the heart of OmniCorp's secret operations. You've successfully navigated the treacherous path and found the core of the conspiracy.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        },
+        {
+            "id": "factory_other_way_fail",
+            "scene_description": "While searching for another entrance, Ace steps on a loose grate and slides down a short, surprisingly bouncy chute, landing in a heap of soft, discarded packing foam.",
+            "character_pose_description": "Ace looks around in mild surprise and a touch of annoyance, covered in harmless packing foam, having landed in a cushioned pit.",
+            "narration": "Oops! That alternative entrance turned out to be a gravity-activated foam pit, likely a quirky security measure. You're unhurt, but thoroughly dusted in packing foam and definitely not any closer to uncovering the conspiracy. This detour has cost you valuable time.",
+            "choices": [
+                {
+                    "text": "Try the main loading bay door again.",
+                    "next_id": "factory_enter_success"
+                },
+                {
+                    "text": "Head back to the alley.",
+                    "next_id": "noise_follow"
+                }
+            ],
+            "is_ending": false
+        }
+    ],
+    "theme": "Cyberpunk Underworld"
+}

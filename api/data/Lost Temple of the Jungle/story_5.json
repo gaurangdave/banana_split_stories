@@ -1,0 +1,114 @@
+{
+    "prologue": "Brave adventurer, the legendary Sunstone, a gem said to hold the warmth of a thousand suns, has been lost for centuries! Legends whisper it lies hidden deep within the Serpent's Eye Temple, nestled in the heart of the Whispering Jungle. You've heard tales of its immense power and dazzling beauty, and your heart yearns for discovery. Many have tried to find the Sunstone, but the jungle is a maze, and the temple is guarded by clever puzzles and ancient mechanisms. With your trusty map and a spirit full of courage, you stand at the entrance to the temple, ready to embark on this thrilling quest. The air is thick with the scent of exotic flowers and damp earth, and the calls of unseen creatures echo around you. Will you be the one to uncover the Sunstone's secrets?",
+    "story_tree": [
+        {
+            "id": "start",
+            "scene_description": "You stand before a colossal stone archway overgrown with vines. Two massive stone serpent heads flank the entrance, their empty eyes seeming to watch you. Sunlight filters through the dense jungle canopy, casting dappled shadows.",
+            "character_pose_description": "Standing at the temple entrance, looking determined and a bit awestruck, holding a tattered map.",
+            "narration": "You've found the entrance to the Serpent's Eye Temple! The air hums with an ancient energy, and the path ahead is shrouded in mystery. Two imposing serpent statues guard the way, their stone scales weathered by time. What will be your first move?",
+            "choices": [
+                {
+                    "text": "Enter the temple cautiously.",
+                    "next_id": "temple_entrance"
+                },
+                {
+                    "text": "Examine the serpent statues.",
+                    "next_id": "examine_statues"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "examine_statues",
+            "scene_description": "The stone serpents are intricately carved. One statue has a small, almost hidden lever near its base, while the other has a loose scale.",
+            "character_pose_description": "Kneeling down to inspect the base of a stone serpent statue, finger pointing to a small lever.",
+            "narration": "You decide to investigate the guardians more closely. As you run your hands along the cool stone, you discover a curious lever on one statue and a wobbly scale on the other. These ancient builders loved their secrets!",
+            "choices": [
+                {
+                    "text": "Pull the lever.",
+                    "next_id": "pull_lever_fail"
+                },
+                {
+                    "text": "Try to lift the loose scale.",
+                    "next_id": "lift_scale"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "pull_lever_fail",
+            "scene_description": "As you pull the lever, a harmless puff of colorful, glittery dust erupts from the statue's mouth, coating you in sparkle. A hidden panel behind you slides shut with a soft click, blocking your path back.",
+            "character_pose_description": "Covered in shimmering glitter, looking slightly surprised but not harmed, with a door now closed behind you.",
+            "narration": "Poof! A cloud of shimmering, harmless glitter engulfs you. It tickles your nose and makes you sparkle, but unfortunately, a nearby doorway slides shut, presenting a new, albeit sparkly, challenge. You're now committed to going forward!",
+            "choices": [
+                {
+                    "text": "Proceed into the temple.",
+                    "next_id": "temple_entrance"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "lift_scale",
+            "scene_description": "You carefully lift the loose scale, revealing a hidden button beneath. Pressing it causes a section of the temple wall to slide open, revealing a passage.",
+            "character_pose_description": "Standing triumphantly, having just revealed a secret passage with a smile, pointing into the newly opened doorway.",
+            "narration": "Success! The scale lifts easily, revealing a secret button. With a press, a hidden door slides open, showing a path deeper into the temple. This must be the way to the legendary artifact!",
+            "choices": [
+                {
+                    "text": "Step through the secret passage.",
+                    "next_id": "temple_entrance"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "temple_entrance",
+            "scene_description": "You enter a grand chamber. In the center, a pedestal awaits, but it's surrounded by a shallow pool of glowing, viscous goo. Across the room, another doorway beckons, guarded by a puzzle of colorful tiles.",
+            "character_pose_description": "Standing at the entrance of a large chamber, observing the goo-filled pedestal and the tile puzzle, looking thoughtful.",
+            "narration": "The temple's interior is magnificent! You see a pedestal in the middle, but it's surrounded by a peculiar, shimmering goo. On the far side of the room, a door is sealed by a pattern of colorful tiles. How will you get to the next area?",
+            "choices": [
+                {
+                    "text": "Try to step carefully through the goo.",
+                    "next_id": "goo_trap"
+                },
+                {
+                    "text": "Attempt to solve the tile puzzle.",
+                    "next_id": "tile_puzzle"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "goo_trap",
+            "scene_description": "As you step into the goo, it bubbles and shifts, then gently pulls you down. You find yourself stuck in harmless, brightly colored goo that smells like bubblegum. You can't move!",
+            "character_pose_description": "Stuck waist-deep in colorful, bubbly goo, looking a bit silly and frustrated but unharmed.",
+            "narration": "Oh dear! The goo is stickier than it looks. It's not dangerous, but it's like a very enthusiastic hug from a marshmallow monster, and you can't get out! You've missed your chance to find the artifact this time.",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "failure"
+        },
+        {
+            "id": "tile_puzzle",
+            "scene_description": "You study the colorful tiles. They form a pattern resembling a jungle flower. You press the tiles in the order of a blooming flower: bud, stem, leaves, petals. The door slides open!",
+            "character_pose_description": "Standing before the tile puzzle, having just pressed the final tile, with a look of clever satisfaction as the door opens.",
+            "narration": "You've cracked the puzzle! By tracing the steps of a blooming jungle flower on the tiles, you've successfully opened the path forward. The air ahead seems to shimmer with anticipation.",
+            "choices": [
+                {
+                    "text": "Step through the newly opened door.",
+                    "next_id": "artifact_chamber"
+                }
+            ],
+            "is_ending": false
+        },
+        {
+            "id": "artifact_chamber",
+            "scene_description": "You enter the final chamber. In the center, bathed in a golden light, rests a magnificent, radiant gemstone on a velvet cushion: the Sunstone! It pulses with a warm, gentle glow.",
+            "character_pose_description": "Standing in awe, gazing at the glowing Sunstone, with hands outstretched slightly in wonder.",
+            "narration": "You've made it! Before you, the legendary Sunstone shines, filling the chamber with its radiant warmth and light. Its beauty is beyond compare, and its energy feels incredibly peaceful. You have succeeded in your quest!",
+            "choices": [],
+            "is_ending": true,
+            "outcome": "success"
+        }
+    ],
+    "theme": "Lost Temple of the Jungle"
+}
