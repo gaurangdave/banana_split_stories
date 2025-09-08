@@ -45,7 +45,7 @@ app.add_middleware(
 # In-memory storage for game states (for simplicity in a hackathon)
 # A real app would use a database.
 game_states = {}
-mock = False
+mock = True
 
 # read api key
 API_KEY = os.environ.get("GEMINI_API_KEY")
@@ -57,18 +57,9 @@ client = genai.Client(api_key=API_KEY)
 # Ensure the 'static' directory exists for saving images
 os.makedirs("static/games", exist_ok=True)
 os.makedirs("data/games", exist_ok=True)
+os.makedirs("assets/games", exist_ok=True)
 # app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# --- Corrected Static File Mounting ---
-
-# This mount serves our dynamically generated images and audio from the /static URL path.
-# It correctly points to the 'static' folder in your project root.
-app.mount("/static", StaticFiles(directory="static"), name="static_assets") # Gave it a unique name
-
-# This mount serves the entire built React application from the root URL.
-# It correctly points to the 'frontend/build' folder in your project root.
-# It MUST be the LAST mount and have a UNIQUE name.
-app.mount("/", StaticFiles(directory="./frontend/build", html=True), name="react_app")
 
 
 # --- API Endpoints ---
@@ -86,8 +77,8 @@ async def restart_game(game_id: str = Form(...)):
 
     step_id = story_data["story_tree"][0]["id"]
     return_data = story_data["story_tree"][0]
-    return_data["scene_image_url"] = f"/static/games/{game_id}/{step_id}.png"
-    return_data["character_sheet_url"] = f"/static/games/{game_id}/character_sheet.png"
+    return_data["scene_image_url"] = f"/assets/games/{game_id}/{step_id}.png"
+    return_data["character_sheet_url"] = f"/assets/games/{game_id}/character_sheet.png"
 
     return {"game_id": game_id, "step": return_data}
 
@@ -115,8 +106,8 @@ async def start_game(
 
             step_id = story_data["story_tree"][0]["id"]
             return_data = story_data["story_tree"][0]
-            return_data["scene_image_url"] = f"/static/games/{game_id}/{step_id}.png"
-            return_data["character_sheet_url"] = f"/static/games/{game_id}/character_sheet.png"
+            return_data["scene_image_url"] = f"/assets/games/{game_id}/{step_id}.png"
+            return_data["character_sheet_url"] = f"/assets/games/{game_id}/character_sheet.png"
             return {"game_id": game_id, "step": return_data}
 
     # If no game_id or the game_id doesn't exist, create a new game
@@ -178,8 +169,8 @@ async def start_game(
     first_scene.save(first_scene_image_path)
 
     return_data = story_data["story_tree"][0]
-    return_data["scene_image_url"] = f"/static/games/{game_id}/{step_id}.png"
-    return_data["character_sheet_url"] = f"/static/games/{game_id}/character_sheet.png"
+    return_data["scene_image_url"] = f"/assets/games/{game_id}/{step_id}.png"
+    return_data["character_sheet_url"] = f"/assets/games/{game_id}/character_sheet.png"
     return_data["narration_audio_url"] = first_scene_narration_audio_url
 
     return {"game_id": game_id, "step": return_data}
@@ -242,8 +233,8 @@ async def next_step(
     next_scene.save(next_scene_image_path)
 
 
-    next_step_data["scene_image_url"] = f"/static/games/{game_id}/{next_step_id}.png"
-    next_step_data["character_sheet_url"] = f"/static/games/{game_id}/character_sheet.png"
+    next_step_data["scene_image_url"] = f"/assets/games/{game_id}/{next_step_id}.png"
+    next_step_data["character_sheet_url"] = f"/assets/games/{game_id}/character_sheet.png"
     next_step_data["narration_audio_url"] = next_scene_narration_audio_url
 
     return {"step": next_step_data}
@@ -257,4 +248,10 @@ def ping():
     return {"status": "ok", "message": "API is alive!"}
 
 
-# app.mount("/", StaticFiles(directory="./frontend/build", html=True), name="static")
+# --- Corrected Static File Mounting ---
+
+# THE FIX: Mount your game assets at /assets to avoid conflict with React's /static folder.
+app.mount("/assets/games", StaticFiles(directory=GAME_DATA_DIR), name="game_assets")
+
+# This mount serves the entire built React application. It MUST be the LAST mount.
+app.mount("/", StaticFiles(directory="frontend/build", html=True), name="react_app")

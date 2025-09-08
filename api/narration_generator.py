@@ -40,7 +40,7 @@ async def generate_narration(text_to_speak: str, game_id: str, step_id: str) -> 
 
 
         # Construct the public URL for the frontend
-        public_url = f"/static/games/{game_id}/{file_name}"
+        public_url = f"/assets/games/{game_id}/{file_name}"
         return public_url
 
     print(f"🎙️ Generating narration for step: {step_id}...")

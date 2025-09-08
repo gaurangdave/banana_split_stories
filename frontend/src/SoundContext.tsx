@@ -8,20 +8,20 @@
   2. Place all your static MP3 files in this new directory.
   
   This component expects to find the following files:
-  - /static/audio/background_music.mp3
-  - /static/audio/welcome_01.mp3
-  - /static/audio/welcome_02.mp3
-  - /static/audio/welcome_03.mp3
-  - /static/audio/comment_01.mp3
-  - /static/audio/comment_02.mp3
-  - /static/audio/comment_03.mp3
-  - /static/audio/comment_04.mp3
-  - /static/audio/success_01.mp3
-  - /static/audio/success_02.mp3
-  - /static/audio/success_03.mp3
-  - /static/audio/failure_01.mp3
-  - /static/audio/failure_02.mp3
-  - /static/audio/failure_03.mp3
+  - /audio/background_music.mp3
+  - /audio/welcome_01.mp3
+  - /audio/welcome_02.mp3
+  - /audio/welcome_03.mp3
+  - /audio/comment_01.mp3
+  - /audio/comment_02.mp3
+  - /audio/comment_03.mp3
+  - /audio/comment_04.mp3
+  - /audio/success_01.mp3
+  - /audio/success_02.mp3
+  - /audio/success_03.mp3
+  - /audio/failure_01.mp3
+  - /audio/failure_02.mp3
+  - /audio/failure_03.mp3
 
   Ensure these files are present for the sound features to work correctly.
   
@@ -66,28 +66,28 @@ interface SoundProviderProps {
 }
 
 const welcomeLines = [
-  '/static/audio/welcome_01.mp3',
-  '/static/audio/welcome_02.mp3',
-  '/static/audio/welcome_03.mp3',
+  '/audio/welcome_01.mp3',
+  '/audio/welcome_02.mp3',
+  '/audio/welcome_03.mp3',
 ];
 
 const commentLines = [
-  '/static/audio/comments_01.mp3',
-  '/static/audio/comments_02.mp3',
-  '/static/audio/comments_03.mp3',
-  '/static/audio/comments_04.mp3',
+  '/audio/comments_01.mp3',
+  '/audio/comments_02.mp3',
+  '/audio/comments_03.mp3',
+  '/audio/comments_04.mp3',
 ];
 
 const successLines = [
-  '/static/audio/success_01.mp3',
-  '/static/audio/success_02.mp3',
-  '/static/audio/success_03.mp3',
+  '/audio/success_01.mp3',
+  '/audio/success_02.mp3',
+  '/audio/success_03.mp3',
 ];
 
 const failureLines = [
-  '/static/audio/failure_01.mp3',
-  '/static/audio/failure_02.mp3',
-  '/static/audio/failure_03.mp3',
+  '/audio/failure_01.mp3',
+  '/audio/failure_02.mp3',
+  '/audio/failure_03.mp3',
 ];
 
 const voiceLineCategories: Record<VoiceLineCategory, string[]> = {
@@ -102,7 +102,7 @@ export const SoundProvider: React.FC<SoundProviderProps> = ({ children }) => {
   const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
-    backgroundMusicRef.current = new Audio('/static/audio/background_music.mp3');
+    backgroundMusicRef.current = new Audio('/audio/background_music.mp3');
     backgroundMusicRef.current.loop = true;
     backgroundMusicRef.current.volume = 0.1;
   }, []);
