@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSound } from './SoundContext';
 import { Link } from 'react-router-dom';
 
 // Header Component
@@ -185,6 +186,12 @@ const Footer: React.FC = () => {
 
 // HomePage Component
 const HomePage: React.FC = () => {
+  const { playBackgroundMusic } = useSound();
+
+  useEffect(() => {
+    playBackgroundMusic();
+  }, [playBackgroundMusic]);
+
   return (
     <div className="bg-[#1a1611] text-white" style={{ fontFamily: "Newsreader, 'Noto Sans', sans-serif" }}>
       <div className="relative flex size-full min-h-screen flex-col dark group/design-root overflow-x-hidden">
