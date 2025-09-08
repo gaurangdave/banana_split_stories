@@ -8,20 +8,20 @@
   2. Place all your static MP3 files in this new directory.
   
   This component expects to find the following files:
-  - /audio/background_music.mp3
-  - /audio/welcome_01.mp3
-  - /audio/welcome_02.mp3
-  - /audio/welcome_03.mp3
-  - /audio/comment_01.mp3
-  - /audio/comment_02.mp3
-  - /audio/comment_03.mp3
-  - /audio/comment_04.mp3
-  - /audio/success_01.mp3
-  - /audio/success_02.mp3
-  - /audio/success_03.mp3
-  - /audio/failure_01.mp3
-  - /audio/failure_02.mp3
-  - /audio/failure_03.mp3
+  - /static/audio/background_music.mp3
+  - /static/audio/welcome_01.mp3
+  - /static/audio/welcome_02.mp3
+  - /static/audio/welcome_03.mp3
+  - /static/audio/comment_01.mp3
+  - /static/audio/comment_02.mp3
+  - /static/audio/comment_03.mp3
+  - /static/audio/comment_04.mp3
+  - /static/audio/success_01.mp3
+  - /static/audio/success_02.mp3
+  - /static/audio/success_03.mp3
+  - /static/audio/failure_01.mp3
+  - /static/audio/failure_02.mp3
+  - /static/audio/failure_03.mp3
 
   Ensure these files are present for the sound features to work correctly.
   
@@ -34,13 +34,16 @@ import React, {
   useRef, 
   useCallback, 
   ReactNode,
-  useEffect
+  useEffect,
+  useState
 } from 'react';
 
 // 1. Define TypeScript Interfaces
 export type VoiceLineCategory = 'welcome' | 'comment' | 'success' | 'failure';
 
 export interface SoundContextType {
+  isMuted: boolean;
+  toggleMute: () => void;
   playBackgroundMusic: () => void;
   stopBackgroundMusic: () => void;
   playRandomVoiceLine: (category: VoiceLineCategory) => void;
@@ -96,6 +99,7 @@ const voiceLineCategories: Record<VoiceLineCategory, string[]> = {
 
 export const SoundProvider: React.FC<SoundProviderProps> = ({ children }) => {
   const backgroundMusicRef = useRef<HTMLAudioElement | null>(null);
+  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     backgroundMusicRef.current = new Audio('/static/audio/background_music.mp3');
@@ -103,17 +107,29 @@ export const SoundProvider: React.FC<SoundProviderProps> = ({ children }) => {
     backgroundMusicRef.current.volume = 0.1;
   }, []);
 
+  const toggleMute = useCallback(() => {
+    setIsMuted(prevMuted => {
+      const newMuted = !prevMuted;
+      if (backgroundMusicRef.current) {
+        backgroundMusicRef.current.muted = newMuted;
+      }
+      return newMuted;
+    });
+  }, []);
+
   const playBackgroundMusic = useCallback(() => {
+    if (isMuted) return;
     backgroundMusicRef.current?.play().catch(error => {
       console.error("Error playing background music:", error);
     });
-  }, []);
+  }, [isMuted]);
 
   const stopBackgroundMusic = useCallback(() => {
     backgroundMusicRef.current?.pause();
   }, []);
 
   const playRandomVoiceLine = useCallback((category: VoiceLineCategory) => {
+    if (isMuted) return;
     const lines = voiceLineCategories[category];
     if (lines && lines.length > 0) {
       const randomIndex = Math.floor(Math.random() * lines.length);
@@ -122,16 +138,19 @@ export const SoundProvider: React.FC<SoundProviderProps> = ({ children }) => {
         console.error(`Error playing voice line for category ${category}:`, error);
       });
     }
-  }, []);
+  }, [isMuted]);
 
   const playNarration = useCallback((audioUrl: string) => {
+    if (isMuted) return;
     const audio = new Audio(audioUrl);
     audio.play().catch(error => {
       console.error("Error playing narration:", error);
     });
-  }, []);
+  }, [isMuted]);
 
   const contextValue: SoundContextType = {
+    isMuted,
+    toggleMute,
     playBackgroundMusic,
     stopBackgroundMusic,
     playRandomVoiceLine,

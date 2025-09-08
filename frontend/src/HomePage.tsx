@@ -186,11 +186,12 @@ const Footer: React.FC = () => {
 
 // HomePage Component
 const HomePage: React.FC = () => {
-  const { playBackgroundMusic } = useSound();
+  const { playBackgroundMusic, playRandomVoiceLine } = useSound();
 
   useEffect(() => {
     playBackgroundMusic();
-  }, [playBackgroundMusic]);
+    playRandomVoiceLine('welcome');
+  }, [playBackgroundMusic, playRandomVoiceLine]);
 
   return (
     <div className="bg-[#1a1611] text-white" style={{ fontFamily: "Newsreader, 'Noto Sans', sans-serif" }}>

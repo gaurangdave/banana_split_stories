@@ -5,10 +5,12 @@ import HomePage from './HomePage';
 import CharacterCreationPage from './CharacterCreationPage';
 import GamePage from './GamePage';
 import { SoundProvider } from './SoundContext';
+import SoundToggleButton from './SoundToggleButton';
 
 function App() {
   return (
     <SoundProvider>
+      <SoundToggleButton />
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
