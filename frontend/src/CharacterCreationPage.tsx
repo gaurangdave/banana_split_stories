@@ -232,6 +232,7 @@ const CharacterCreationPage: FC = () => {
   const [fictionalAnimal, setFictionalAnimal] = useState<string | null>(null);
   const [personalities, setPersonalities] = useState<Set<string>>(new Set());
   const [accessories, setAccessories] = useState<Set<string>>(new Set());
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggleMultiSelect = (
     item: string,
@@ -290,6 +291,7 @@ const CharacterCreationPage: FC = () => {
     }
 
     try {
+      setIsLoading(true);
       const response = await fetch("/api/prologue", {
         method: "POST",
         body: formData,
@@ -305,70 +307,96 @@ const CharacterCreationPage: FC = () => {
     } catch (error) {
       console.error("Network error starting game:", error);
       alert("Network error. Please check your connection and try again.");
-    } 
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const renderContent = () => {
+    if (isLoading) {
+      return (
+        <div className="relative min-h-screen flex items-center justify-center p-4 bg-[#1a1611] text-white">
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/gravel.png')] opacity-5"></div>
+          <div className="w-full max-w-6xl min-h-[80vh] bg-stone-900/40 backdrop-blur-sm border border-stone-800/50 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden flex items-center justify-center">
+            <LoadingSpinner />
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="relative min-h-screen flex items-center justify-center p-4 py-10 bg-[#1a1611] text-white selection:bg-[#f2a20d] selection:text-[#1a1611]">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/gravel.png')] opacity-5"></div>
+
+        <div className="w-full max-w-3xl bg-stone-900/40 backdrop-blur-sm border border-stone-800/50 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden text-center">
+          <div className="p-8">
+            <h1 className="font-newsreader text-4xl md:text-5xl font-bold text-[#f2a20d] mb-4">
+              Forge Your Hero
+            </h1>
+            <p className="text-stone-400 mb-8">
+              Your journey begins now. Choose your path to create a hero worthy
+              of legend.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 border-t border-b border-stone-800/50">
+            <TabButton
+              label="Become the Hero"
+              isActive={activeTab === "selfie"}
+              onClick={() => setActiveTab("selfie")}
+            />
+            <TabButton
+              label="Create a Character"
+              isActive={activeTab === "fictional"}
+              onClick={() => setActiveTab("fictional")}
+            />
+          </div>
+
+          <div className="p-8">
+            {activeTab === "selfie" ? (
+              <SelfieFlow
+                gender={selfieGender}
+                setGender={setSelfieGender}
+                file={selfieFile}
+                setFile={setSelfieFile}
+              />
+            ) : (
+              <FictionalFlow
+                animal={fictionalAnimal}
+                setAnimal={setFictionalAnimal}
+                personalities={personalities}
+                togglePersonality={(p) =>
+                  toggleMultiSelect(p, personalities, setPersonalities)
+                }
+                accessories={accessories}
+                toggleAccessory={(a) =>
+                  toggleMultiSelect(a, accessories, setAccessories)
+                }
+              />
+            )}
+
+            <button
+              onClick={handleBeginAdventure}
+              disabled={!isAdventureReady}
+              className="w-full max-w-sm mx-auto bg-[#f2a20d] text-[#1a1611] text-lg font-bold tracking-wide h-12 px-5 rounded-md hover:bg-amber-400 transition-colors disabled:bg-stone-700 disabled:text-stone-500 disabled:cursor-not-allowed"
+            >
+              Begin My Adventure
+            </button>
+          </div>
+        </div>
+      </div>
+    );
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center p-4 py-10 bg-[#1a1611] text-white selection:bg-[#f2a20d] selection:text-[#1a1611]">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/gravel.png')] opacity-5"></div>
+    // <div className="relative min-h-screen flex items-center justify-center p-4 py-10 bg-[#1a1611] text-white selection:bg-[#f2a20d] selection:text-[#1a1611]">
+    //   <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/gravel.png')] opacity-5"></div>
 
-      <div className="w-full max-w-3xl bg-stone-900/40 backdrop-blur-sm border border-stone-800/50 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden text-center">
-        <div className="p-8">
-          <h1 className="font-newsreader text-4xl md:text-5xl font-bold text-[#f2a20d] mb-4">
-            Forge Your Hero
-          </h1>
-          <p className="text-stone-400 mb-8">
-            Your journey begins now. Choose your path to create a hero worthy of
-            legend.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 border-t border-b border-stone-800/50">
-          <TabButton
-            label="Become the Hero"
-            isActive={activeTab === "selfie"}
-            onClick={() => setActiveTab("selfie")}
-          />
-          <TabButton
-            label="Create a Character"
-            isActive={activeTab === "fictional"}
-            onClick={() => setActiveTab("fictional")}
-          />
-        </div>
-
-        <div className="p-8">
-          {activeTab === "selfie" ? (
-            <SelfieFlow
-              gender={selfieGender}
-              setGender={setSelfieGender}
-              file={selfieFile}
-              setFile={setSelfieFile}
-            />
-          ) : (
-            <FictionalFlow
-              animal={fictionalAnimal}
-              setAnimal={setFictionalAnimal}
-              personalities={personalities}
-              togglePersonality={(p) =>
-                toggleMultiSelect(p, personalities, setPersonalities)
-              }
-              accessories={accessories}
-              toggleAccessory={(a) =>
-                toggleMultiSelect(a, accessories, setAccessories)
-              }
-            />
-          )}
-
-          <button
-            onClick={handleBeginAdventure}
-            disabled={!isAdventureReady}
-            className="w-full max-w-sm mx-auto bg-[#f2a20d] text-[#1a1611] text-lg font-bold tracking-wide h-12 px-5 rounded-md hover:bg-amber-400 transition-colors disabled:bg-stone-700 disabled:text-stone-500 disabled:cursor-not-allowed"
-          >
-            Begin My Adventure
-          </button>
-        </div>
-      </div>
-    </div>
+    //   <div className="w-full max-w-3xl bg-stone-900/40 backdrop-blur-sm border border-stone-800/50 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden text-center">
+    //     {renderContent()}
+    //   </div>
+    // </div>
+    renderContent()
   );
 };
 
