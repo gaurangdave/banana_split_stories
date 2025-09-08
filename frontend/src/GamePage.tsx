@@ -6,12 +6,14 @@ import { useSound } from "./SoundContext";
 
 type ChoiceButtonProps = {
   text: string;
+  disabled?: boolean;
   onClick: () => void;
 };
 
-const ChoiceButton: FC<ChoiceButtonProps> = ({ text, onClick }) => (
+const ChoiceButton: FC<ChoiceButtonProps> = ({ text, onClick, disabled }) => (
   <button
     onClick={onClick}
+    disabled={disabled}
     className="glow-on-hover w-full bg-stone-900/40 hover:bg-[#f2a20d] text-[#f2a20d] hover:text-[#1a1611] font-bold py-3 px-4 rounded-lg border border-stone-800/50 transition-all duration-300 ease-in-out transform hover:scale-105"
   >
     {text}
@@ -49,7 +51,8 @@ const GamePage: FC = () => {
   const [currentStep, setCurrentStep] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [gameId, setGameId] = useState<string | null>(null);
-  const { playRandomVoiceLine } = useSound();
+  const { playRandomVoiceLine, playNarration } = useSound();
+  const [areChoicesDisabled, setAreChoicesDisabled] = useState(false);
 
   useEffect(() => {
     const startGame = async () => {
@@ -98,13 +101,22 @@ const GamePage: FC = () => {
   }, [location.state]);
 
   useEffect(() => {
-    const playOutcomeSound = async () => {
-      if (currentStep && currentStep.outcome) {
-        await playRandomVoiceLine(currentStep.outcome);
+    // const playOutcomeSound = async () => {
+    //   if (currentStep && currentStep.outcome) {
+    //     await playRandomVoiceLine(currentStep.outcome);
+    //   }
+    // };
+    // playOutcomeSound();
+
+    const playNarrationSound = async () => {
+      if (currentStep && currentStep.narration_audio_url) {
+        setAreChoicesDisabled(true);
+        await playNarration(currentStep.narration_audio_url);
+        setAreChoicesDisabled(false);
       }
     };
-    playOutcomeSound();
-  }, [currentStep, playRandomVoiceLine]);
+    playNarrationSound();
+  }, [currentStep, playNarration, playRandomVoiceLine]);
 
   const handleChoice = async (choiceIndex: number) => {
     if (!gameId || !currentStep) return;
@@ -192,6 +204,7 @@ const GamePage: FC = () => {
                   <ChoiceButton
                     key={index}
                     text={choice.text}
+                    disabled={areChoicesDisabled}
                     onClick={() => handleChoice(index)}
                   />
                 ))}
