@@ -33,4 +33,4 @@ GAME_DATA_DIR = Path(ASSETS_DIR, "games")
 
 
 IMAGE_MODEL_ID = "gemini-2.5-flash-image-preview"
-TEXT_MODEL_ID = "gemini-2.5-flash-lite"
+TEXT_MODEL_ID = "gemini-2.0-flash-lite"
