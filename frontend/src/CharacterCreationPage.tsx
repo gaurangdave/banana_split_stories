@@ -1,4 +1,4 @@
-import React, { useState, useMemo, FC, ChangeEvent } from "react";
+import React, { useState, useMemo, FC, ChangeEvent, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import LoadingSpinner from "./LoadingSpinner";
 
@@ -59,6 +59,13 @@ const SelfieFlow: FC<SelfieFlowProps> = ({
   file,
   setFile,
 }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+    setIsMobile(/android|iphone|ipad|ipod/i.test(userAgent));
+  }, []);
+
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0]);
@@ -90,40 +97,62 @@ const SelfieFlow: FC<SelfieFlowProps> = ({
         <h2 className="font-newsreader text-xl text-stone-300 mb-4">
           Imprint Your Visage
         </h2>
-        <label
-          htmlFor="selfie-upload"
-          className="file-input-label cursor-pointer w-full h-48 border-2 border-dashed border-stone-700 rounded-lg flex flex-col items-center justify-center transition-colors hover:border-[#f2a20d] hover:bg-opacity-10"
-        >
-          <svg
-            className="w-12 h-12 text-stone-500 mb-2"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
+        <div className="flex flex-col items-center space-y-4">
+            <label
+              htmlFor="selfie-upload"
+              className="file-input-label cursor-pointer w-full h-48 border-2 border-dashed border-stone-700 rounded-lg flex flex-col items-center justify-center transition-colors hover:border-[#f2a20d] hover:bg-opacity-10"
+            >
+              <svg
+                className="w-12 h-12 text-stone-500 mb-2"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
+                />
+              </svg>
+              <span className={`text-stone-400 ${file ? "text-[#f2a20d]" : ""}`}>
+                {file
+                  ? `File: ${file.name}`
+                  : "Upload Your Selfie to Become the Hero"}
+              </span>
+              <span className="text-xs text-stone-500 mt-1">
+                Your likeness will be preserved, your destiny transformed.
+              </span>
+            </label>
+            <input
+              type="file"
+              id="selfie-upload"
+              className="hidden"
+              accept="image/png, image/jpeg"
+              onChange={handleFileChange}
             />
-          </svg>
-          <span className={`text-stone-400 ${file ? "text-[#f2a20d]" : ""}`}>
-            {file
-              ? `File: ${file.name}`
-              : "Upload Your Selfie to Become the Hero"}
-          </span>
-          <span className="text-xs text-stone-500 mt-1">
-            Your likeness will be preserved, your destiny transformed.
-          </span>
-        </label>
-        <input
-          type="file"
-          id="selfie-upload"
-          className="hidden"
-          accept="image/png, image/jpeg"
-          onChange={handleFileChange}
-        />
+            {isMobile && (
+                <>
+                    <input
+                        type="file"
+                        id="selfie-camera-upload"
+                        className="hidden"
+                        accept="image/*"
+                        capture="user"
+                        onChange={handleFileChange}
+                    />
+                    <label htmlFor="selfie-camera-upload" className="w-full">
+                        <ChoiceButton
+                            label="Take a Selfie"
+                            isSelected={false}
+                            onClick={() => {}}
+                            py="py-4"
+                        />
+                    </label>
+                </>
+            )}
+        </div>
       </div>
     </div>
   );
