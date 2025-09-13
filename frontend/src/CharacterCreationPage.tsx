@@ -142,13 +142,8 @@ const SelfieFlow: FC<SelfieFlowProps> = ({
                         capture="user"
                         onChange={handleFileChange}
                     />
-                    <label htmlFor="selfie-camera-upload" className="w-full">
-                        <ChoiceButton
-                            label="Take a Selfie"
-                            isSelected={false}
-                            onClick={() => {}}
-                            py="py-4"
-                        />
+                    <label htmlFor="selfie-camera-upload" className="w-full glow-on-hover font-bold py-4 px-4 rounded-lg border transition-colors bg-stone-900/40 text-[#f2a20d] border-stone-800/50 cursor-pointer">
+                        Take a Selfie
                     </label>
                 </>
             )}
