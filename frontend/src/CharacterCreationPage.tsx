@@ -62,8 +62,8 @@ const SelfieFlow: FC<SelfieFlowProps> = ({
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
-    setIsMobile(/android|iphone|ipad|ipod/i.test(userAgent));
+    const isMobileDevice = window.matchMedia("(max-width: 768px)").matches;
+    setIsMobile(isMobileDevice);
   }, []);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
