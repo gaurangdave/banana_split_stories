@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FC } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSound } from "./SoundContext";
 import LoadingSpinner from "./LoadingSpinner";
 
@@ -21,23 +21,39 @@ const ChoiceButton: FC<ChoiceButtonProps> = ({ text, onClick, disabled }) => (
   </button>
 );
 
-// type GameEndScreenProps = {
-//   outcome: "success" | "failure";
-//   message: string;
-// };
+type GameEndScreenProps = {
+  outcome: "success" | "failure";
+  message: string;
+  onRestart: () => void;
+};
 
-// const GameEndScreen: FC<GameEndScreenProps> = ({ outcome, message }) => (
-//   <div className="text-center">
-//     <h2
-//       className={`font-newsreader text-4xl font-bold mb-4 ${
-//         outcome === "success" ? "text-green-400" : "text-red-400"
-//       }`}
-//     >
-//       {outcome === "success" ? "Victory!" : "Game Over"}
-//     </h2>
-//     <p className="text-stone-300 text-lg">{message}</p>
-//   </div>
-// );
+const GameEndScreen: FC<GameEndScreenProps> = ({ outcome, message, onRestart }) => (
+  <div className="text-center p-8">
+    <h2
+      className={`font-newsreader text-4xl font-bold mb-4 ${
+        outcome === "success" ? "text-green-400" : "text-red-400"
+      }`}
+    >
+      {outcome === "success" ? "Victory!" : "Game Over"}
+    </h2>
+    <p className="text-stone-300 text-lg mb-8">{message}</p>
+    <div className="flex flex-col items-center space-y-4 max-w-xs mx-auto">
+        {outcome === "failure" && (
+            <ChoiceButton
+                text={"Restart Game"}
+                onClick={onRestart}
+            />
+        )}
+        <Link to="/" className="w-full">
+            <ChoiceButton
+                text={"Start New Game"}
+                onClick={() => {}}
+            />
+        </Link>
+    </div>
+  </div>
+);
+
 
 // --- Main Game Page Component ---
 
@@ -174,9 +190,9 @@ const GamePage: FC = () => {
       }
     };
 
-    // if (currentStep.is_ending) {
-    //     return <GameEndScreen outcome={currentStep.outcome} message={currentStep.narration} />
-    // }
+    if (currentStep.is_ending) {
+        return <GameEndScreen outcome={currentStep.outcome} message={currentStep.narration} onRestart={handleGameRestart} />
+    }
 
     return (
       <div className="md:flex h-full">
@@ -207,13 +223,6 @@ const GamePage: FC = () => {
                 ))}
               </div>
             </div>
-          )}
-
-          {currentStep.is_ending && currentStep.outcome === "failure" && (
-            <ChoiceButton
-              text={"Restart Game"}
-              onClick={() => handleGameRestart()}
-            />
           )}
         </div>
 
