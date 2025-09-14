@@ -22,7 +22,7 @@
             "id": "path_1_enter",
             "scene_description": "Inside the temple, the air is cooler and filled with the soft glow of phosphorescent moss. The path splits: one way leads to a room with a giant, harmless-looking slime pit, and the other to a hall lined with ancient banana statues.",
             "character_pose_description": "Stepping cautiously into the dimly lit temple interior, eyes wide with wonder and a slight tremble of excitement.",
-            "narration": "The jungle\u2019s heat gives way to a cool, mystical aura within the temple. Strange glowing moss illuminates the way, casting eerie shadows. The path ahead divides, presenting you with two intriguing, yet puzzling, routes. Which path will you choose to continue your quest for the Golden Banana?",
+            "narration": "The jungle’s heat gives way to a cool, mystical aura within the temple. Strange glowing moss illuminates the way, casting eerie shadows. The path ahead divides, presenting you with two intriguing, yet puzzling, routes. Which path will you choose to continue your quest for the Golden Banana?",
             "choices": [
                 {
                     "text": "Venture towards the slime pit.",
@@ -39,7 +39,7 @@
             "id": "path_1_sneak",
             "scene_description": "As you attempt to tiptoe past the trees, the ground beneath you suddenly gives way to a patch of sticky, sweet-smelling banana goo! You're stuck, but not hurt, just very, very sticky.",
             "character_pose_description": "Stuck in a large blob of golden, sticky goo, looking surprised and slightly embarrassed, with goo up to your knees.",
-            "narration": "Your attempt at stealth proves to be a slippery mistake! The ground turned to goo, and now you're quite stuck. It smells rather nice, like banana pudding, but you can't move forward. It seems the Banana King's curse is quite effective at stopping intruders, even if it\u2019s just with a bit of sticky goo.",
+            "narration": "Your attempt at stealth proves to be a slippery mistake! The ground turned to goo, and now you're quite stuck. It smells rather nice, like banana pudding, but you can't move forward. It seems the Banana King's curse is quite effective at stopping intruders, even if it’s just with a bit of sticky goo.",
             "choices": [],
             "is_ending": true,
             "outcome": "failure"
@@ -53,6 +53,10 @@
                 {
                     "text": "Take the Golden Banana!",
                     "next_id": "ending_success"
+                },
+                {
+                    "text": "Inspect the carvings on the pedestal.",
+                    "next_id": "path_2_statues"
                 }
             ],
             "is_ending": false
@@ -61,7 +65,7 @@
             "id": "path_2_statues",
             "scene_description": "As you walk down the hall of statues, a trap is triggered! A shower of overripe, mushy bananas rains down, covering you completely. You're unharmed but can't see a thing and smell strongly of banana.",
             "character_pose_description": "Completely covered in mushy, soft banana pulp, with only eyes peeking out, looking flustered and sticky.",
-            "narration": "Oh dear! A booby trap! Instead of treasure, you've found yourself in a rather squishy situation. A downpour of overripe bananas has buried you up to your chin. It\u2019s a sticky end to your quest, and you might smell like banana bread for a week!",
+            "narration": "Oh dear! A booby trap! Instead of treasure, you've found yourself in a rather squishy situation. A downpour of overripe bananas has buried you up to your chin. It’s a sticky end to your quest, and you might smell like banana bread for a week!",
             "choices": [],
             "is_ending": true,
             "outcome": "failure"

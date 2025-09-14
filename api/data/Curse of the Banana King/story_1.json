@@ -79,6 +79,10 @@
                 {
                     "text": "Step behind the waterfall.",
                     "next_id": "behind_waterfall_success"
+                },
+                {
+                    "text": "Search where the monkey was juggling.",
+                    "next_id": "sneak_failure"
                 }
             ],
             "is_ending": false

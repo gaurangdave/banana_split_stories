@@ -44,6 +44,10 @@
                 {
                     "text": "Proceed into the temple.",
                     "next_id": "temple_entrance"
+                },
+                {
+                    "text": "Search for another way out.",
+                    "next_id": "goo_trap"
                 }
             ],
             "is_ending": false
@@ -56,6 +60,10 @@
             "choices": [
                 {
                     "text": "Step through the secret passage.",
+                    "next_id": "temple_entrance"
+                },
+                {
+                    "text": "Inspect the passage for traps.",
                     "next_id": "temple_entrance"
                 }
             ],
@@ -96,6 +104,10 @@
                 {
                     "text": "Step through the newly opened door.",
                     "next_id": "artifact_chamber"
+                },
+                {
+                    "text": "Search the room for more clues.",
+                    "next_id": "goo_trap"
                 }
             ],
             "is_ending": false
@@ -112,3 +124,4 @@
     ],
     "theme": "Lost Temple of the Jungle"
 }
+

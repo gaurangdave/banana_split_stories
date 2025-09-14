@@ -87,6 +87,10 @@
                 {
                     "text": "Enter the chamber and claim the Sunstone.",
                     "next_id": "sunstone_chamber_success"
+                },
+                {
+                    "text": "Pause and listen at the door.",
+                    "next_id": "moon_plate_failure"
                 }
             ],
             "is_ending": false
@@ -112,3 +116,4 @@
     ],
     "theme": "Lost Temple of the Jungle"
 }
+

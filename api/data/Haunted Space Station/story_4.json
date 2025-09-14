@@ -44,6 +44,10 @@
                 {
                     "text": "Proceed to the bridge.",
                     "next_id": "bridge_path"
+                },
+                {
+                    "text": "Analyze the sample now.",
+                    "next_id": "failure_ending"
                 }
             ],
             "is_ending": false
@@ -86,3 +90,4 @@
     ],
     "theme": "Haunted Space Station"
 }
+
