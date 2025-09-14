@@ -27,39 +27,47 @@ def generate_narration(data_root: str):
         if not theme_dir.is_dir(): continue        
         print(emoji.emojize(f"\n:cyclone: Processing Theme: {theme}"))
         
-        for story_file in os.listdir(theme_dir):
-            if not story_file.endswith('.json'): continue
+        for story in os.listdir(theme_dir):
+            story_dir = Path(theme_dir,story)
+            print(emoji.emojize(f"\n    :file_folder: reading story from {story}"))
 
-            story_path = Path(theme_dir, story_file)
-            print(emoji.emojize(f"  :eyes: Reading {story_file}..."), end=" ")
-            
-            with open(story_path, 'r') as file:
-                story_obj = json.load(file)
+        
+            for story_file in os.listdir(story_dir):
+                if not story_file.endswith('.json'): continue
 
-            ## step 1 - generate audio for prologue
-            ## define prologue audio path
-            prologue_audio_path = Path(theme_dir, "prologue.mp3")
-            
-            ## only generate audio if prologue mp3 doesn't exist
-            if not os.path.exists(prologue_audio_path):
-                print(emoji.emojize(f"    :microphone: generating prologue..."))
-                prologue_text = story_obj["prologue"]
-                # audio_bytes = client.text_to_speech.convert(text=prologue_text,voice_id=VOICE_ID)
-                # save(audio_bytes, prologue_audio_path)
+                story_path = Path(story_dir, story_file)
+                print(emoji.emojize(f"      :eyes: Reading {story_file}..."), end=" ")
                 
-            ## sleep a 5 seconds to avoid rate limiting
-            sleep(5)
-            
-            for step in story_obj["story_tree"]:
-                # narration_audio_path = Path(th)
-                pass
-            
+                with open(story_path, 'r') as file:
+                    story_obj = json.load(file)
 
+                ## step 1 - generate audio for prologue
+                ## define prologue audio path
+                prologue_audio_path = Path(story_dir, "prologue.mp3")
+                
+                ## only generate audio if prologue mp3 doesn't exist
+                if not os.path.exists(prologue_audio_path):
+                    print(emoji.emojize(f"    :microphone: generating prologue..."))
+                    prologue_text = story_obj["prologue"]
+                    # audio_bytes = client.text_to_speech.convert(text=prologue_text,voice_id=VOICE_ID)
+                    # save(audio_bytes, prologue_audio_path)
+                    
+                ## sleep a 5 seconds to avoid rate limiting
+                sleep(5)
+                
+                for step in story_obj["story_tree"]:
+                    step_id = step["id"]
+                    
+                    narration_file_name = f"{step_id}_narration.mp3"
+                    narration_audio_path = Path(story_dir, narration_file_name)
+                    if not os.path.exists(narration_audio_path):
+                        print(emoji.emojize(f"\n    :microphone: generating narration for step {step_id}..."))
+                        narration_text = step["narration"]
+                        # audio_bytes = client.text_to_speech.convert(text=narration_text,voice_id=VOICE_ID)
+                        # save(audio_bytes, prologue_audio_path)
+                    sleep(5)
             
     print(emoji.emojize(" -> :check_mark_button: OK!"))            
-
-
-    pass
 
 
 
