@@ -32,3 +32,13 @@ class Story(BaseModel):
     """
     prologue: str
     story_tree: List[StoryNode]
+    theme: str
+    
+    
+class GenerateCharacterRequest(BaseModel):
+    """
+    Request schema for generating a character.
+    """
+    character_description: str
+    art_style: str
+    theme: str
